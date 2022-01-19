@@ -47,6 +47,15 @@ class LIVEthereum:
         draw.text((0,350), "#", font=self.title_font)
         self.display.draw_full(constants.DisplayModes.GLD16)
 
+    def update_block(self):
+
+        draw = ImageDraw.Draw(self.display.frame_buf)
+
+        draw.text((50,350), "14034811", font=self.title_font)
+
+
+        self.display.draw_partial(constants.DisplayModes.GLD16)
+        
 
 
 
