@@ -57,9 +57,9 @@ class LIVEthereum:
     def clear_screen(self):
         
         print('Clearing display...')
-        # self.display.clear()
+        self.display.clear()
         print("cleared")
-        # self.layout_init()
+        self.layout_init()
         self.refresh_counter == 0
 
        
