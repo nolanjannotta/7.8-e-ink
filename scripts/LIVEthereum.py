@@ -79,11 +79,12 @@ class LIVEthereum:
         self.display.draw_partial(constants.DisplayModes.DU)
 
     def clear_screen(self):
-        if self.refresh_counter == 5:
+        if self.refresh_counter == 3:
             print('Clearing display...')
             self.display.clear()
             print("cleared")
             self.layout_init()
+            self.refresh_counter == 0
         self.refresh_counter =+ 1
 
         
