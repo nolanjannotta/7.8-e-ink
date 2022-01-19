@@ -53,6 +53,7 @@ class LIVEthereum:
         self.display.draw_full(constants.DisplayModes.GC16)
 
     def update_block(self, block_number):
+        print("start")
 
         draw = ImageDraw.Draw(self.display.frame_buf)
         
@@ -73,6 +74,7 @@ class LIVEthereum:
 
         
         self.display.draw_partial(constants.DisplayModes.DU)
+        print("finished")
 
   
 
@@ -82,7 +84,7 @@ def main():
     live_ethereum = LIVEthereum()
 
     live_ethereum.update_block("1232133")
-# 
+
 
 
     
