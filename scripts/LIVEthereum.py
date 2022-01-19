@@ -51,7 +51,8 @@ def layout_init(display):
     text_height = fontsize
 
     draw_x = (img_width - text_width)//2
-    draw_y = (img_height - text_height)//2
+
+    draw_y = (300 - text_height)//2
 
     draw.text((draw_x, draw_y), message, font=font)
     display.draw_partial(constants.DisplayModes.GLD16)
