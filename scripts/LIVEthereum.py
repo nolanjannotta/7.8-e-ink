@@ -56,7 +56,7 @@ class LIVEthereum:
         
 
         # clears a portion of the screen where the number is with padding each side
-        self.display.frame_buf.paste(0xFF, box=(150,320 , 170 + self.last_text_width, 580))
+        self.display.frame_buf.paste(0xFF, box=(0,304,self.display.width,596))
 
         text_width, _ = self.title_font.getsize(block_number)
         self.last_text_width = text_width
