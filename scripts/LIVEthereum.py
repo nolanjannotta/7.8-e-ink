@@ -11,6 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 class LIVEthereum:
     def __init__(self):
         self.title_font = ImageFont.truetype("/home/pi//7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
+        self.hash_font = ImageFont.truetype("/home/pi//7.8-e-ink/fonts/PlayfairDisplay-Regular.ttf", 40)
         self.title = "LIVEthereum"
         self.display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
         self.last_text_width = 0
@@ -49,7 +50,7 @@ class LIVEthereum:
         draw.text((0,350), "#", font=self.title_font)
         self.display.draw_full(constants.DisplayModes.GC16)
 
-    def update_block(self, block_number):
+    def update_block(self, block_number, block_hash):
 
         draw = ImageDraw.Draw(self.display.frame_buf)
         
@@ -62,12 +63,14 @@ class LIVEthereum:
 
         # draw.rectangle((150,320 , 170 + text_width, 580),  outline = 0, width=5)
         # draw.line((0,310,self.display.width,300), width=4)
+        draw.text((30,320),block_hash, font=self.hash_font)
         draw.text((160,310), block_number, font=self.title_font)
         
 
         
         self.display.draw_partial(constants.DisplayModes.DU)
-        
+
+  
 
 
 

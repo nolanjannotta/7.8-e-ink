@@ -32,7 +32,7 @@ def main():
             block = web3.eth.get_block(block_hash.hex())
             seconds_since_start = (block.timestamp - start_timestamp)            
             num_tx = len(block.transactions)
-            live_ethereum.update_block(str(block.number))
+            live_ethereum.update_block(str(block.number),str(block_hash.hex()))
             print(f"block # {block.number} | number of transaction:  {num_tx} | at {block.timestamp}")
             print(f"average block length is {int(seconds_since_start / block_count)} seconds")
             print((block.baseFeePerGas * block.gasUsed) / 10**18, "eth burned")
