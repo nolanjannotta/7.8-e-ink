@@ -29,7 +29,7 @@ class LIVEthereum:
 
         draw = ImageDraw.Draw(self.display.frame_buf)
         # title box
-        draw.rectangle((0,320,self.display.width,580),  outline = 0, width=5)
+        # draw.rectangle((0,320,self.display.width,580),  outline = 0, width=5)
         # draw.rectangle((0, 0, display.width, 300),  outline = 0, width=5)
         draw.line((0,300,self.display.width,300), width=4)
         # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
@@ -51,7 +51,7 @@ class LIVEthereum:
         # draw.text((0,350), "#", font=self.title_font)
         self.display.draw_full(constants.DisplayModes.GC16)
 
-    def update_block(self, block_number):
+    def update_block(self):
 
         draw = ImageDraw.Draw(self.display.frame_buf)
         
@@ -60,14 +60,14 @@ class LIVEthereum:
         # self.display.frame_buf.paste(0xFF, box=(0,304,self.display.width,596))
         draw.rectangle((0,350,self.display.width,550),  outline = 0, width=5)
 
-        text_width, _ = self.title_font.getsize(block_number)
-        self.last_text_width = text_width
+        # text_width, _ = self.title_font.getsize(block_number)
+        # self.last_text_width = text_width
 
         
         # draw.line((0,310,self.display.width,300), width=4)
-        message = f"#{block_number}"
+        # message = f"#{block_number}"
         # draw.text((30,320),block_hash, font=self.hash_font)
-        draw.text((0,310), message, font=self.block_font)
+        # draw.text((0,310), message, font=self.block_font)
         
 
         
@@ -80,8 +80,8 @@ class LIVEthereum:
 def main():
     live_ethereum = LIVEthereum()
 
-    # live_ethereum.update_block("14034811")
-
+    live_ethereum.update_block()
+# 
 
 
     
