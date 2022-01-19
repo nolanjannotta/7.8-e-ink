@@ -46,17 +46,17 @@ def partial_update(display):
     # _place_text(display.frame_buf, 'LIVEthereum')
     # display.draw_partial(constants.DisplayModes.DU)
 
-    _place_text(display.frame_buf, 'LIVEthereum', 0,20)
-    display.draw_partial(constants.DisplayModes.GC16)
+    # _place_text(display.frame_buf, 'LIVEthereum', 0,20)
+    # display.draw_partial(constants.DisplayModes.GC16)
 
-    _place_text(display.frame_buf, 'LIVEthereum',0,40)
-    display.draw_partial(constants.DisplayModes.GL16)
+    # _place_text(display.frame_buf, 'LIVEthereum',0,40)
+    # display.draw_partial(constants.DisplayModes.GL16)
 
-    _place_text(display.frame_buf, 'LIVEthereum',0,60)
-    display.draw_partial(constants.DisplayModes.GLR16)
+    # _place_text(display.frame_buf, 'LIVEthereum',0,60)
+    # display.draw_partial(constants.DisplayModes.GLR16)
 
-    _place_text(display.frame_buf, 'LIVEthereum,',0,80)
-    display.draw_partial(constants.DisplayModes.GLD16)
+    # _place_text(display.frame_buf, 'LIVEthereum,',0,80)
+    # display.draw_partial(constants.DisplayModes.GLD16)
 
     _place_text(display.frame_buf, 'LIVEthereum',0,100)
     display.draw_partial(constants.DisplayModes.A2)
