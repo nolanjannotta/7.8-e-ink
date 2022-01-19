@@ -19,9 +19,11 @@ def layout_init(display):
 
     draw = ImageDraw.Draw(display.frame_buf)
     # title box
+
     draw.rectangle((0, 0, display.width, 300),  outline = 0, width=5)
+    draw.line((0,300,display.width,300), width=5)
     # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
-    draw.line((0,403,display.width,403), width=5)
+    draw.line((0,500,display.width,500), width=5)
     
     try:
         font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', fontsize)
