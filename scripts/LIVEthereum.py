@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 
-display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
+
 
 #helper function
 def _place_text(img, text, x_offset=0, y_offset=0):
@@ -30,7 +30,7 @@ def _place_text(img, text, x_offset=0, y_offset=0):
 
     draw.text((0, 0), text, font=font)
 
-def partial_update():
+def partial_update(display):
     print('Starting partial update...')
 
     # clear image to white
@@ -49,10 +49,13 @@ def partial_update():
     display.draw_partial(constants.DisplayModes.DU)
 
     
-
+def title(display):
+    print("writing title...")
+    _place_text(display.frame_buf, 'LIVEthereum')
+    display.draw_partial(constants.DisplayModes.DU)
 
 def main():
-
+    display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
 
     print('Clearing display...')
     display.clear()
@@ -62,7 +65,7 @@ def main():
     # print('  writing full...')
     # _place_text(display.frame_buf, 'HELLO', x_offset=-display.width//4)
     # display.draw_full(constants.DisplayModes.GC16)
-    partial_update(display)
+    title(display)
 
 
     
