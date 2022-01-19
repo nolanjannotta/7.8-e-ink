@@ -17,6 +17,7 @@ class LIVEthereum:
         print('Clearing display...')
         self.display.clear()
         print("cleared")
+        self.layout_init()
 
     
 
@@ -65,18 +66,18 @@ class LIVEthereum:
 
 
 
-def main():
-    live_ethereum = LIVEthereum()
-    live_ethereum.layout_init()
-    sleep(4)
-    live_ethereum.update_block("14034811")
-    sleep(4)
-    live_ethereum.update_block("14034714")
+# def main():
+#     live_ethereum = LIVEthereum()
+#     live_ethereum.layout_init()
+#     sleep(4)
+#     live_ethereum.update_block("14034811")
+#     sleep(4)
+#     live_ethereum.update_block("14034714")
 
 
     
 
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
