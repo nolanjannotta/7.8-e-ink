@@ -86,6 +86,7 @@ class LIVEthereum:
             self.layout_init()
             self.refresh_counter == 0
         self.refresh_counter =+ 1
+        pass
 
         
 
