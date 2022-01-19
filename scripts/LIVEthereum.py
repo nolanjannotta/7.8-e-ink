@@ -62,6 +62,8 @@ class LIVEthereum:
 def main():
     live_ethereum = LIVEthereum()
     live_ethereum.layout_init()
+    sleep(4)
+    live_ethereum.update_block()
 
 
 
