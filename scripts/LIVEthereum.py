@@ -67,7 +67,7 @@ class LIVEthereum:
         block = f"#{block_number}"
         _hash = f"Hash: {block_hash}"
         gas = f"Gas Price: {gas_price} Gwei"
-        txs = "{num_tx} Transactions"
+        txs = f"{num_tx} Transactions"
         block_number_width, _ = self.block_font.getsize(block)
 
         gas_price_x = 20 + block_number_width + 20
