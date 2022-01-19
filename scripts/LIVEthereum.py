@@ -13,7 +13,7 @@ class LIVEthereum:
         self.display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
         self.title_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
         self.block_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 210)
-        self.hash_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 40)
+        self.hash_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 47)
         self.title = "LIVEthereum"
         
         self.last_text_width = 0
