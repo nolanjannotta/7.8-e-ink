@@ -52,7 +52,7 @@ class LIVEthereum:
         # draw.text((0,350), "#", font=self.title_font)
         self.display.draw_full(constants.DisplayModes.GC16)
 
-    def update_block(self, block_number, block_hash):
+    def update_block(self, block_number, block_hash, gas_price):
         print("start")
 
         draw = ImageDraw.Draw(self.display.frame_buf)
@@ -65,6 +65,8 @@ class LIVEthereum:
         
         block = f"#{block_number}"
         _hash = f"Hash: {block_hash}"
+        gas = f"Gas Price: {gas_price}"
+        draw.text((600,359), gas,font=self.hash_font)
         draw.text((30,320),_hash, font=self.hash_font)
         draw.text((20,370), block, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
