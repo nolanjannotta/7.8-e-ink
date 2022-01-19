@@ -66,7 +66,7 @@ class LIVEthereum:
         # draw.line((0,310,self.display.width,300), width=4)
         message = f"#{block_number}"
         draw.text((30,320),block_hash, font=self.hash_font)
-        draw.text((0,310), message, font=self.title_font)
+        draw.text((0,310), message, font=self.block_font)
         
 
         
