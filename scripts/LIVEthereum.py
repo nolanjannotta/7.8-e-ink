@@ -54,6 +54,15 @@ class LIVEthereum:
         # draw.text((0,350), "#", font=self.title_font)
         self.display.draw_full(constants.DisplayModes.GC16)
 
+    def clear_screen(self):
+        
+        print('Clearing display...')
+        self.display.clear()
+        print("cleared")
+        self.layout_init()
+        self.refresh_counter == 0
+
+       
     def update_block(self, block_number, block_hash, gas_price, num_tx):
         if self.refresh_counter == 3:
             self.clear_screen()
@@ -81,15 +90,7 @@ class LIVEthereum:
 
         self.refresh_counter =+ 1
 
-    def clear_screen(self):
-        
-        print('Clearing display...')
-        self.display.clear()
-        print("cleared")
-        self.layout_init()
-        self.refresh_counter == 0
-
-        
+ 
 
 
 
