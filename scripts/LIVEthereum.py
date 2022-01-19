@@ -33,17 +33,17 @@ def partial_update(display):
     
 def layout_init(display):
 
-    fontsize = 100
+    fontsize = 180
 
     draw = ImageDraw.Draw(display.frame_buf)
     # title box
-    draw.rectangle((0, 0, display.width, 300),  outline = 0, width=2)
+    draw.rectangle((0, 0, display.width, 300),  outline = 0, width=5)
     
     try:
         font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', fontsize)
     except OSError:
         font = ImageFont.truetype('/usr/share/fonts/TTF/DejaVuSans.ttf', fontsize)
-    draw.text((0, 150), "LIVEthereum", font=font)
+    draw.text((0, 100), "LIVEthereum", font=font)
     display.draw_partial(constants.DisplayModes.GLD16)
 
 
