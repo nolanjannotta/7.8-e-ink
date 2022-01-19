@@ -80,7 +80,7 @@ class LIVEthereum:
 def main():
     live_ethereum = LIVEthereum()
 
-    live_ethereum.update_block("14034811")
+    # live_ethereum.update_block("14034811")
 
 
 
