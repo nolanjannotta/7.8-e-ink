@@ -44,10 +44,10 @@ def partial_update():
     print('  writing partial...')
     _place_text(display.frame_buf, 'update', x_offset=+display.width//4)
     display.draw_partial(constants.DisplayModes.DU)
-
-def title():
     print("writing title...")
     _place_text(display.frame_buf, 'LIVEthereum')
+
+    
 
 
 def main():
@@ -62,7 +62,7 @@ def main():
     # _place_text(display.frame_buf, 'HELLO', x_offset=-display.width//4)
     # display.draw_full(constants.DisplayModes.GC16)
     partial_update()
-    title()
+
 
     
 
