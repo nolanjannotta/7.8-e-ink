@@ -93,10 +93,10 @@ class LIVEthereum:
 
 
 
-def main():
-    live_ethereum = LIVEthereum()
+# def main():
+#     live_ethereum = LIVEthereum()
 
-    live_ethereum.update_block("1232133")
+#     live_ethereum.update_block("1232133")
 
 
 
@@ -104,5 +104,5 @@ def main():
 
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
