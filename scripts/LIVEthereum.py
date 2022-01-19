@@ -25,8 +25,6 @@ def _place_text(img, text, x=0, y=0):
     text_width, _ = font.getsize(text)
     text_height = fontsize
 
-    draw_x = (img_width - text_width)//2 + x_offset
-    draw_y = (img_height - text_height)//2 + y_offset
 
     draw.text((x, y), text, font=font)
 
