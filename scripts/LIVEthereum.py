@@ -46,7 +46,7 @@ def layout_init(display):
     except OSError:
         font = ImageFont.truetype('/usr/share/fonts/TTF/DejaVuSans.ttf', fontsize)
 
-    img_width, = display.frame_buf.size
+    print(display.frame_buf.size)
     text_width, _ = font.getsize(message)
     text_height = fontsize
 
