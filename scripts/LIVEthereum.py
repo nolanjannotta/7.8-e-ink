@@ -21,9 +21,10 @@ def layout_init(display):
     # title box
 
     # draw.rectangle((0, 0, display.width, 300),  outline = 0, width=5)
-    draw.line((0,300,display.width,300), width=5)
+    draw.line((0,300,display.width,300), width=4)
     # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
-    draw.line((0,500,display.width,500), width=5)
+    draw.line((0,600,display.width,600), width=4)
+    draw.line((1,1100,display.width,1100 ), width=4)
     
     try:
         font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', fontsize)
@@ -37,11 +38,21 @@ def layout_init(display):
     draw_x = (img_width - text_width)//2
 
     draw_y = (300 - text_height)//2
-    # title
 
+    # title
+    draw.text((0,450), "#", font)
     draw.text((draw_x, draw_y), message, font=font)
+
     display.draw_full(constants.DisplayModes.GLD16)
 
+# def center_text(xmax, ymax, message):
+#     img_width = display.frame_buf.width
+#     text_width, _ = font.getsize(message)
+#     text_height = fontsize
+
+#     draw_x = (img_width - text_width)//2
+
+#     draw_y = (300 - text_height)//2
 
 
 
