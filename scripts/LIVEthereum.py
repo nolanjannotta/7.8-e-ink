@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 
-display = AutoEPDDisplay(vcom=-2.06, rotate="CW", spi_hz=24000000)
+display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
 
 #helper function
 def _place_text(img, text, x_offset=0, y_offset=0):
