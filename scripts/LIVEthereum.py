@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 class LIVEthereum:
     def __init__(self):
-        self.title_font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', 180)
+        self.title_font = ImageFont.truetype("/home/pi//7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
         self.title = "LIVEthereum"
         self.display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
 
