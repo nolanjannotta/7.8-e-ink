@@ -46,6 +46,7 @@ def partial_update(display):
     display.draw_partial(constants.DisplayModes.DU)
     print("writing title...")
     _place_text(display.frame_buf, 'LIVEthereum')
+    display.draw_partial(constants.DisplayModes.DU)
 
     
 
