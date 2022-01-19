@@ -67,10 +67,11 @@ class LIVEthereum:
         block = f"#{block_number}"
         _hash = f"Hash: {block_hash}"
         gas = f"Gas Price: {gas_price} Gwei"
+        txs = "{num_tx} Transactions"
         block_number_width, _ = self.block_font.getsize(block)
 
         gas_price_x = 20 + block_number_width + 20
-        draw.text((gas_price_x,440), num_tx, font=self.gas_font)
+        draw.text((gas_price_x,440), txs, font=self.gas_font)
         draw.text((gas_price_x,380), gas,font=self.gas_font)
         draw.text((30,320),_hash, font=self.hash_font)
         draw.text((20,370), block, font=self.block_font)
