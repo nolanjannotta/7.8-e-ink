@@ -50,22 +50,22 @@ def title(display):
     _place_text(display.frame_buf, 'LIVEthereum')
     display.draw_partial(constants.DisplayModes.DU)
 
-    _place_text(display.frame_buf, 'LIVEthereum', 0,50)
+    _place_text(display.frame_buf, 'LIVEthereum', 0,200)
     display.draw_partial(constants.DisplayModes.GC16)
 
-    _place_text(display.frame_buf, 'LIVEthereum',0,100)
+    _place_text(display.frame_buf, 'LIVEthereum',0,400)
     display.draw_partial(constants.DisplayModes.GL16)
 
-    _place_text(display.frame_buf, 'LIVEthereum',0,150)
+    _place_text(display.frame_buf, 'LIVEthereum',0,600)
     display.draw_partial(constants.DisplayModes.GLR16)
 
-    _place_text(display.frame_buf, 'LIVEthereum,',0,200)
+    _place_text(display.frame_buf, 'LIVEthereum,',0,800)
     display.draw_partial(constants.DisplayModes.GLD16)
 
-    _place_text(display.frame_buf, 'LIVEthereum',0,250)
+    _place_text(display.frame_buf, 'LIVEthereum',0,1000)
     display.draw_partial(constants.DisplayModes.A2)
 
-    _place_text(display.frame_buf, 'LIVEthereum',0,300)
+    _place_text(display.frame_buf, 'LIVEthereum',0,1200)
     display.draw_partial(constants.DisplayModes.DU4)
 
 def main():
