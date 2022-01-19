@@ -1,4 +1,4 @@
-import LIVEthereum
+import LIVEthereum  
 from web3 import Web3
 import time
 from hexbytes import HexBytes
@@ -13,7 +13,7 @@ pending_tx_filter = web3.eth.filter('pending')
 
 def main():
 
-    live_ethereum = LIVEthereum()
+    live_ethereum = LIVEthereum.LIVEthereum()
 
 
 
