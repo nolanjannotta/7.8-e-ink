@@ -13,6 +13,7 @@ class LIVEthereum:
         self.title_font = ImageFont.truetype("/home/pi//7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
         self.title = "LIVEthereum"
         self.display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
+        self.last_text_width = 0
 
         print('Clearing display...')
         self.display.clear()
@@ -55,7 +56,10 @@ class LIVEthereum:
 
         # clears a portion of the screen where the number is with padding each side
         self.display.frame_buf.paste(0xFF, box=(150,320 , 170 + self.last_text_width, 580))
-        self.last_text_width, _ = self.title_font.getsize(block_number)
+
+        text_width, _ = self.title_font.getsize(block_number)
+        self.last_text_width = text_width
+
         # draw.rectangle((150,320 , 170 + text_width, 580),  outline = 0, width=5)
         # draw.line((0,310,self.display.width,300), width=4)
         draw.text((160,310), block_number, font=self.title_font)
