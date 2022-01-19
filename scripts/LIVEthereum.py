@@ -52,7 +52,7 @@ class LIVEthereum:
         draw = ImageDraw.Draw(self.display.frame_buf)
         text_width, _ = self.title_font.getsize(block_number)
         # self.display.frame_buf.paste(0xFF, box=(160,310 , 160 + text_width, 180))
-        draw.rectangle((160,340 , 160 + text_width, 310 + 180),  outline = 0, width=5)
+        draw.rectangle((160,360 , 160 + text_width, 360 + 180),  outline = 0, width=5)
         draw.text((160,310), block_number, font=self.title_font)
         
 
