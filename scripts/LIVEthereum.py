@@ -65,10 +65,8 @@ class LIVEthereum:
        
     def update_block(self, block_number, block_hash, gas_price, num_tx):
         if self.refresh_counter == 3:
-            print('Clearing display...')
-            self.display.clear()
-            print("cleared")
-            self.layout_init()
+            self.clear_screen()
+
 
         draw = ImageDraw.Draw(self.display.frame_buf)
         
@@ -91,7 +89,7 @@ class LIVEthereum:
         draw.text((20,370), block, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
 
-        self.refresh_counter =+ 1
+        self.refresh_counter += 1
 
  
 
