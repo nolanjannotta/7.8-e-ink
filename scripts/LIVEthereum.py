@@ -62,12 +62,14 @@ class LIVEthereum:
         # clears a portion of the screen where the number is with padding each side
         self.display.frame_buf.paste(0xFF, box=(0,304,self.display.width,596))
         # draw.rectangle((0,350,self.display.width,550),  outline = 0, width=5)
-
+        block_number_width, _ = self.block_font.getsize(block_number)
         
         block = f"#{block_number}"
         _hash = f"Hash: {block_hash}"
         gas = f"Gas Price: {gas_price} Gwei"
-        draw.text((850,380), gas,font=self.gas_font)
+
+        gas_price_x = 20 + block_number_width + 20
+        draw.text((gas_price_x,380), gas,font=self.gas_font)
         draw.text((30,320),_hash, font=self.hash_font)
         draw.text((20,370), block, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
