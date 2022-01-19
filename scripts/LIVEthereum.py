@@ -8,25 +8,13 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 #helper function
-def _place_text(img, text, x=0, y=0):
+def _place_text(display, text, x=0, y=0):
     '''
     Put some centered text at a location on the image.
     '''
-    fontsize = 80
-
-    draw = ImageDraw.Draw(img)
-
-    try:
-        font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', fontsize)
-    except OSError:
-        font = ImageFont.truetype('/usr/share/fonts/TTF/DejaVuSans.ttf', fontsize)
-
-    img_width, img_height = img.size
-    text_width, _ = font.getsize(text)
-    text_height = fontsize
 
 
-    draw.text((x, y), text, font=font)
+    
 
 def partial_update(display):
     print('Starting partial update...')
@@ -43,6 +31,25 @@ def partial_update(display):
     # _place_text(display.frame_buf, 'update', x_offset=+display.width//4)
     # display.draw_partial(constants.DisplayModes.DU)
     
+def layout_init(display):
+
+    fontsize = 300
+
+    draw = ImageDraw.Draw(display)
+    # title box
+    draw.rectangle((0, 0, display.width, 200),  outline = 0, width=2)
+    
+    try:
+        font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', fontsize)
+    except OSError:
+        font = ImageFont.truetype('/usr/share/fonts/TTF/DejaVuSans.ttf', fontsize)
+    draw.text((0, 150), "LIVEthereum", font=font)
+    display.draw_partial(constants.DisplayModes.GLD16)
+
+
+
+
+
 
     
 def title(display):
@@ -80,7 +87,8 @@ def main():
     # print('  writing full...')
     # _place_text(display.frame_buf, 'HELLO', x_offset=-display.width//4)
     # display.draw_full(constants.DisplayModes.GC16)
-    title(display)
+    layout_init(display)
+    # title(display)
 
 
     
