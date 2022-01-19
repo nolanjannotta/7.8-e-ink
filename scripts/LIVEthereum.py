@@ -47,25 +47,26 @@ def partial_update(display):
     
 def title(display):
     print("writing title...")
-    _place_text(display.frame_buf, 'LIVEthereum')
+    _place_text(display.frame_buf, 'hello this is mode DU')
     display.draw_partial(constants.DisplayModes.DU)
+    sleep(2)
 
-    _place_text(display.frame_buf, 'LIVEthereum', 0,200)
+    _place_text(display.frame_buf, 'hello this is mode gc16', 0,200)
     display.draw_partial(constants.DisplayModes.GC16)
-
-    _place_text(display.frame_buf, 'LIVEthereum',0,400)
+    sleep(2)
+    _place_text(display.frame_buf, 'hello this is mode gl16',0,400)
     display.draw_partial(constants.DisplayModes.GL16)
-
-    _place_text(display.frame_buf, 'LIVEthereum',0,600)
+    sleep(2)
+    _place_text(display.frame_buf, 'hello this is mode glr16',0,600)
     display.draw_partial(constants.DisplayModes.GLR16)
-
-    _place_text(display.frame_buf, 'LIVEthereum,',0,800)
+    sleep(2)
+    _place_text(display.frame_buf, 'hello this is mode gld16,',0,800)
     display.draw_partial(constants.DisplayModes.GLD16)
-
-    _place_text(display.frame_buf, 'LIVEthereum',0,1000)
+    sleep(2)
+    _place_text(display.frame_buf, 'hello this is mode a2',0,1000)
     display.draw_partial(constants.DisplayModes.A2)
-
-    _place_text(display.frame_buf, 'LIVEthereum',0,1200)
+    sleep(2)
+    _place_text(display.frame_buf, 'hello this is mode du4',0,1200)
     display.draw_partial(constants.DisplayModes.DU4)
 
 def main():
