@@ -46,16 +46,17 @@ def layout_init(display):
     except OSError:
         font = ImageFont.truetype('/usr/share/fonts/TTF/DejaVuSans.ttf', fontsize)
 
-    img_width, img_height = display.frame_buf.size
+    img_width, = display.frame_buf.size
     text_width, _ = font.getsize(message)
     text_height = fontsize
 
     draw_x = (img_width - text_width)//2
 
     draw_y = (300 - text_height)//2
+    # title
 
     draw.text((draw_x, draw_y), message, font=font)
-    display.draw_partial(constants.DisplayModes.GLD16)
+    display.draw_full(constants.DisplayModes.GLD16)
 
 
 
