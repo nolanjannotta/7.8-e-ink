@@ -52,24 +52,21 @@ class LIVEthereum:
         # draw.text((0,350), "#", font=self.title_font)
         self.display.draw_full(constants.DisplayModes.GC16)
 
-    def update_block(self, block_number):
+    def update_block(self, block_number, block_hash):
         print("start")
 
         draw = ImageDraw.Draw(self.display.frame_buf)
         
 
         # clears a portion of the screen where the number is with padding each side
-        # self.display.frame_buf.paste(0xFF, box=(0,304,self.display.width,596))
+        self.display.frame_buf.paste(0xFF, box=(0,304,self.display.width,596))
         # draw.rectangle((0,350,self.display.width,550),  outline = 0, width=5)
 
-        # text_width, _ = self.title_font.getsize(block_number)
-        # self.last_text_width = text_width
-
         
-        # draw.line((0,310,self.display.width,300), width=4)
-        message = f"#{block_number}"
-        # draw.text((30,320),block_hash, font=self.hash_font)
-        draw.text((160,370), message, font=self.block_font)
+        block = f"#{block_number}"
+        _hash = f"Hash: {block_hash}"
+        draw.text((30,320),_hash, font=self.hash_font)
+        draw.text((20,370), block, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
         print("finished")
 
