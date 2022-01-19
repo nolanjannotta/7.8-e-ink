@@ -52,8 +52,9 @@ class LIVEthereum:
         draw = ImageDraw.Draw(self.display.frame_buf)
 
         draw.text((160,310), block_number, font=self.title_font)
+        text_width, _ = self.title_font.getsize(block_number)
 
-        # self.display.frame_buf.paste(0xFF, box=(0, 0, self.display.width, self.display.height))
+        self.display.frame_buf.paste(0xFF, box=(160,310 , 160 + text_width, 180))
         self.display.draw_partial(constants.DisplayModes.DU)
         
 
