@@ -30,7 +30,7 @@ def _place_text(img, text, x_offset=0, y_offset=0):
 
     draw.text((0, 0), text, font=font)
 
-def partial_update(display):
+def partial_update():
     print('Starting partial update...')
 
     # clear image to white
