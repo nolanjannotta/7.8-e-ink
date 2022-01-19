@@ -14,6 +14,7 @@ class LIVEthereum:
         self.title_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
         self.block_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 210)
         self.hash_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 43)
+        self.hash_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 60)
         self.title = "LIVEthereum"
         
         self.last_text_width = 0
@@ -66,7 +67,7 @@ class LIVEthereum:
         block = f"#{block_number}"
         _hash = f"Hash: {block_hash}"
         gas = f"Gas Price: {gas_price}"
-        draw.text((600,359), gas,font=self.hash_font)
+        draw.text((700,380), gas,font=self.hash_font)
         draw.text((30,320),_hash, font=self.hash_font)
         draw.text((20,370), block, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
