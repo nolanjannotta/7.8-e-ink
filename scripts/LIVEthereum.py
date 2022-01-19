@@ -40,7 +40,7 @@ def layout_init(display):
     draw_y = (300 - text_height)//2
 
     # title
-    draw.text((0,450), "#", font)
+    draw.text((0,450), "#", font=font)
     draw.text((draw_x, draw_y), message, font=font)
 
     display.draw_full(constants.DisplayModes.GLD16)
