@@ -29,17 +29,33 @@ def _place_text(img, text, x_offset=0, y_offset=0):
     draw_y = (img_height - text_height)//2 + y_offset
 
     draw.text((draw_x, draw_y), text, font=font)
+def partial_update(display):
+    print('Starting partial update...')
+
+    # clear image to white
+    display.frame_buf.paste(0xFF, box=(0, 0, display.width, display.height))
+
+    print('  writing full...')
+    _place_text(display.frame_buf, 'partial', x_offset=-display.width//4)
+    display.draw_full(constants.DisplayModes.GC16)
+
+    # TODO: should use 1bpp for partial text update
+    print('  writing partial...')
+    _place_text(display.frame_buf, 'update', x_offset=+display.width//4)
+    display.draw_partial(constants.DisplayModes.DU)
+
 def main():
 
 
     print('Clearing display...')
     display.clear()
     print("cleared")
-    display.frame_buf.paste(0xFF, box=(0, 0, display.width, display.height))
+    # display.frame_buf.paste(0xFF, box=(0, 0, display.width, display.height))
 
-    print('  writing full...')
-    _place_text(display.frame_buf, 'HELLO', x_offset=-display.width//4)
-    display.draw_full(constants.DisplayModes.GC16)
+    # print('  writing full...')
+    # _place_text(display.frame_buf, 'HELLO', x_offset=-display.width//4)
+    # display.draw_full(constants.DisplayModes.GC16)
+    partial_update(display)
 
     
 
