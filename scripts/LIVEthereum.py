@@ -30,7 +30,7 @@ def _place_text(img, text, x_offset=0, y_offset=0):
 
     draw.text((draw_x, draw_y), text, font=font)
 
-def partial_update():
+def partial_update(display):
     print('Starting partial update...')
 
     # clear image to white
@@ -61,7 +61,7 @@ def main():
     # print('  writing full...')
     # _place_text(display.frame_buf, 'HELLO', x_offset=-display.width//4)
     # display.draw_full(constants.DisplayModes.GC16)
-    partial_update()
+    partial_update(display)
 
 
     
