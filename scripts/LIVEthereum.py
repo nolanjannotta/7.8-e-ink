@@ -37,7 +37,7 @@ def layout_init(display):
 
     draw = ImageDraw.Draw(display)
     # title box
-    # draw.rectangle((0, 0, display.width, 200),  outline = 0, width=2)
+    draw.rectangle((0, 0, display.width, 200),  outline = 0, width=2)
     
     try:
         font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', fontsize)
@@ -87,8 +87,8 @@ def main():
     # print('  writing full...')
     # _place_text(display.frame_buf, 'HELLO', x_offset=-display.width//4)
     # display.draw_full(constants.DisplayModes.GC16)
-    layout_init(display)
-    # title(display)
+    # layout_init(display)
+    title(display)
 
 
     
