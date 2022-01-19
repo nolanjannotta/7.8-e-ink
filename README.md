@@ -1,3 +1,6 @@
+*cloned from https://github.com/GregDMeyer/IT8951*
+
+
 # IT8951
 
 This Python 3 module implements a driver for the IT8951 e-paper controller, via SPI.
