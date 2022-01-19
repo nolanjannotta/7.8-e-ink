@@ -20,7 +20,7 @@ class LIVEthereum:
         print('Clearing display...')
         self.display.clear()
         print("cleared")
-        self.layout_init()
+        # self.layout_init()
 
     
 
@@ -79,6 +79,7 @@ class LIVEthereum:
 
 def main():
     live_ethereum = LIVEthereum()
+    live_ethereum.layout_init()
 
     live_ethereum.update_block("1232133")
 # 
