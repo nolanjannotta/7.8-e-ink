@@ -47,11 +47,11 @@ class LIVEthereum:
         draw.text((0,350), "#", font=self.title_font)
         self.display.draw_full(constants.DisplayModes.GLD16)
 
-    def update_block(self):
+    def update_block(self, block_number):
 
         draw = ImageDraw.Draw(self.display.frame_buf)
 
-        draw.text((100,310), "14034811", font=self.title_font)
+        draw.text((160,310), block_number, font=self.title_font)
 
 
         self.display.draw_partial(constants.DisplayModes.GLD16)
@@ -63,8 +63,9 @@ def main():
     live_ethereum = LIVEthereum()
     live_ethereum.layout_init()
     sleep(4)
-    live_ethereum.update_block()
-
+    live_ethereum.update_block("14034811")
+    sleep(4)
+    live_ethereum.update_block("14034714")
 
 
     
