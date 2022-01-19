@@ -60,7 +60,7 @@ class LIVEthereum:
         self.display.clear()
         print("cleared")
         self.layout_init()
-        self.refresh_counter == 0
+        self.refresh_counter = 0
 
        
     def update_block(self, block_number, block_hash, gas_price, num_tx):
