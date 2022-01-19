@@ -78,6 +78,8 @@ class LIVEthereum:
         draw.text((20,370), block, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
 
+        self.refresh_counter =+ 1
+
     def clear_screen(self):
         if self.refresh_counter == 3:
             print('Clearing display...')
@@ -85,8 +87,6 @@ class LIVEthereum:
             print("cleared")
             self.layout_init()
             self.refresh_counter == 0
-        self.refresh_counter =+ 1
-        pass
 
         
 
