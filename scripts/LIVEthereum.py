@@ -50,11 +50,12 @@ class LIVEthereum:
     def update_block(self, block_number):
 
         draw = ImageDraw.Draw(self.display.frame_buf)
-
-        draw.text((160,310), block_number, font=self.title_font)
         text_width, _ = self.title_font.getsize(block_number)
+        self.display.frame_buf.paste(0xFF, box=(160,310 , 160 + text_width, 180))
+        draw.text((160,310), block_number, font=self.title_font)
+        
 
-        self.display.frame_buf.paste(0xF0, box=(160,310 , 160 + text_width, 180))
+        
         self.display.draw_partial(constants.DisplayModes.DU)
         
 
