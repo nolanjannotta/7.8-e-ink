@@ -35,7 +35,7 @@ def layout_init(display):
 
     fontsize = 300
 
-    draw = ImageDraw.Draw(display)
+    draw = ImageDraw.Draw(display.frame_buf)
     # title box
     draw.rectangle((0, 0, display.width, 200),  outline = 0, width=2)
     
@@ -87,8 +87,8 @@ def main():
     # print('  writing full...')
     # _place_text(display.frame_buf, 'HELLO', x_offset=-display.width//4)
     # display.draw_full(constants.DisplayModes.GC16)
-    # layout_init(display)
-    title(display)
+    layout_init(display)
+    # title(display)
 
 
     
