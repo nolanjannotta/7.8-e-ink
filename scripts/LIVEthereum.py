@@ -29,7 +29,8 @@ def _place_text(img, text, x_offset=0, y_offset=0):
     draw_y = (img_height - text_height)//2 + y_offset
 
     draw.text((draw_x, draw_y), text, font=font)
-def partial_update(display):
+
+def partial_update():
     print('Starting partial update...')
 
     # clear image to white
@@ -44,6 +45,11 @@ def partial_update(display):
     _place_text(display.frame_buf, 'update', x_offset=+display.width//4)
     display.draw_partial(constants.DisplayModes.DU)
 
+def title():
+    print("writing title...")
+    _place_text(display.frame_buf, 'LIVEthereum')
+
+
 def main():
 
 
@@ -55,7 +61,8 @@ def main():
     # print('  writing full...')
     # _place_text(display.frame_buf, 'HELLO', x_offset=-display.width//4)
     # display.draw_full(constants.DisplayModes.GC16)
-    partial_update(display)
+    partial_update()
+    title()
 
     
 
