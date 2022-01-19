@@ -49,7 +49,7 @@ class LIVEthereum:
         # title
         
         draw.text((draw_x, draw_y), self.title, font=self.title_font)
-        # draw.text((0,350), "#", font=self.title_font)
+        draw.text((0,350), "#", font=self.title_font)
         self.display.draw_full(constants.DisplayModes.GC16)
 
     def update_block(self, block_number):
@@ -67,9 +67,9 @@ class LIVEthereum:
 
         
         # draw.line((0,310,self.display.width,300), width=4)
-        message = f"#{block_number}"
+        # message = f"#{block_number}"
         # draw.text((30,320),block_hash, font=self.hash_font)
-        draw.text((0,310), message, font=self.block_font)
+        draw.text((160,310), block_number, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
         print("finished")
 
