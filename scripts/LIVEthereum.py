@@ -64,7 +64,7 @@ class LIVEthereum:
 
        
     def update_block(self, block_number, block_hash, gas_price, num_tx):
-        if self.refresh_counter == 3:
+        if self.refresh_counter == 15:
             self.clear_screen()
 
 
