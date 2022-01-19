@@ -53,7 +53,7 @@ class LIVEthereum:
 
         draw.text((160,310), block_number, font=self.title_font)
 
-        self.display.frame_buf.paste(0xFF, box=(0, 0, self.display.width, self.display.height))
+        # self.display.frame_buf.paste(0xFF, box=(0, 0, self.display.width, self.display.height))
         self.display.draw_partial(constants.DisplayModes.GC16)
         
 
