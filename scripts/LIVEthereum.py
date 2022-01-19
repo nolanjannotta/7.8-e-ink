@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 #helper function
-def _place_text(img, text, x_offset=0, y_offset=0):
+def _place_text(img, text, x=0, y=0):
     '''
     Put some centered text at a location on the image.
     '''
@@ -28,7 +28,7 @@ def _place_text(img, text, x_offset=0, y_offset=0):
     draw_x = (img_width - text_width)//2 + x_offset
     draw_y = (img_height - text_height)//2 + y_offset
 
-    draw.text((0, 0), text, font=font)
+    draw.text((x, y), text, font=font)
 
 def partial_update(display):
     print('Starting partial update...')
@@ -47,6 +47,24 @@ def partial_update(display):
     print("writing title...")
     _place_text(display.frame_buf, 'LIVEthereum')
     display.draw_partial(constants.DisplayModes.DU)
+
+    _place_text(display.frame_buf, 'LIVEthereum', 0,20)
+    display.draw_partial(constants.DisplayModes.GC16)
+
+    _place_text(display.frame_buf, 'LIVEthereum',0,40)
+    display.draw_partial(constants.DisplayModes.GL16)
+
+    _place_text(display.frame_buf, 'LIVEthereum',0,60)
+    display.draw_partial(constants.DisplayModes.GLR16)
+
+    _place_text(display.frame_buf, 'LIVEthereum,',0,80)
+    display.draw_partial(constants.DisplayModes.GLD16)
+
+    _place_text(display.frame_buf, 'LIVEthereum',0,100)
+    display.draw_partial(constants.DisplayModes.A2)
+
+    _place_text(display.frame_buf, 'LIVEthereum',0,120)
+    display.draw_partial(constants.DisplayModes.DU4)
 
     
 def title(display):
