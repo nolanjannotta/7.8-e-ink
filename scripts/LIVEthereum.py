@@ -42,33 +42,31 @@ def partial_update(display):
     # print('  writing partial...')
     # _place_text(display.frame_buf, 'update', x_offset=+display.width//4)
     # display.draw_partial(constants.DisplayModes.DU)
-    print("writing title...")
-    # _place_text(display.frame_buf, 'LIVEthereum')
-    # display.draw_partial(constants.DisplayModes.DU)
-
-    # _place_text(display.frame_buf, 'LIVEthereum', 0,20)
-    # display.draw_partial(constants.DisplayModes.GC16)
-
-    # _place_text(display.frame_buf, 'LIVEthereum',0,40)
-    # display.draw_partial(constants.DisplayModes.GL16)
-
-    # _place_text(display.frame_buf, 'LIVEthereum',0,60)
-    # display.draw_partial(constants.DisplayModes.GLR16)
-
-    # _place_text(display.frame_buf, 'LIVEthereum,',0,80)
-    # display.draw_partial(constants.DisplayModes.GLD16)
-
-    _place_text(display.frame_buf, 'Helloooooooooooo',0,100)
-    display.draw_partial(constants.DisplayModes.A2)
-
-    _place_text(display.frame_buf, 'LIVEthereum',0,120)
-    display.draw_partial(constants.DisplayModes.DU4)
+    
 
     
 def title(display):
     print("writing title...")
     _place_text(display.frame_buf, 'LIVEthereum')
     display.draw_partial(constants.DisplayModes.DU)
+
+    _place_text(display.frame_buf, 'LIVEthereum', 0,20)
+    display.draw_partial(constants.DisplayModes.GC16)
+
+    _place_text(display.frame_buf, 'LIVEthereum',0,40)
+    display.draw_partial(constants.DisplayModes.GL16)
+
+    _place_text(display.frame_buf, 'LIVEthereum',0,60)
+    display.draw_partial(constants.DisplayModes.GLR16)
+
+    _place_text(display.frame_buf, 'LIVEthereum,',0,80)
+    display.draw_partial(constants.DisplayModes.GLD16)
+
+    _place_text(display.frame_buf, 'LIVEthereum',0,100)
+    display.draw_partial(constants.DisplayModes.A2)
+
+    _place_text(display.frame_buf, 'LIVEthereum',0,120)
+    display.draw_partial(constants.DisplayModes.DU4)
 
 def main():
     display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
