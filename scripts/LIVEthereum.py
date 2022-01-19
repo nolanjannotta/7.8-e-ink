@@ -66,6 +66,7 @@ class LIVEthereum:
     def update_block(self, block_number, block_hash, gas_price, num_tx):
         if self.refresh_counter == 3:
             self.clear_screen()
+            sleep(5)
 
         draw = ImageDraw.Draw(self.display.frame_buf)
         
