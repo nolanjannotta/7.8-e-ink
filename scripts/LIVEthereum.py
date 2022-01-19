@@ -30,7 +30,7 @@ class LIVEthereum:
 
         draw = ImageDraw.Draw(self.display.frame_buf)
         # title box
-        # draw.rectangle((0,320,self.display.width,580),  outline = 0, width=5)
+        draw.rectangle((0,320,self.display.width,580),  outline = 0, width=5)
         # draw.rectangle((0, 0, display.width, 300),  outline = 0, width=5)
         draw.line((0,300,self.display.width,300), width=4)
         # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
@@ -60,7 +60,7 @@ class LIVEthereum:
 
         # clears a portion of the screen where the number is with padding each side
         # self.display.frame_buf.paste(0xFF, box=(0,304,self.display.width,596))
-        draw.rectangle((0,350,self.display.width,550),  outline = 0, width=5)
+        # draw.rectangle((0,350,self.display.width,550),  outline = 0, width=5)
 
         # text_width, _ = self.title_font.getsize(block_number)
         # self.last_text_width = text_width
@@ -69,9 +69,8 @@ class LIVEthereum:
         # draw.line((0,310,self.display.width,300), width=4)
         message = f"#{block_number}"
         # draw.text((30,320),block_hash, font=self.hash_font)
-        draw.text((0,310), "hello", font=self.block_font)
+        draw.text((0,310), message, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
-
         print("finished")
 
   
