@@ -37,7 +37,7 @@ def layout_init(display):
 
     draw = ImageDraw.Draw(display)
     # title box
-    draw.rectangle((0, 0, display.width, 200),  outline = 0, width=2)
+    # draw.rectangle((0, 0, display.width, 200),  outline = 0, width=2)
     
     try:
         font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', fontsize)
