@@ -35,6 +35,8 @@ def layout_init(display):
 
     fontsize = 180
 
+    message = "LIVEthereum"
+
     draw = ImageDraw.Draw(display.frame_buf)
     # title box
     draw.rectangle((0, 0, display.width, 300),  outline = 0, width=5)
@@ -43,7 +45,15 @@ def layout_init(display):
         font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', fontsize)
     except OSError:
         font = ImageFont.truetype('/usr/share/fonts/TTF/DejaVuSans.ttf', fontsize)
-    draw.text((0, 100), "LIVEthereum", font=font)
+
+    img_width, img_height = display.frame_buf.size
+    text_width, _ = font.getsize(message)
+    text_height = fontsize
+
+    draw_x = (img_width - text_width)//2
+    draw_y = (img_height - text_height)//2
+
+    draw.text((draw_x, draw_y), message, font=font)
     display.draw_partial(constants.DisplayModes.GLD16)
 
 
