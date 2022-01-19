@@ -44,7 +44,7 @@ class LIVEthereum:
         # title
         
         draw.text((draw_x, draw_y), self.title, font=self.title_font)
-        draw.text((0,350), "#", font=self.title_font)
+        # draw.text((0,350), "#", font=self.title_font)
         self.display.draw_full(constants.DisplayModes.GC16)
 
     def update_block(self, block_number):
@@ -54,7 +54,8 @@ class LIVEthereum:
         self.display.frame_buf.paste(0xFF, box=(160,360 , 160 + text_width, 360 + 180))
         # draw.rectangle((160,360 , 160 + text_width, 360 + 180),  outline = 0, width=5)
         # draw.line((0,310,self.display.width,300), width=4)
-        draw.text((160,310), block_number, font=self.title_font)
+        message = f"#{block_number}"
+        draw.text((160,310), message, font=self.title_font)
         
 
         
