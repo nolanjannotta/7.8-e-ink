@@ -51,7 +51,7 @@ class LIVEthereum:
 
         draw = ImageDraw.Draw(self.display.frame_buf)
 
-        draw.text((50,350), "14034811", font=self.title_font)
+        draw.text((100,310), "14034811", font=self.title_font)
 
 
         self.display.draw_partial(constants.DisplayModes.GLD16)
