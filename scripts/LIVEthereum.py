@@ -114,12 +114,15 @@ class LIVEthereum:
 
         for i in transactions:
             tx_hex = i.hex()
-            y_counter += 1
+            
             if y_counter == 16:
                 starting_x += 180
                 starting_y = 605
                 y_counter = 0
                 x_counter += 1
+                
+            y_counter += 1
+
 
             if x_counter == 7:
                 tx_hex = "too many"
