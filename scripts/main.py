@@ -1,6 +1,7 @@
 import LIVEthereum  
 from web3 import Web3
 import time
+from datetime import datetime
 from hexbytes import HexBytes
 
 web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/tMUpxrBRib2XG1LhKdvGVql4LtGbdu58'))
@@ -30,10 +31,11 @@ def main():
             print("_________________________________________new block_________________________________")
             print("blockhash", block_hash.hex())
             block = web3.eth.get_block(block_hash.hex())
+            date_time = datetime.fromtimestamp(block.timestamp)
             seconds_since_start = (block.timestamp - start_timestamp)            
             num_tx = len(block.transactions)
             gas_price = web3.eth.gas_price / 10**9
-            live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),block.timestamp )
+            live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),date_time )
 
             print(f"block # {block.number} | number of transaction:  {num_tx} | at {block.timestamp}")
             print(f"average block length is {int(seconds_since_start / block_count)} seconds")
