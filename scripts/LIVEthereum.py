@@ -100,7 +100,7 @@ class LIVEthereum:
 
  
     def handle_transactions(self,draw, transactions, num_tx):
-        img_width = self.display.width
+        img_width = self.display.frame_buf.width
 
         
 
@@ -114,7 +114,7 @@ class LIVEthereum:
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, starting_y),"transactions:", font=self.tx_font)
+        draw.text((draw_x, 635),"transactions:", font=self.tx_font)
         
         y_counter = 0
         x_counter = 0
