@@ -101,19 +101,20 @@ class LIVEthereum:
  
     def handle_transactions(self,draw):
         
-        starting_x = 20
-        starting_y = 605
+
         
 
         # clears a portion of the screen where the number is with padding each side
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1105))
         
         tx = '0x9aaac26aa40b791bac3d5a171cda56fa1ed0ab29ec0d8a947ae0fe8bf53b6d04'
-        draw.text((starting_x, starting_y),tx, font=self.hash_font)
-        draw.text((starting_x, starting_y +30),tx, font=self.hash_font)
-        draw.text((starting_x, starting_y + (30*2)),tx, font=self.tx_font)
-        draw.text((starting_x, starting_y + (30*3)),tx, font=self.tx_font)
-        draw.text((starting_x, starting_y + (30*4)),tx, font=self.tx_font)
+        for i in range(20):
+            starting_x = 20
+            starting_y = 575
+
+            draw.text((starting_x, starting_y),tx, font=self.tx_font)
+            starting_y +=30
+        
         
         # self.display.draw_partial(constants.DisplayModes.DU)
         
