@@ -65,7 +65,7 @@ class LIVEthereum:
         self.refresh_counter = 0
 
        
-    def update_block(self, block_number, block_hash, gas_price, num_tx, time_stamp):
+    def update_block(self, block_number, block_hash, gas_price, num_tx, time_stamp, transactions):
         if self.refresh_counter == 15:
             self.clear_screen()
 
@@ -85,7 +85,7 @@ class LIVEthereum:
         txs = f"{num_tx} Transactions"
         block_number_width, _ = self.block_font.getsize(block)
         time = time_stamp.strftime("%I:%M:%S %p")
-        self.handle_transactions(draw)
+        self.handle_transactions(draw,transactions)
         gas_price_x = 20 + block_number_width + 20
         draw.text((gas_price_x,390), txs, font=self.gas_font)
         draw.text((gas_price_x,330), gas,font=self.gas_font)
@@ -99,7 +99,7 @@ class LIVEthereum:
         
 
  
-    def handle_transactions(self,draw):
+    def handle_transactions(self,draw, transactions):
         
 
         starting_x = 20
@@ -109,11 +109,13 @@ class LIVEthereum:
         self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1095))
 
         
-        tx = '0x9aaac26aa40b791bac3d5a171cda56fa1ed0ab29ec0d8a947ae0fe8bf53b6d04'
-        tx_draw = f"{tx[:5]}...{tx[len(tx)-5:]}"
+        
 
-        for i in range(16):
-            
+        for i in range(len(transactions)):
+            if i == 16:
+                text_width, _ = self.title_font.getsize(self.title)
+                starting_x += text_width
+            tx_draw = f"{i[:5]}...{i[len(i)-5:]}"
 
             draw.text((starting_x, starting_y),tx_draw, font=self.tx_font)
             starting_y +=30
