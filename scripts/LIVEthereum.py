@@ -34,7 +34,7 @@ class LIVEthereum:
         # title box
         # draw.rectangle((0,320,self.display.width,580),  outline = 0, width=5)
         # draw.rectangle((0, 0, display.width, 300),  outline = 0, width=5)
-        draw.line((0,250,self.display.width,300), width=4)
+        draw.line((0,250,self.display.width,250), width=4)
         # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
         draw.line((0,600,self.display.width,600), width=4)
 
@@ -83,9 +83,9 @@ class LIVEthereum:
         block_number_width, _ = self.block_font.getsize(block)
 
         gas_price_x = 20 + block_number_width + 20
-        draw.text((gas_price_x,440), txs, font=self.gas_font)
-        draw.text((gas_price_x,380), gas,font=self.gas_font)
-        draw.text((30,320),_hash, font=self.hash_font)
+        draw.text((gas_price_x,390), txs, font=self.gas_font)
+        draw.text((gas_price_x,330), gas,font=self.gas_font)
+        draw.text((30,270),_hash, font=self.hash_font)
         draw.text((20,370), block, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
 
