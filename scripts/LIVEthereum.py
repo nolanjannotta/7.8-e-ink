@@ -112,9 +112,12 @@ class LIVEthereum:
         
 
         for i in transactions:
-            if i == 16:
-                text_width, _ = self.title_font.getsize(self.title)
-                starting_x += text_width
+            if i <= 16:
+                # text_width, _ = self.title_font.getsize(self.title)
+                starting_x += 50
+            if 16 < i <= 32:
+                starting_y = 605
+                starting_x += 50
             tx_hex = i.hex()
             tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-5:]}"
 
