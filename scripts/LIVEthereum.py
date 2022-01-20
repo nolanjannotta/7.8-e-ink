@@ -124,7 +124,7 @@ class LIVEthereum:
             
             if y_counter == 16:
                 starting_x += 150
-                starting_y = 665
+                starting_y = 635
                 y_counter = 0
                 x_counter += 1
 
