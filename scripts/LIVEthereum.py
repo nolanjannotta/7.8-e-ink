@@ -73,7 +73,7 @@ class LIVEthereum:
         
 
         # clears a portion of the screen where the number is with padding each side
-        self.display.frame_buf.paste(0xFF, box=(0,254,self.display.width,546))
+        self.display.frame_buf.paste(0xFF, box=(0,254,self.display.width,596))
         # draw.rectangle((0,350,self.display.width,550),  outline = 0, width=5)
         
         
