@@ -109,20 +109,22 @@ class LIVEthereum:
         self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1095))
 
         
-        counter = 0
+        y_counter = 0
+        x_counter = 0
 
         for i in transactions:
             tx_hex = i.hex()
-            counter += 1
-            if counter == 16:
-                # text_width, _ = self.title_font.getsize(self.title)
-                starting_x += 150
+            y_counter += 1
+            if y_counter == 16:
+                starting_x += 180
                 starting_y = 605
-                counter = 0
-            # if 16 < counter <= 32:
-            #     starting_y = 605
-            #     starting_x += 50
+                y_counter = 0
+                x_counter += 1
+                
+            if x_counter == 9:
+                tx_hex = "too many"
             
+
             tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-5:]}"
 
             draw.text((starting_x, starting_y),tx_draw, font=self.tx_font)
