@@ -109,16 +109,19 @@ class LIVEthereum:
         self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1095))
 
         
-        
+        counter = 0
 
         for i in transactions:
-            if i <= 16:
+            tx_hex = i.hex()
+            counter += 1
+            if counter <= 16:
                 # text_width, _ = self.title_font.getsize(self.title)
                 starting_x += 50
-            if 16 < i <= 32:
-                starting_y = 605
-                starting_x += 50
-            tx_hex = i.hex()
+                counter = 0
+            # if 16 < counter <= 32:
+            #     starting_y = 605
+            #     starting_x += 50
+            
             tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-5:]}"
 
             draw.text((starting_x, starting_y),tx_draw, font=self.tx_font)
