@@ -86,7 +86,7 @@ class LIVEthereum:
         draw.text((gas_price_x,390), txs, font=self.gas_font)
         draw.text((gas_price_x,330), gas,font=self.gas_font)
         draw.text((30,270),_hash, font=self.hash_font)
-        draw.text((20,370), block, font=self.block_font)
+        draw.text((20,320), block, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
 
         self.refresh_counter += 1
