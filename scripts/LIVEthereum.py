@@ -116,11 +116,11 @@ class LIVEthereum:
             tx_hex = i.hex()
             
             if y_counter == 16:
-                starting_x += 180
+                starting_x += 150
                 starting_y = 605
                 y_counter = 0
                 x_counter += 1
-                
+
             y_counter += 1
 
 
@@ -129,7 +129,7 @@ class LIVEthereum:
                 break
             
 
-            tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-5:]}"
+            tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
 
             draw.text((starting_x, starting_y),tx_draw, font=self.tx_font)
             starting_y +=30
