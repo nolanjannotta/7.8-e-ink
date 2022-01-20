@@ -106,7 +106,7 @@ class LIVEthereum:
         starting_y = 625
 
         # clears a portion of the screen where the number is with padding each side
-        self.display.frame_buf.paste(0xFF, box=(0,645,self.display.width,1135))
+        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1135))
 
         
         y_counter = 0
