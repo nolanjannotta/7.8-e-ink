@@ -110,18 +110,19 @@ class LIVEthereum:
         # clears a portion of the screen where the number is with padding each side
         self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1155))
 
-        text_width, _ = self.tx_font.getsize("transactions:")
+        text_width, _ = self.tx_font.getsize("transactions hashes:")
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 605),"transactions:", font=self.tx_font)
+        draw.text((draw_x, 605),"transaction hashes:", font=self.tx_font)
         
         y_counter = 0
         x_counter = 0
+        tx_counter = 0
 
         for i in transactions:
             tx_hex = i.hex()
-            
+            tx_counter +=1
             if y_counter == 16:
                 starting_x += 150
                 starting_y = 635
@@ -132,13 +133,10 @@ class LIVEthereum:
 
 
             if x_counter == 9:
-                messsage = "too many"
-                text_width, _ = self.tx_font.getsize(f"showing 144 of {num_tx}")
 
-                draw_x = (img_width - text_width)//2
-
-                draw.text((draw_x, 1130), f"showing 144 of {num_tx}", font=self.tx_font)
                 break
+
+
             
 
             tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
@@ -146,7 +144,11 @@ class LIVEthereum:
             draw.text((starting_x, starting_y),tx_draw, font=self.tx_font)
             starting_y +=30
         
-        
+        text_width, _ = self.tx_font.getsize(f"showing {tx_counter} of {num_tx}")
+
+        draw_x = (img_width - text_width)//2
+
+        draw.text((draw_x, 1115), f"showing {tx_counter} of {num_tx}", font=self.tx_font)
         # self.display.draw_partial(constants.DisplayModes.DU)
         
 
