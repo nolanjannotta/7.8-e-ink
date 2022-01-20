@@ -84,7 +84,7 @@ class LIVEthereum:
         txs = f"{num_tx} Transactions"
         block_number_width, _ = self.block_font.getsize(block)
         time = time_stamp.strftime("%I:%M:%S %p")
-        self.handle_transactions()
+        self.handle_transactions(draw)
         gas_price_x = 20 + block_number_width + 20
         draw.text((gas_price_x,390), txs, font=self.gas_font)
         draw.text((gas_price_x,330), gas,font=self.gas_font)
@@ -98,9 +98,8 @@ class LIVEthereum:
         
 
  
-    def handle_transactions(self):
+    def handle_transactions(self,draw):
         starting_point = (20,620)
-        draw = ImageDraw.Draw(self.display.frame_buf)
         
 
         # clears a portion of the screen where the number is with padding each side
