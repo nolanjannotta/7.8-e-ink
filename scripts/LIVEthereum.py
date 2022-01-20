@@ -40,7 +40,7 @@ class LIVEthereum:
         # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
         draw.line((0,600,self.display.width,600), width=4)
 
-        draw.line((1,1100,self.display.width,1100 ), width=4)
+        draw.line((1,1120,self.display.width,1120 ), width=4)
 
         img_width = self.display.frame_buf.width
         text_width, _ = self.title_font.getsize(self.title)
@@ -103,10 +103,10 @@ class LIVEthereum:
         
 
         starting_x = 20
-        starting_y = 605
+        starting_y = 625
 
         # clears a portion of the screen where the number is with padding each side
-        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1095))
+        self.display.frame_buf.paste(0xFF, box=(0,625,self.display.width,1115))
 
         
         y_counter = 0
@@ -117,7 +117,7 @@ class LIVEthereum:
             
             if y_counter == 16:
                 starting_x += 150
-                starting_y = 605
+                starting_y = 625
                 y_counter = 0
                 x_counter += 1
 
