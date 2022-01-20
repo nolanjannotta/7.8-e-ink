@@ -63,7 +63,7 @@ class LIVEthereum:
         self.refresh_counter = 0
 
        
-    def update_block(self, block_number, block_hash, gas_price, num_tx):
+    def update_block(self, block_number, block_hash, gas_price, num_tx, time_stamp):
         if self.refresh_counter == 15:
             self.clear_screen()
 
@@ -81,10 +81,12 @@ class LIVEthereum:
         gas = f"Gas Price: {gas_price} Gwei"
         txs = f"{num_tx} Transactions"
         block_number_width, _ = self.block_font.getsize(block)
+        time = time_stamp.strftime("%I :%m %p")
 
         gas_price_x = 20 + block_number_width + 20
         draw.text((gas_price_x,390), txs, font=self.gas_font)
         draw.text((gas_price_x,330), gas,font=self.gas_font)
+        draw.text((gas_price_x,270),time,font=self.gas_font)
         draw.text((30,270),_hash, font=self.hash_font)
         draw.text((20,320), block, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
