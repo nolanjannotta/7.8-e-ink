@@ -111,7 +111,7 @@ class LIVEthereum:
         
         
 
-        for i in range(len(transactions)):
+        for i in transactions:
             if i == 16:
                 text_width, _ = self.title_font.getsize(self.title)
                 starting_x += text_width
