@@ -120,9 +120,10 @@ class LIVEthereum:
                 starting_y = 605
                 y_counter = 0
                 x_counter += 1
-                
-            if x_counter == 9:
+
+            if x_counter == 7:
                 tx_hex = "too many"
+                break
             
 
             tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-5:]}"
