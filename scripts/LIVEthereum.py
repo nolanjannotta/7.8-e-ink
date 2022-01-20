@@ -34,7 +34,7 @@ class LIVEthereum:
         # title box
         # draw.rectangle((0,320,self.display.width,580),  outline = 0, width=5)
         # draw.rectangle((0, 0, display.width, 300),  outline = 0, width=5)
-        draw.line((0,300,self.display.width,300), width=4)
+        draw.line((0,250,self.display.width,300), width=4)
         # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
         draw.line((0,600,self.display.width,600), width=4)
 
@@ -50,7 +50,7 @@ class LIVEthereum:
 
         # title
         
-        draw.text((0, 0), self.title, font=self.title_font)
+        draw.text((draw_x, 0), self.title, font=self.title_font)
         # draw.text((0,350), "#", font=self.title_font)
         self.display.draw_full(constants.DisplayModes.GC16)
 
