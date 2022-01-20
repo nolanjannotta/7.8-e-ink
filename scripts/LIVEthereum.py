@@ -95,6 +95,7 @@ class LIVEthereum:
         self.display.draw_partial(constants.DisplayModes.DU)
 
         self.refresh_counter += 1
+        self.handle_transactions()
 
  
     def handle_transactions(self):
@@ -107,7 +108,7 @@ class LIVEthereum:
         tx = '0x9aaac26aa40b791bac3d5a171cda56fa1ed0ab29ec0d8a947ae0fe8bf53b6d04'
         draw.text(starting_point,tx, font=self.hash_font)
         # draw.rectangle((0,350,self.display.width,550),  outline = 0, width=5)
-        
+        self.display.draw_partial(constants.DisplayModes.DU)
         
 
 
