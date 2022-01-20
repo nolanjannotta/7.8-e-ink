@@ -40,7 +40,7 @@ class LIVEthereum:
         # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
         draw.line((0,600,self.display.width,600), width=4)
 
-        draw.line((1,1140,self.display.width,1140 ), width=4)
+        draw.line((1,1160,self.display.width,1160 ), width=4)
 
         img_width = self.display.frame_buf.width
         text_width, _ = self.title_font.getsize(self.title)
@@ -85,7 +85,7 @@ class LIVEthereum:
         txs = f"{num_tx} Transactions"
         block_number_width, _ = self.block_font.getsize(block)
         time = time_stamp.strftime("%I:%M:%S %p")
-        self.handle_transactions(draw,transactions)
+        self.handle_transactions(draw,transactions, num_tx)
         gas_price_x = 20 + block_number_width + 20
         draw.text((gas_price_x,390), txs, font=self.gas_font)
         draw.text((gas_price_x,330), gas,font=self.gas_font)
@@ -99,15 +99,22 @@ class LIVEthereum:
         
 
  
-    def handle_transactions(self,draw, transactions):
+    def handle_transactions(self,draw, transactions, num_tx):
+        img_width = self.display.width
+
         
 
         starting_x = 20
-        starting_y = 625
+        starting_y = 665
 
         # clears a portion of the screen where the number is with padding each side
-        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1135))
+        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1155))
 
+        text_width, _ = self.title_font.getsize("transactions:")
+
+        draw_x = (img_width - text_width)//2
+
+        draw.text((draw_x, starting_y),"transactions:", font=self.tx_font)
         
         y_counter = 0
         x_counter = 0
@@ -117,7 +124,7 @@ class LIVEthereum:
             
             if y_counter == 16:
                 starting_x += 150
-                starting_y = 625
+                starting_y = 665
                 y_counter = 0
                 x_counter += 1
 
@@ -126,7 +133,11 @@ class LIVEthereum:
 
             if x_counter == 9:
                 messsage = "too many"
-                draw.text((starting_x, starting_y),messsage, font=self.tx_font)
+                text_width, _ = self.title_font.getsize("transactions:")
+
+                draw_x = (img_width - text_width)//2
+
+                draw.text((draw_x, 1130), f"showing 144 of {num_tx}", font=self.tx_font)
                 break
             
 
