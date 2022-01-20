@@ -97,6 +97,18 @@ class LIVEthereum:
         self.refresh_counter += 1
 
  
+    def handle_transactions(self):
+        starting_point = (20,620)
+        draw = ImageDraw.Draw(self.display.frame_buf)
+        
+
+        # clears a portion of the screen where the number is with padding each side
+        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1105))
+        tx = '0x9aaac26aa40b791bac3d5a171cda56fa1ed0ab29ec0d8a947ae0fe8bf53b6d04'
+        draw.text(starting_point,tx, font=self.hash_font)
+        # draw.rectangle((0,350,self.display.width,550),  outline = 0, width=5)
+        
+        
 
 
 
