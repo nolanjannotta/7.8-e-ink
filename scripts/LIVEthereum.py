@@ -80,9 +80,9 @@ class LIVEthereum:
         
         block = f"#{block_number}"
         price = "$3000.13"
-        _hash = f"Hash: {block_hash}"
-        gas = f"Gas Price: {gas_price} Gwei"
-        txs = f"{num_tx} Transactions"
+        _hash = f"block hash: {block_hash}"
+        gas = f"gas Price: {gas_price} gwei"
+        txs = f"{num_tx} transactions"
         block_number_width, _ = self.block_font.getsize(block)
         time = time_stamp.strftime("%I:%M:%S %p")
         self.handle_transactions(draw,transactions, num_tx)
