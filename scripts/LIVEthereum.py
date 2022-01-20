@@ -114,7 +114,7 @@ class LIVEthereum:
         for i in transactions:
             tx_hex = i.hex()
             counter += 1
-            if counter <= 16:
+            if counter == 16:
                 # text_width, _ = self.title_font.getsize(self.title)
                 starting_x += 50
                 counter = 0
