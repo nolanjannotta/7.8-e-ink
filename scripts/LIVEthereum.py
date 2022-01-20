@@ -116,7 +116,8 @@ class LIVEthereum:
             counter += 1
             if counter == 16:
                 # text_width, _ = self.title_font.getsize(self.title)
-                starting_x += 50
+                starting_x += 150
+                starting_y = 605
                 counter = 0
             # if 16 < counter <= 32:
             #     starting_y = 605
