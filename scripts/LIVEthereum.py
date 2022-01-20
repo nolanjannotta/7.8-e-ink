@@ -110,11 +110,11 @@ class LIVEthereum:
         # clears a portion of the screen where the number is with padding each side
         self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1155))
 
-        text_width, _ = self.title_font.getsize("transactions:")
+        text_width, _ = self.tx_font.getsize("transactions:")
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 635),"transactions:", font=self.tx_font)
+        draw.text((draw_x, 605),"transactions:", font=self.tx_font)
         
         y_counter = 0
         x_counter = 0
@@ -133,7 +133,7 @@ class LIVEthereum:
 
             if x_counter == 9:
                 messsage = "too many"
-                text_width, _ = self.title_font.getsize("transactions:")
+                text_width, _ = self.tx_font.getsize("transactions:")
 
                 draw_x = (img_width - text_width)//2
 
