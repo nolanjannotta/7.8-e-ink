@@ -84,7 +84,7 @@ class LIVEthereum:
         txs = f"{num_tx} Transactions"
         block_number_width, _ = self.block_font.getsize(block)
         time = time_stamp.strftime("%I:%M:%S %p")
-
+        self.handle_transactions()
         gas_price_x = 20 + block_number_width + 20
         draw.text((gas_price_x,390), txs, font=self.gas_font)
         draw.text((gas_price_x,330), gas,font=self.gas_font)
@@ -108,7 +108,7 @@ class LIVEthereum:
         tx = '0x9aaac26aa40b791bac3d5a171cda56fa1ed0ab29ec0d8a947ae0fe8bf53b6d04'
         draw.text(starting_point,tx, font=self.hash_font)
         # draw.rectangle((0,350,self.display.width,550),  outline = 0, width=5)
-        self.display.draw_partial(constants.DisplayModes.DU)
+        # self.display.draw_partial(constants.DisplayModes.DU)
         
 
 
