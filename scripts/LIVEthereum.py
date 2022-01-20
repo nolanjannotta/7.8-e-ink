@@ -15,6 +15,7 @@ class LIVEthereum:
         self.block_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 180)
         self.hash_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 43)
         self.gas_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 60)
+        self.price_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 140)
         self.refresh_counter = 0
         self.title = "LIVEthereum"
         
@@ -51,7 +52,7 @@ class LIVEthereum:
         # title
         
         draw.text((draw_x, 0), self.title, font=self.title_font)
-        # draw.text((0,350), "#", font=self.title_font)
+        draw.text((0,500), "$", font=self.price_font)
         self.display.draw_full(constants.DisplayModes.GC16)
 
     def clear_screen(self):
