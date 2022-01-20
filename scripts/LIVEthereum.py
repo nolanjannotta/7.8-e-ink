@@ -124,8 +124,9 @@ class LIVEthereum:
             y_counter += 1
 
 
-            if x_counter == 7:
-                tx_hex = "too many"
+            if x_counter == 9:
+                messsage = "too many"
+                draw.text((starting_x, starting_y),messsage, font=self.tx_font)
                 break
             
 
