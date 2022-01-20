@@ -115,7 +115,8 @@ class LIVEthereum:
             if i == 16:
                 text_width, _ = self.title_font.getsize(self.title)
                 starting_x += text_width
-            tx_draw = f"{i[:5]}...{i[len(i)-5:]}"
+            tx_hex = i.hex()
+            tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-5:]}"
 
             draw.text((starting_x, starting_y),tx_draw, font=self.tx_font)
             starting_y +=30
