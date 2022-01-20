@@ -81,7 +81,7 @@ class LIVEthereum:
         gas = f"Gas Price: {gas_price} Gwei"
         txs = f"{num_tx} Transactions"
         block_number_width, _ = self.block_font.getsize(block)
-        time = time_stamp.strftime("%H:%M:%S %p")
+        time = time_stamp.strftime("%I:%M:%S %p")
 
         gas_price_x = 20 + block_number_width + 20
         draw.text((gas_price_x,390), txs, font=self.gas_font)
