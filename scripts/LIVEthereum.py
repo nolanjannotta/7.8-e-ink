@@ -52,7 +52,7 @@ class LIVEthereum:
         # title
         
         draw.text((draw_x, 0), self.title, font=self.title_font)
-        draw.text((0,500), "$", font=self.price_font)
+        # draw.text((0,500), "$", font=self.price_font)
         self.display.draw_full(constants.DisplayModes.GC16)
 
     def clear_screen(self):
@@ -78,6 +78,7 @@ class LIVEthereum:
         
         
         block = f"#{block_number}"
+        price = "$3000.13"
         _hash = f"Hash: {block_hash}"
         gas = f"Gas Price: {gas_price} Gwei"
         txs = f"{num_tx} Transactions"
@@ -88,6 +89,7 @@ class LIVEthereum:
         draw.text((gas_price_x,390), txs, font=self.gas_font)
         draw.text((gas_price_x,330), gas,font=self.gas_font)
         draw.text((gas_price_x,450),time,font=self.gas_font)
+        draw.text((20,450),time,font=self.price_font)
         draw.text((30,270),_hash, font=self.hash_font)
         draw.text((20,320), block, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
