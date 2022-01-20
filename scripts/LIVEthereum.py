@@ -133,7 +133,7 @@ class LIVEthereum:
 
             if x_counter == 9:
                 messsage = "too many"
-                text_width, _ = self.tx_font.getsize("transactions:")
+                text_width, _ = self.tx_font.getsize(f"showing 144 of {num_tx}")
 
                 draw_x = (img_width - text_width)//2
 
