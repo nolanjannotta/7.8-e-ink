@@ -110,7 +110,7 @@ class LIVEthereum:
         tx = '0x9aaac26aa40b791bac3d5a171cda56fa1ed0ab29ec0d8a947ae0fe8bf53b6d04'
         for i in range(20):
             starting_x = 20
-            starting_y = 575
+            starting_y = 605
 
             draw.text((starting_x, starting_y),tx, font=self.tx_font)
             starting_y +=30
