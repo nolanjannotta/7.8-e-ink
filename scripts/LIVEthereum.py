@@ -95,7 +95,7 @@ class LIVEthereum:
         self.display.draw_partial(constants.DisplayModes.DU)
 
         self.refresh_counter += 1
-        self.handle_transactions()
+        
 
  
     def handle_transactions(self):
