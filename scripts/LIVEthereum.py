@@ -35,11 +35,11 @@ class LIVEthereum:
         # title box
         # draw.rectangle((0,320,self.display.width,580),  outline = 0, width=5)
         # draw.rectangle((0, 0, display.width, 300),  outline = 0, width=5)
-        # draw.line((0,250,self.display.width,250), width=4)
-        # # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
-        # draw.line((0,600,self.display.width,600), width=4)
+        draw.line((0,250,self.display.width,250), width=4)
+        # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
+        draw.line((0,600,self.display.width,600), width=4)
 
-        # draw.line((1,1100,self.display.width,1100 ), width=4)
+        draw.line((1,1100,self.display.width,1100 ), width=4)
 
         img_width = self.display.frame_buf.width
         text_width, _ = self.title_font.getsize(self.title)
@@ -86,12 +86,12 @@ class LIVEthereum:
         time = time_stamp.strftime("%I:%M:%S %p")
         self.handle_transactions(draw)
         gas_price_x = 20 + block_number_width + 20
-        # draw.text((gas_price_x,390), txs, font=self.gas_font)
-        # draw.text((gas_price_x,330), gas,font=self.gas_font)
-        # draw.text((gas_price_x,450),time,font=self.gas_font)
-        # draw.text((20,470),price,font=self.price_font)
-        # draw.text((30,270),_hash, font=self.hash_font)
-        # draw.text((20,320), block, font=self.block_font)
+        draw.text((gas_price_x,390), txs, font=self.gas_font)
+        draw.text((gas_price_x,330), gas,font=self.gas_font)
+        draw.text((gas_price_x,450),time,font=self.gas_font)
+        draw.text((20,470),price,font=self.price_font)
+        draw.text((30,270),_hash, font=self.hash_font)
+        draw.text((20,320), block, font=self.block_font)
         self.display.draw_partial(constants.DisplayModes.DU)
 
         self.refresh_counter += 1
@@ -104,7 +104,9 @@ class LIVEthereum:
 
         # clears a portion of the screen where the number is with padding each side
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1105))
-        draw.rectangle((0,605,self.display.width,1105),  outline = 0, width=5)
+        draw.line((0,605,self.display.width,605), width=4)
+
+        draw.line((1,1095,self.display.width,1095 ), width=4)
         # tx = '0x9aaac26aa40b791bac3d5a171cda56fa1ed0ab29ec0d8a947ae0fe8bf53b6d04'
         # draw.text(starting_point,tx, font=self.hash_font)
         
