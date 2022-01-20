@@ -105,8 +105,8 @@ class LIVEthereum:
         # clears a portion of the screen where the number is with padding each side
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1105))
         draw.rectangle((0,605,self.display.width,1105),  outline = 0, width=5)
-        tx = '0x9aaac26aa40b791bac3d5a171cda56fa1ed0ab29ec0d8a947ae0fe8bf53b6d04'
-        draw.text(starting_point,tx, font=self.hash_font)
+        # tx = '0x9aaac26aa40b791bac3d5a171cda56fa1ed0ab29ec0d8a947ae0fe8bf53b6d04'
+        # draw.text(starting_point,tx, font=self.hash_font)
         
         # self.display.draw_partial(constants.DisplayModes.DU)
         
