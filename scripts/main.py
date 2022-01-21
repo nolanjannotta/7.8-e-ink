@@ -34,7 +34,7 @@ def main():
             print("blockhash", block_hash.hex())
             block = web3.eth.get_block(block_hash.hex())
             date_time = datetime.fromtimestamp(block.timestamp)
-            seconds_since_start = (block.timestamp - start_timestamp)            
+            # seconds_since_start = (block.timestamp - start_timestamp)            
             num_tx = len(block.transactions)
             gas_price = web3.eth.gas_price / 10**9
             live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),date_time, block.transactions)
