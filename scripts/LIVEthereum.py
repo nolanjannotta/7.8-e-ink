@@ -119,7 +119,7 @@ class LIVEthereum:
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 605),"transaction hashes:", font=self.tx_font)
+        draw.text((draw_x, 655),"transaction hashes:", font=self.tx_font)
         
         y_counter = 0
         x_counter = 0
@@ -128,7 +128,7 @@ class LIVEthereum:
         for i in transactions:
             tx_hex = i.hex()
             tx_counter +=1
-            if y_counter == 26:
+            if y_counter == 25:
                 starting_x += 150
                 starting_y = 635
                 y_counter = 0
