@@ -88,6 +88,7 @@ class LIVEthereum:
         block_number_width, _ = self.block_font.getsize(block)
         
         self.handle_transactions(draw,transactions, num_tx)
+        self.handle_pending(draw)
         gas_price_x = 20 + block_number_width + 20
         draw.text((gas_price_x,330), gas,font=self.gas_font)
         draw.text((gas_price_x,390), txs, font=self.gas_font)
@@ -101,7 +102,15 @@ class LIVEthereum:
         self.display.draw_partial(constants.DisplayModes.DU)
 
         self.refresh_counter += 1
-        
+    
+    def handle_pending(self, draw):
+        # self.display.frame_buf.paste(0xFF, box=(0,254,self.display.width,596))
+
+
+        draw.text((500, 1480),"pending transactions", font=self.gas_font)
+
+        pass
+
 
  
     def handle_transactions(self,draw, transactions, num_tx):
