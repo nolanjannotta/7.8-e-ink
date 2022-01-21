@@ -89,11 +89,11 @@ class LIVEthereum:
         
         self.handle_transactions(draw,transactions, num_tx)
         gas_price_x = 20 + block_number_width + 20
-
-        draw.text((gas_price_x,390), txs, font=self.gas_font)
         draw.text((gas_price_x,330), gas,font=self.gas_font)
+        draw.text((gas_price_x,390), txs, font=self.gas_font)
+        
         draw.text((gas_price_x,450),time,font=self.gas_font)
-        draw.text((gas_price_x,570),burned,font=self.gas_font)
+        draw.text((gas_price_x,510),burned,font=self.gas_font)
         draw.text((20,470),price,font=self.price_font)
         draw.text((30,270),_hash, font=self.hash_font)
         draw.text((20,320), block, font=self.block_font)
