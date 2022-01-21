@@ -113,7 +113,7 @@ class LIVEthereum:
         starting_y = 655
 
         # clears a portion of the screen where the number is with padding each side
-        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1455))
+        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
 
         text_width, _ = self.gas_font.getsize("transactions hashes:")
 
@@ -149,11 +149,11 @@ class LIVEthereum:
             draw.text((starting_x, starting_y),tx_draw, font=self.tx_font)
             starting_y +=30
         
-        text_width, _ = self.tx_font.getsize(f"showing {tx_counter} of {num_tx}")
+        text_width, _ = self.hash_font.getsize(f"showing {tx_counter} of {num_tx}")
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 1420), f"showing {tx_counter} of {num_tx}", font=self.hash_font)
+        draw.text((draw_x, 1410), f"showing {tx_counter} of {num_tx}", font=self.hash_font)
         # self.display.draw_partial(constants.DisplayModes.DU)
         
 
