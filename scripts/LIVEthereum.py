@@ -111,12 +111,12 @@ class LIVEthereum:
         # self.display.frame_buf.paste(0xFF, box=(0,254,self.display.width,596))
 
         pending_width, _ = self.gas_font.getsize("pending transactions")
-        x_value = (self.display.width - 910) - pending_width // 2
+        x_value = (self.display.width - 910 + (self.display.width // 2)) - pending_width // 2
         draw.text((x_value, 1500),"pending transactions", font=self.gas_font)
 
         pending_width, _ = self.price_font.getsize(str(pending_transactions))
-        x_value = (self.display.width - 910) - pending_width // 2
-        draw.text((1000, 1600),str(pending_transactions), font=self.price_font)
+        x_value = (self.display.width - 910 + (self.display.width // 2)) - pending_width // 2
+        draw.text((x_value, 1600),str(pending_transactions), font=self.price_font)
 
         
 
