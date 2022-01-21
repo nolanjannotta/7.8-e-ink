@@ -129,8 +129,8 @@ class LIVEthereum:
             tx_hex = i.hex()
             tx_counter +=1
             if y_counter == 25:
-                starting_x += 200
-                starting_y = 635
+                starting_x += 150
+                starting_y = 685
                 y_counter = 0
                 x_counter += 1
 
