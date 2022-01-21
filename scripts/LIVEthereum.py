@@ -109,7 +109,7 @@ class LIVEthereum:
     
     def handle_pending(self, draw, pending_transactions):
         # self.display.frame_buf.paste(0xFF, box=(912,1650,self.display.width,1800))
-        draw.rectangle((912,1650,self.display.width,1800),  outline = 0, width=5)
+        draw.rectangle((912,1550,self.display.width,1800),  outline = 0, width=5)
         pending_width, _ = self.gas_font.getsize("pending transactions")
         x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
         draw.text((x_value, 1500),"pending transactions", font=self.gas_font)
