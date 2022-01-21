@@ -41,6 +41,7 @@ class LIVEthereum:
         draw.line((0,600,self.display.width,600), width=4)
 
         draw.line((1,1460,self.display.width,1460 ), width=4)
+        draw.line((930,1460, 930, self.display.height), width=4)
 
         img_width = self.display.frame_buf.width
         text_width, _ = self.title_font.getsize(self.title)
