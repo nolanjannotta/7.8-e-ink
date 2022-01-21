@@ -107,7 +107,7 @@ class LIVEthereum:
         # self.display.frame_buf.paste(0xFF, box=(0,254,self.display.width,596))
 
 
-        draw.text((700, 1480),"pending transactions", font=self.gas_font)
+        draw.text((800, 1480),"pending transactions", font=self.gas_font)
 
         pass
 
