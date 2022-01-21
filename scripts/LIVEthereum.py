@@ -108,7 +108,7 @@ class LIVEthereum:
 
 
         draw.text((940, 1500),"pending transactions", font=self.gas_font)
-        draw.text((100, 1600),str(pending_transactions), font=self.gas_font)
+        draw.text((1000, 1600),str(pending_transactions), font=self.price_font)
 
         
 
