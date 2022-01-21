@@ -40,7 +40,7 @@ class LIVEthereum:
         # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
         draw.line((0,600,self.display.width,600), width=4)
 
-        draw.line((1,1160,self.display.width,1160 ), width=4)
+        draw.line((1,1660,self.display.width,1660 ), width=4)
 
         img_width = self.display.frame_buf.width
         text_width, _ = self.title_font.getsize(self.title)
