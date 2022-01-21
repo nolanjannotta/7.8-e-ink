@@ -130,7 +130,7 @@ class LIVEthereum:
             tx_counter +=1
             if y_counter == 25:
                 starting_x += 150
-                starting_y = 685
+                starting_y = 655
                 y_counter = 0
                 x_counter += 1
 
@@ -153,7 +153,7 @@ class LIVEthereum:
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 1420), f"showing {tx_counter} of {num_tx}", font=self.tx_font)
+        draw.text((draw_x, 1430), f"showing {tx_counter} of {num_tx}", font=self.hash_font)
         # self.display.draw_partial(constants.DisplayModes.DU)
         
 
