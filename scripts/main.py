@@ -5,7 +5,7 @@ from datetime import datetime
 from hexbytes import HexBytes
 
 # web3 = Web3(Web3.HTTPProvider('https://arb-mainnet.g.alchemy.com/v2/nMhcsR5Fy0pEsnb9mvzEkcvQIH2iqD7V'))
-web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/tMUpxrBRib2XG1LhKdvGVql4LtGbdu58'))
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/vVidCCd2daPFQhGJWNT_ee1ogKc1jvir'))
 # web3 = Web3(Web3.WebsocketProvider('wss://eth-mainnet.alchemyapi.io/v2/tMUpxrBRib2XG1LhKdvGVql4LtGbdu58'))
 
 latest_block_filter = web3.eth.filter('latest')
@@ -22,8 +22,8 @@ def main():
 
     block_count = 0
     seconds_since_start = 0
-    block = web3.eth.getBlock("latest")
-    start_timestamp = block.timestamp
+    # block = web3.eth.getBlock("latest")
+    # start_timestamp = block.timestamp
     while True:
         new_blocks = latest_block_filter.get_new_entries()
         for block_hash in new_blocks:
