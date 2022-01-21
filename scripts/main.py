@@ -38,6 +38,7 @@ def main():
             block = web3.eth.get_block(block_hash.hex())
             date_time = datetime.fromtimestamp(block.timestamp)
             num_tx = len(block.transactions)
+            pending -= num_tx
             gas_price = web3.eth.gas_price / 10**9
             eth_burned = (block.baseFeePerGas * block.gasUsed) / 10**18
 
