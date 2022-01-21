@@ -119,7 +119,7 @@ class LIVEthereum:
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 655),"transaction hashes:", font=self.tx_font)
+        draw.text((draw_x, 635),"transaction hashes:", font=self.tx_font)
         
         y_counter = 0
         x_counter = 0
@@ -153,7 +153,7 @@ class LIVEthereum:
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 1120), f"showing {tx_counter} of {num_tx}", font=self.tx_font)
+        draw.text((draw_x, 1420), f"showing {tx_counter} of {num_tx}", font=self.tx_font)
         # self.display.draw_partial(constants.DisplayModes.DU)
         
 
