@@ -93,6 +93,7 @@ class LIVEthereum:
         
         self.handle_transactions(draw,transactions, num_tx)
         self.handle_pending(draw, pending_transactions)
+        self.handle_activity_monitor(draw)
         gas_price_x = 20 + block_number_width + 20
         draw.text((gas_price_x,330), gas,font=self.gas_font)
         draw.text((gas_price_x,390), txs, font=self.gas_font)
