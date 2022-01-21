@@ -113,7 +113,7 @@ class LIVEthereum:
         starting_y = 635
 
         # clears a portion of the screen where the number is with padding each side
-        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1155))
+        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1455))
 
         text_width, _ = self.tx_font.getsize("transactions hashes:")
 
