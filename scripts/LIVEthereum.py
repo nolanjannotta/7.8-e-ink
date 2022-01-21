@@ -120,6 +120,10 @@ class LIVEthereum:
 
         
 
+    def handle_activity_monitor(self, draw):
+        pending_width, _ = self.gas_font.getsize("activity monitor")
+        x_value = (910) - (pending_width // 2)
+        draw.text((x_value, 1500),"activity monitor", font=self.gas_font)
 
  
     def handle_transactions(self,draw, transactions, num_tx):
