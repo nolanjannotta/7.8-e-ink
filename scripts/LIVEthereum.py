@@ -128,7 +128,7 @@ class LIVEthereum:
         for i in transactions:
             tx_hex = i.hex()
             tx_counter +=1
-            if y_counter == 22:
+            if y_counter == 26:
                 starting_x += 150
                 starting_y = 635
                 y_counter = 0
