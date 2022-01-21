@@ -153,7 +153,7 @@ class LIVEthereum:
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 1430), f"showing {tx_counter} of {num_tx}", font=self.hash_font)
+        draw.text((draw_x, 1420), f"showing {tx_counter} of {num_tx}", font=self.hash_font)
         # self.display.draw_partial(constants.DisplayModes.DU)
         
 
