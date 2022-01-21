@@ -26,6 +26,7 @@ def main():
     # start_timestamp = block.timestamp
     while True:
         new_blocks = latest_block_filter.get_new_entries()
+        pending_transactions = pending_tx_filter.get_new_entries()
         for block_hash in new_blocks:
             # block_count += 1
             
@@ -38,8 +39,8 @@ def main():
             gas_price = web3.eth.gas_price / 10**9
             eth_burned = (block.baseFeePerGas * block.gasUsed) / 10**18
 
-            live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),date_time, block.transactions, format(eth_burned, ".5f"))
-            
+            live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),date_time, block.transactions, format(eth_burned, ".5f"), pending_transactions)
+            # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
         time.sleep(1)
 

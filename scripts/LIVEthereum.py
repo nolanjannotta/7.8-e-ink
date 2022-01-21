@@ -65,7 +65,7 @@ class LIVEthereum:
         self.refresh_counter = 0
 
        
-    def update_block(self, block_number, block_hash, gas_price, num_tx, time_stamp, transactions, eth_burned):
+    def update_block(self, block_number, block_hash, gas_price, num_tx, time_stamp, transactions, eth_burned,pending_transactions):
         if self.refresh_counter == 15:
             self.clear_screen()
 
@@ -103,13 +103,14 @@ class LIVEthereum:
 
         self.refresh_counter += 1
     
-    def handle_pending(self, draw):
+    def handle_pending(self, draw, pending_transactions):
         # self.display.frame_buf.paste(0xFF, box=(0,254,self.display.width,596))
 
 
         draw.text((940, 1500),"pending transactions", font=self.gas_font)
+        draw.text((100, 1600),pending_transactions, font=self.gas_font)
 
-        pass
+        
 
 
  
