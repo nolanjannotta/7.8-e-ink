@@ -38,7 +38,7 @@ def main():
             gas_price = web3.eth.gas_price / 10**9
             eth_burned = (block.baseFeePerGas * block.gasUsed) / 10**18
 
-            live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),date_time, block.transactions, eth_burned)
+            live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),date_time, block.transactions, format(eth_burned, ".5f"))
             # live_ethereum.handle_transactions()
         time.sleep(1)
 
