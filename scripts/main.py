@@ -20,32 +20,27 @@ def main():
 
 
 
-    block_count = 0
-    seconds_since_start = 0
+    # block_count = 0
+    # seconds_since_start = 0
     # block = web3.eth.getBlock("latest")
     # start_timestamp = block.timestamp
     while True:
         new_blocks = latest_block_filter.get_new_entries()
         for block_hash in new_blocks:
-            block_count += 1
+            # block_count += 1
             
             
-            print("_________________________________________new block_________________________________")
-            print("blockhash", block_hash.hex())
+            print("new block", block_hash.hex())
+        
             block = web3.eth.get_block(block_hash.hex())
             date_time = datetime.fromtimestamp(block.timestamp)
-            # seconds_since_start = (block.timestamp - start_timestamp)            
             num_tx = len(block.transactions)
             gas_price = web3.eth.gas_price / 10**9
-            live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),date_time, block.transactions)
-            # live_ethereum.handle_transactions()
+            eth_burned = (block.baseFeePerGas * block.gasUsed) / 10**18
 
-            print(f"block # {block.number} | number of transaction:  {num_tx} | at {block.timestamp}")
-            print(f"average block length is {int(seconds_since_start / block_count)} seconds")
-            print((block.baseFeePerGas * block.gasUsed) / 10**18, "eth burned")
-            print(f"current gas price: {web3.eth.gas_price / 10**9} gwei")
-            print("____________________________________________________________________________________")
-            
+            live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),date_time, block.transactions, eth_burned)
+            # live_ethereum.handle_transactions()
+        time.sleep(1)
 
         
 
