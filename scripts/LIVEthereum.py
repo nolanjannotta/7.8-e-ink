@@ -98,7 +98,7 @@ class LIVEthereum:
         self.handle_transactions(draw,transactions, num_tx)
         self.handle_pending(draw, pending_transactions)
         self.handle_activity_monitor(draw)
-        gas_price_x = 120 + block_number_width + 20
+        gas_price_x = 125 + block_number_width + 20
 
         draw.text((gas_price_x,330), gas,font=self.get_font("Zag_Bold.ttf", 60))
         draw.text((gas_price_x,390), txs, font=self.get_font("Zag_Bold.ttf", 60))
@@ -112,7 +112,7 @@ class LIVEthereum:
         draw.text((20,326), "block", font=self.get_font("Zag_Bold.ttf", 48))
         draw.text((27,363), "#", font=self.get_font("Zag_Bold.ttf", 120))
 
-        draw.text((120,320), str(block_number), font=self.get_font("Zag_Bold.ttf", 180))
+        draw.text((125,320), str(block_number), font=self.get_font("Zag_Bold.ttf", 180))
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
