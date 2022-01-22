@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 class LIVEthereum:
     def __init__(self):
         self.display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
-        self.title_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
+        self.get_font("PlayfairDisplay-BlackItalic.ttf", 180) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
         self.block_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 180)
         self.hash_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 43)
         self.tx_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 35)
@@ -26,6 +26,10 @@ class LIVEthereum:
         self.display.clear()
         print("cleared")
         self.layout_init()
+        self.get_font("PlayfairDisplay-BlackItalic.ttf", 180)
+
+    def get_font(font_name, size):
+        return ImageFont.truetype(f"/home/pi/7.8-e-ink/fonts/{font_name}", size)
 
     
 
@@ -47,7 +51,7 @@ class LIVEthereum:
         draw.line((910,1460, 910, self.display.height), width=4)
 
         img_width = self.display.frame_buf.width
-        text_width, _ = self.title_font.getsize(self.title)
+        text_width, _ = self.get_font("PlayfairDisplay-BlackItalic.ttf", 180).getsize(self.title)
         text_height = 180
 
         draw_x = (img_width - text_width)//2
@@ -56,7 +60,7 @@ class LIVEthereum:
 
         # title
         
-        draw.text((draw_x, 0), self.title, font=self.title_font)
+        draw.text((draw_x, 0), self.title, font=self.get_font("PlayfairDisplay-BlackItalic.ttf", 180))
         # draw.text((0,500), "$", font=self.price_font)
         self.display.draw_full(constants.DisplayModes.GC16)
 
@@ -95,7 +99,7 @@ class LIVEthereum:
         self.handle_transactions(draw,transactions, num_tx)
         self.handle_pending(draw, pending_transactions)
         self.handle_activity_monitor(draw)
-        gas_price_x = 100 + block_number_width + 20
+        gas_price_x = 120 + block_number_width + 20
         draw.text((gas_price_x,330), gas,font=self.gas_font)
         draw.text((gas_price_x,390), txs, font=self.gas_font)
         
@@ -108,7 +112,7 @@ class LIVEthereum:
         draw.text((20,320), "block", font=self.gas_font)
         draw.text((27,355), "#", font=self.price_font)
 
-        draw.text((100,320), str(block_number), font=self.block_font)
+        draw.text((120,320), str(block_number), font=self.block_font)
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
