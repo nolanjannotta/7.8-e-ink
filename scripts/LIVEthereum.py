@@ -106,9 +106,9 @@ class LIVEthereum:
 
 
         draw.text((20,320), "block", font=self.gas_font)
-        draw.text((20,350), "#", font=self.price_font)
+        draw.text((27,355), "#", font=self.price_font)
 
-        draw.text((40,320), block, font=self.block_font)
+        draw.text((70,320), block, font=self.block_font)
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
