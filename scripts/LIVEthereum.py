@@ -12,11 +12,10 @@ class LIVEthereum:
     def __init__(self):
         self.display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
         # self.get_font("PlayfairDisplay-BlackItalic.ttf", 180) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
-        self.block_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 180)
-        self.hash_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 43)
-        self.tx_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 35)
-        self.gas_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 60)
-        self.price_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 130)
+        
+
+        
+
         self.refresh_counter = 0
         self.title = "LIVEthereum"
         
@@ -26,7 +25,8 @@ class LIVEthereum:
         self.display.clear()
         print("cleared")
         self.layout_init()
-        self.get_font("PlayfairDisplay-BlackItalic.ttf", 180)
+
+        self.get_font("Zag_Bold.ttf", 180)
 
     def get_font(self, font_name, size):
         return ImageFont.truetype(f"/home/pi/7.8-e-ink/fonts/{font_name}", size)
@@ -99,16 +99,16 @@ class LIVEthereum:
         self.handle_pending(draw, pending_transactions)
         self.handle_activity_monitor(draw)
         gas_price_x = 120 + block_number_width + 20
-        draw.text((gas_price_x,330), gas,font=self.gas_font)
-        draw.text((gas_price_x,390), txs, font=self.gas_font)
+        draw.text((gas_price_x,330), gas,font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((gas_price_x,390), txs, font=self.get_font("Zag_Bold.ttf", 60))
         
-        draw.text((gas_price_x,450),time,font=self.gas_font)
-        draw.text((gas_price_x,510),burned,font=self.gas_font)
+        draw.text((gas_price_x,450),time,font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((gas_price_x,510),burned,font=self.get_font("Zag_Bold.ttf", 60))
         draw.text((20,470),price,font=self.price_font)
-        draw.text((30,270),_hash, font=self.hash_font)
+        draw.text((30,270),_hash, font=self.get_font("Zag_Bold.ttf", 43))
 
 
-        draw.text((20,320), "block", font=self.gas_font)
+        draw.text((20,320), "block", font=self.get_font("Zag_Bold.ttf", 60))
         draw.text((27,355), "#", font=self.price_font)
 
         draw.text((120,320), str(block_number), font=self.block_font)
@@ -120,9 +120,9 @@ class LIVEthereum:
     def handle_pending(self, draw, pending_transactions):
         self.display.frame_buf.paste(0xFF, box=(912,1465,self.display.width,1800))
         # draw.rectangle((912,1465,self.display.width,1800),  outline = 0, width=5)
-        pending_width, _ = self.gas_font.getsize("pending transactions")
+        pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("pending transactions")
         x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
-        draw.text((x_value, 1500),"pending transactions", font=self.gas_font)
+        draw.text((x_value, 1500),"pending transactions", font=self.get_font("Zag_Bold.ttf", 60))
 
         pending_width, _ = self.price_font.getsize(str(pending_transactions))
         x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
@@ -131,9 +131,9 @@ class LIVEthereum:
         
 
     def handle_activity_monitor(self, draw):
-        pending_width, _ = self.gas_font.getsize("activity monitor")
+        pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
         x_value = (910 - pending_width) // 2
-        draw.text((x_value, 1500),"activity monitor", font=self.gas_font)
+        draw.text((x_value, 1500),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
 
  
     def handle_transactions(self,draw, transactions, num_tx):
@@ -147,11 +147,11 @@ class LIVEthereum:
         # clears a portion of the screen where the number is with padding each side
         self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
 
-        text_width, _ = self.gas_font.getsize("transactions hashes:")
+        text_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("transactions hashes:")
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 605),"transaction hashes:", font=self.gas_font)
+        draw.text((draw_x, 605),"transaction hashes:", font=self.get_font("Zag_Bold.ttf", 60))
         
         y_counter = 0
         x_counter = 0
@@ -178,14 +178,14 @@ class LIVEthereum:
 
             tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
 
-            draw.text((starting_x, starting_y),tx_draw, font=self.tx_font)
+            draw.text((starting_x, starting_y),tx_draw, font=self.get_font("Zag_Bold.ttf", 35))
             starting_y +=30
         
-        text_width, _ = self.hash_font.getsize(f"showing {tx_counter} of {num_tx}")
+        text_width, _ = self.get_font("Zag_Bold.ttf", 43).getsize(f"showing {tx_counter} of {num_tx}")
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 1415), f"showing {tx_counter} of {num_tx}", font=self.hash_font)
+        draw.text((draw_x, 1415), f"showing {tx_counter} of {num_tx}", font=self.get_font("Zag_Bold.ttf", 43))
         # self.display.draw_partial(constants.DisplayModes.DU)
         
 
