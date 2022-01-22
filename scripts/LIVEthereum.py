@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 class LIVEthereum:
     def __init__(self):
         self.display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
-        self.get_font("PlayfairDisplay-BlackItalic.ttf", 180) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
+        # self.get_font("PlayfairDisplay-BlackItalic.ttf", 180) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
         self.block_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 180)
         self.hash_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 43)
         self.tx_font = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 35)
