@@ -2,8 +2,8 @@ from web3 import Web3
 import time
 from hexbytes import HexBytes
 
-# web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/tMUpxrBRib2XG1LhKdvGVql4LtGbdu58'))
-web3 = Web3(Web3.HTTPProvider('https://eth-rinkeby.alchemyapi.io/v2/eriQZWQGeXNylGAMxvyOVIBe4JyU0Kxz'))
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/AMq3rziNaAVTV6lQ1OUc5S5jAQXa-_Hl'))
+# web3 = Web3(Web3.HTTPProvider('https://eth-rinkeby.alchemyapi.io/v2/eriQZWQGeXNylGAMxvyOVIBe4JyU0Kxz'))
 
 latest_block_filter = web3.eth.filter('latest')
 
@@ -22,24 +22,35 @@ dai_filter = web3.eth.filter({'address': dai_address})
 def main():
 
     not_found = []
-    pending = 0
+    pending_changes = 0
+    new_pending = 0
 
     while True:
+        new_block = latest_block_filter.get_new_entries()
+        new_pending_tx = pending_tx_filter.get_new_entries()
+
         # new_tx = dai_filter.get_new_entries()
         # for txs in new_tx:
         #     print(txs["transactionHash"].hex())
-        pending_tx = web3.eth.get_filter_changes(pending_tx_filter.filter_id)
-        pending += len(pending_tx)
-        print(pending)
+        pending_tx_changes = web3.eth.get_filter_changes(pending_tx_filter.filter_id)
+        
 
-        block = web3.eth.get_block(block_hash.hex())
-            date_time = datetime.fromtimestamp(block.timestamp)
+
+        pending_changes += len(pending_tx_changes)
+        print("pending_changes", pending_changes)
+
+        new_pending += len(new_pending_tx)
+        print("new_pending", new_pending)
+        
+        for block_hash in new_block:
+            print("new block")
+            block = web3.eth.get_block(block_hash.hex())
             num_tx = len(block.transactions)
-            pending -= num_tx
+            # pending_changes -= num_tx
+            new_pending -= num_tx
 
+        time.sleep(2)
 
-            
-        time.sleep(1)
 
 
         
