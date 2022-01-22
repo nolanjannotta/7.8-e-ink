@@ -51,7 +51,7 @@ class LIVEthereum:
         draw.line((910,1460, 910, self.display.height), width=4)
 
         img_width = self.display.frame_buf.width
-        text_width, _ = self.get_font("PlayfairDisplay-BlackItalic.ttf", 180).getsize(self.title)
+        text_width, _ = (self.get_font("PlayfairDisplay-BlackItalic.ttf", 180)).getsize(self.title)
         text_height = 180
 
         draw_x = (img_width - text_width)//2
