@@ -81,10 +81,11 @@ class LIVEthereum:
         self.display.frame_buf.paste(0xFF, box=(0,254,self.display.width,596))
         # draw.rectangle((0,350,self.display.width,550),  outline = 0, width=5)
         
+
         
-        block = f"#{block_number}"
+        block = f"{block_number}"
         price = "$3000.13"
-        _hash = f"block hash: {block_hash}"
+        _hash = f"hash: {block_hash}"
         gas = f"gas price: {gas_price} gwei"
         txs = f"{num_tx} transactions"
         time = time_stamp.strftime("%I:%M:%S %p")
@@ -102,6 +103,11 @@ class LIVEthereum:
         draw.text((gas_price_x,510),burned,font=self.gas_font)
         draw.text((20,470),price,font=self.price_font)
         draw.text((30,270),_hash, font=self.hash_font)
+
+
+        draw.text((20,280), "block", font=self.gas_font)
+        draw.text((20,320), "#", font=self.price_font)
+
         draw.text((20,320), block, font=self.block_font)
 
         self.display.draw_partial(constants.DisplayModes.DU)
