@@ -24,13 +24,16 @@ def main():
     # seconds_since_start = 0
     # block = web3.eth.getBlock("latest")
     # start_timestamp = block.timestamp
+
+    blocks_since_start = 0
+    gas_since_start = 0
     pending = 0
     while True:
         new_blocks = latest_block_filter.get_new_entries()
         pending_tx = pending_tx_filter.get_new_entries()
         pending += len(pending_tx)
         for block_hash in new_blocks:
-            # block_count += 1
+            blocks_since_start += 1
             
             
             print("new block", block_hash.hex())
@@ -40,6 +43,8 @@ def main():
             num_tx = len(block.transactions)
             pending -= num_tx
             gas_price = web3.eth.gas_price / 10**9
+            gas_since_start += gas_price
+            print("average gas: ", gas_since_start / blocks_since_start)
             eth_burned = (block.baseFeePerGas * block.gasUsed) / 10**18
 
             live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),date_time, block.transactions, format(eth_burned, ".5f"), pending)

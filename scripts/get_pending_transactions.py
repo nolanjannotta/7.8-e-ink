@@ -37,10 +37,10 @@ def main():
 
 
         pending_changes += len(pending_tx_changes)
-        print("pending_changes", pending_changes)
+        print("get_filter_changes results", pending_changes)
 
         new_pending += len(new_pending_tx)
-        print("new_pending", new_pending)
+        print("get_new_entries results", new_pending)
         
         for block_hash in new_block:
             print("new block")
