@@ -28,10 +28,9 @@ class LIVEthereum:
         self.layout_init()
         self.get_font("PlayfairDisplay-BlackItalic.ttf", 180)
 
-    def get_font(font_name, size):
+    def get_font(self, font_name, size):
         return ImageFont.truetype(f"/home/pi/7.8-e-ink/fonts/{font_name}", size)
 
-    
 
     def layout_init(self):
 
@@ -51,7 +50,7 @@ class LIVEthereum:
         draw.line((910,1460, 910, self.display.height), width=4)
 
         img_width = self.display.frame_buf.width
-        text_width, _ = (self.get_font("PlayfairDisplay-BlackItalic.ttf", 180)).getsize(self.title)
+        text_width, _ = self.get_font("PlayfairDisplay-BlackItalic.ttf", 180).getsize(self.title)
         text_height = 180
 
         draw_x = (img_width - text_width)//2
