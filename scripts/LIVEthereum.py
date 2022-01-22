@@ -15,7 +15,7 @@ class LIVEthereum:
 
         
 
-        # self.get_font("Intro Cond Black Free.ttf", 130) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Intro Cond Black Free.ttf", 130)
+        # self.get_font("Zag_Bold.ttf", 130) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 130)
         self.refresh_counter = 0
         self.title = "LIVEthereum"
         
@@ -26,7 +26,7 @@ class LIVEthereum:
         print("cleared")
         self.layout_init()
 
-        self.get_font("Intro Cond Black Free.ttf", 180)
+        self.get_font("Zag_Bold.ttf", 180)
 
     def get_font(self, font_name, size):
         return ImageFont.truetype(f"/home/pi/7.8-e-ink/fonts/{font_name}", size)
@@ -60,7 +60,7 @@ class LIVEthereum:
         # title
         
         draw.text((draw_x, 0), self.title, font=self.get_font("Unique.ttf", 180))
-        # draw.text((0,500), "$", font=self.get_font("Intro Cond Black Free.ttf", 130))
+        # draw.text((0,500), "$", font=self.get_font("Zag_Bold.ttf", 130))
         self.display.draw_full(constants.DisplayModes.GC16)
 
     def clear_screen(self):
@@ -93,27 +93,27 @@ class LIVEthereum:
         txs = f"{num_tx} transactions"
         time = time_stamp.strftime("%I:%M:%S %p")
         burned = f"{eth_burned} eth burned"
-        block_number_width, _ = self.get_font("Intro Cond Black Free.ttf", 180).getsize(str(block_number))
+        block_number_width, _ = self.get_font("Zag_Bold.ttf", 180).getsize(str(block_number))
         
         self.handle_transactions(draw,transactions, num_tx)
         self.handle_pending(draw, pending_transactions)
         self.handle_activity_monitor(draw) 
         gas_price_x = 125 + block_number_width + 20
 
-        draw.text((gas_price_x,330), gas,font=self.get_font("Intro Cond Black Free.ttf", 60))
-        draw.text((gas_price_x,390), txs, font=self.get_font("Intro Cond Black Free.ttf", 60))
+        draw.text((gas_price_x,330), gas,font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((gas_price_x,390), txs, font=self.get_font("Zag_Bold.ttf", 60))
         
 
-        draw.text((gas_price_x,450),time,font=self.get_font("Intro Cond Black Free.ttf", 60))
-        draw.text((gas_price_x,510),burned,font=self.get_font("Intro Cond Black Free.ttf", 60))
-        draw.text((20,473),price,font=self.get_font("Intro Cond Black Free.ttf", 130))
-        draw.text((30,270),_hash, font=self.get_font("Intro Cond Black Free.ttf", 43))
+        draw.text((gas_price_x,450),time,font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((gas_price_x,510),burned,font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((20,473),price,font=self.get_font("Zag_Bold.ttf", 130))
+        draw.text((30,270),_hash, font=self.get_font("Zag_Bold.ttf", 43))
 
 
-        draw.text((20,326), "block", font=self.get_font("Intro Cond Black Free.ttf", 48))
-        draw.text((27,363), "#", font=self.get_font("Intro Cond Black Free.ttf", 120))
+        draw.text((20,326), "block", font=self.get_font("Zag_Bold.ttf", 48))
+        draw.text((27,363), "#", font=self.get_font("Zag_Bold.ttf", 120))
 
-        draw.text((125,320), str(block_number), font=self.get_font("Intro Cond Black Free.ttf", 180))
+        draw.text((125,320), str(block_number), font=self.get_font("Zag_Bold.ttf", 180))
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
@@ -122,20 +122,20 @@ class LIVEthereum:
     def handle_pending(self, draw, pending_transactions):
         self.display.frame_buf.paste(0xFF, box=(912,1465,self.display.width,1800))
         # draw.rectangle((912,1465,self.display.width,1800),  outline = 0, width=5)
-        pending_width, _ = self.get_font("Intro Cond Black Free.ttf", 60).getsize("pending transactions")
+        pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("pending transactions")
         x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
-        draw.text((x_value, 1500),"pending transactions", font=self.get_font("Intro Cond Black Free.ttf", 60))
+        draw.text((x_value, 1500),"pending transactions", font=self.get_font("Zag_Bold.ttf", 60))
 
-        pending_width, _ = self.get_font("Intro Cond Black Free.ttf", 130).getsize(str(pending_transactions))
+        pending_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(str(pending_transactions))
         x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
-        draw.text((x_value, 1600),str(pending_transactions), font=self.get_font("Intro Cond Black Free.ttf", 130))
+        draw.text((x_value, 1600),str(pending_transactions), font=self.get_font("Zag_Bold.ttf", 130))
 
         
 
     def handle_activity_monitor(self, draw):
-        pending_width, _ = self.get_font("Intro Cond Black Free.ttf", 60).getsize("activity monitor")
+        pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
         x_value = (910 - pending_width) // 2
-        draw.text((x_value, 1500),"activity monitor", font=self.get_font("Intro Cond Black Free.ttf", 60))
+        draw.text((x_value, 1500),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
 
  
     def handle_transactions(self,draw, transactions, num_tx):
@@ -149,11 +149,11 @@ class LIVEthereum:
         # clears a portion of the screen where the number is with padding each side
         self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
 
-        text_width, _ = self.get_font("Intro Cond Black Free.ttf", 60).getsize("transactions hashes:")
+        text_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("transactions hashes:")
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 605),"transaction hashes:", font=self.get_font("Intro Cond Black Free.ttf", 60))
+        draw.text((draw_x, 605),"transaction hashes:", font=self.get_font("Zag_Bold.ttf", 60))
         
         y_counter = 0
         x_counter = 0
@@ -180,14 +180,14 @@ class LIVEthereum:
 
             tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
 
-            draw.text((starting_x, starting_y),tx_draw, font=self.get_font("Intro Cond Black Free.ttf", 35))
+            draw.text((starting_x, starting_y),tx_draw, font=self.get_font("Zag_Bold.ttf", 35))
             starting_y +=30
         
-        text_width, _ = self.get_font("Intro Cond Black Free.ttf", 43).getsize(f"showing {tx_counter} of {num_tx}")
+        text_width, _ = self.get_font("Zag_Bold.ttf", 43).getsize(f"showing {tx_counter} of {num_tx}")
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 1415), f"showing {tx_counter} of {num_tx}", font=self.get_font("Intro Cond Black Free.ttf", 43))
+        draw.text((draw_x, 1415), f"showing {tx_counter} of {num_tx}", font=self.get_font("Zag_Bold.ttf", 43))
         # self.display.draw_partial(constants.DisplayModes.DU)
         
 
