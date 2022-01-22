@@ -50,7 +50,7 @@ class LIVEthereum:
         draw.line((910,1460, 910, self.display.height), width=4)
 
         img_width = self.display.frame_buf.width
-        text_width, _ = self.get_font("Unique.ttf", 200).getsize(self.title)
+        text_width, _ = self.get_font("Unique.ttf", 215).getsize(self.title)
         text_height = 180
 
         draw_x = (img_width - text_width)//2
@@ -59,7 +59,7 @@ class LIVEthereum:
 
         # title
         
-        draw.text((draw_x, 0), self.title, font=self.get_font("Unique.ttf", 200))
+        draw.text((draw_x, 0), self.title, font=self.get_font("Unique.ttf", 215))
         # draw.text((0,500), "$", font=self.get_font("Zag_Bold.ttf", 130))
         self.display.draw_full(constants.DisplayModes.GC16)
 
