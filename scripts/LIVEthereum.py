@@ -109,8 +109,8 @@ class LIVEthereum:
         draw.text((30,270),_hash, font=self.get_font("Zag_Bold.ttf", 43))
 
 
-        draw.text((20,323), "block", font=self.get_font("Zag_Bold.ttf", 50))
-        draw.text((27,360), "#", font=self.get_font("Zag_Bold.ttf", 120))
+        draw.text((20,326), "block", font=self.get_font("Zag_Bold.ttf", 48))
+        draw.text((27,363), "#", font=self.get_font("Zag_Bold.ttf", 120))
 
         draw.text((120,320), str(block_number), font=self.get_font("Zag_Bold.ttf", 180))
 
