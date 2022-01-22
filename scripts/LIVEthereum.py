@@ -83,19 +83,19 @@ class LIVEthereum:
         
 
         
-        block = f"{block_number}"
+        # block = f"{block_number}"
         price = "$3000.13"
         _hash = f"hash: {block_hash}"
         gas = f"gas price: {gas_price} gwei"
         txs = f"{num_tx} transactions"
         time = time_stamp.strftime("%I:%M:%S %p")
         burned = f"{eth_burned} eth burned"
-        block_number_width, _ = self.block_font.getsize(block)
+        block_number_width, _ = self.block_font.getsize(str(block_number))
         
         self.handle_transactions(draw,transactions, num_tx)
         self.handle_pending(draw, pending_transactions)
         self.handle_activity_monitor(draw)
-        gas_price_x = 20 + block_number_width + 20
+        gas_price_x = 80 + block_number_width + 20
         draw.text((gas_price_x,330), gas,font=self.gas_font)
         draw.text((gas_price_x,390), txs, font=self.gas_font)
         
@@ -108,7 +108,7 @@ class LIVEthereum:
         draw.text((20,320), "block", font=self.gas_font)
         draw.text((27,355), "#", font=self.price_font)
 
-        draw.text((70,320), block, font=self.block_font)
+        draw.text((80,320), str(block_number), font=self.block_font)
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
