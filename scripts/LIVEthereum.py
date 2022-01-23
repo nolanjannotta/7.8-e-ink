@@ -196,7 +196,7 @@ class LIVEthereum:
 
 
     def handle_activity_monitor(self, address, hash, block_number):
-        message = f"activity from {address} in {hash} in block #{block_number}"
+        message = f"-activity from {address} in {hash} in block #{block_number}"
         self.display.frame_buf.paste(0xFF, box=(10, 1535, 905 , self.display.height))
 
         if len(self.activity_list) < 7:
