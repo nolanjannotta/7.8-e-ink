@@ -95,18 +95,21 @@ class LIVEthereum:
         time = block_data['date_time'].strftime("%I:%M:%S %p")
         burned = f"{block_data['eth_burned']} eth burned"
         block_number_width, _ = self.get_font("Zag_Bold.ttf", 180).getsize(block_data['block_number'])
+        price_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(block_data['block_number'])
         
         self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
         self.handle_pending(draw, block_data['num_pending'])
         self.handle_activity_monitor(draw) 
-        gas_price_x = 125 + block_number_width + 20
 
+        gas_price_x = 125 + block_number_width + 20
         draw.text((gas_price_x,330), gas,font=self.get_font("Zag_Bold.ttf", 60))
         draw.text((gas_price_x,390), txs, font=self.get_font("Zag_Bold.ttf", 60))
         
-
+        gas_price_x = 20 + price_width + 20
         draw.text((gas_price_x,450),time,font=self.get_font("Zag_Bold.ttf", 60))
-        draw.text((gas_price_x,510),burned,font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((gas_price_x,517),burned,font=self.get_font("Zag_Bold.ttf", 60))
+
+
         draw.text((20,473),price,font=self.get_font("Zag_Bold.ttf", 130))
         draw.text((20 ,270),_hash, font=self.get_font("Zag_Bold.ttf", 43))
 
