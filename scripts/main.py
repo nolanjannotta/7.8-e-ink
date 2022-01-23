@@ -12,6 +12,20 @@ latest_block_filter = web3.eth.filter('latest')
 
 pending_tx_filter = web3.eth.filter('pending')
 
+num_last_blocks = 50
+
+last_gas_prices  = []
+
+
+def calculate_average_gas(current_price):
+    if len(last_gas_prices) >= num_last_blocks:
+        last_gas_prices.pop(0)
+    last_gas_prices.append(current_price)
+    return sum(last_gas_prices) / len(last_gas_prices)
+
+    
+
+
 
 
 def main():
@@ -28,6 +42,8 @@ def main():
     blocks_since_start = 0
     gas_since_start = 0
     pending = 0
+
+    
     while True:
         new_blocks = latest_block_filter.get_new_entries()
         pending_tx = pending_tx_filter.get_new_entries()
@@ -43,7 +59,9 @@ def main():
             num_tx = len(block.transactions)
             pending -= num_tx
             gas_price = web3.eth.gas_price / 10**9
-            gas_since_start += gas_price
+            
+
+            # gas_since_start += gas_price
             print("average gas: ", gas_since_start / blocks_since_start)
             eth_burned = (block.baseFeePerGas * block.gasUsed) / 10**18
 
@@ -55,7 +73,8 @@ def main():
                 'date_time': date_time,
                 'transactions': block.transactions,
                 'eth_burned': format(eth_burned, ".5f"),
-                'num_pending': pending
+                'num_pending': pending,
+                'average' : calculate_average_gas(gas_price)
             }
             live_ethereum.update_block(block_data)
             # live_ethereum(pending_transactions)
