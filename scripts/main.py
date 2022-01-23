@@ -64,6 +64,7 @@ def main():
     gas_since_start = 0
     pending = 0
     last_connection_status = connection_health()
+    live_ethereum.handle_health(last_connection_status)
 
     
     while True:
