@@ -73,7 +73,9 @@ class LIVEthereum:
 
        
     def update_block(self, block_data):
-        if self.refresh_counter == 15:
+        self.refresh_counter += 1
+        
+        if self.refresh_counter == 10:
             self.clear_screen()
 
 
@@ -125,7 +127,7 @@ class LIVEthereum:
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
-        self.refresh_counter += 1
+        
 
 
 
@@ -197,7 +199,7 @@ class LIVEthereum:
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 1415), f"showing {tx_counter} of {num_tx}", font=self.get_font("Zag_Bold.ttf", 43))
+        draw.text((draw_x, 1415), f"showing {tx_counter} of {num_tx}", font=self.get_font("Zag_Bold.ttf", 48))
         # self.display.draw_partial(constants.DisplayModes.DU)
         
 
