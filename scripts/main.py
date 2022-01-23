@@ -74,6 +74,8 @@ def main():
         new_blocks = latest_block_filter.get_new_entries()
         # pending_tx = pending_tx_filter.get_new_entries()
 
+        gas_price = web3.eth.gas_price / 10**9
+        print(gas_price)
         # pending += len(pending_tx)
         for block_hash in new_blocks:
             blocks_since_start += 1
@@ -85,8 +87,7 @@ def main():
             date_time = datetime.fromtimestamp(block.timestamp)
             num_tx = len(block.transactions)
             pending -= num_tx
-            gas_price = web3.eth.gas_price / 10**9
-            print(gas_price)
+            
             
 
             # gas_since_start += gas_price
