@@ -63,8 +63,8 @@ class LIVEthereum:
         # title
         
         draw.text((draw_x, -20), self.title, font=self.get_font("Unique.ttf", 215))
-        draw.text((200, 200), f'network id: {self.network_id} -- mainnet', font=self.get_font("Zag_Bold.ttf", 45))
-        draw.text((500, 200), self.client_version, font=self.get_font("Zag_Bold.ttf", 45))
+        draw.text((190, 200), f'network id: {self.network_id} -- mainnet || client version: {self.client_version}', font=self.get_font("Zag_Bold.ttf", 45))
+        # draw.text((500, 200), self.client_version, font=self.get_font("Zag_Bold.ttf", 45))
         # draw.text((0,500), "$", font=self.get_font("Zag_Bold.ttf", 130))
         self.display.draw_full(constants.DisplayModes.GC16)
 
