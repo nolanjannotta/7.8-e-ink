@@ -182,15 +182,15 @@ class LIVEthereum:
         draw = ImageDraw.Draw(self.display.frame_buf)
         message = f"activity from {address} in {hash} in block #{block_number}"
 
-        if len(self.activity_list) < 7:
+        if len(self.activity_list) <= 7:
             if message not in self.activity_list:
-                self.activity_list.append(message)
+                self.activity_list.insert(0,message)
         else:
             # draw.rectangle((10, 1535, 905 , self.display.height),  outline = 0, width=5)
             self.display.frame_buf.paste(0xFF, box=(10, 1535, 905 , self.display.height))
             self.activity_list.pop(0)
             if message not in self.activity_list:
-                self.activity_list.append(message)
+                self.activity_list.insert(0,message)
 
 
         pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
