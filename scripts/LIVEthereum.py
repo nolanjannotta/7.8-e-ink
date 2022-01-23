@@ -59,7 +59,7 @@ class LIVEthereum:
 
         # title
         
-        draw.text((draw_x, -5), self.title, font=self.get_font("Unique.ttf", 215))
+        draw.text((draw_x, -20), self.title, font=self.get_font("Unique.ttf", 215))
         # draw.text((0,500), "$", font=self.get_font("Zag_Bold.ttf", 130))
         self.display.draw_full(constants.DisplayModes.GC16)
 
