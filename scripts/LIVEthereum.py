@@ -29,7 +29,7 @@ class LIVEthereum:
         self.get_font("Zag_Bold.ttf", 180)
 
     def get_font(self, font_name, size):
-        return ImageFont.truetype(f"/home/code/7.8-e-ink/fonts/{font_name}", size)
+        return ImageFont.truetype(f"/home/pi/code/7.8-e-ink/fonts/{font_name}", size)
 
 
     def layout_init(self):
