@@ -51,9 +51,10 @@ def connection_health():
 def main():
     network_id = web3.eth.chain_id
     client_version = web3.clientVersion
+    initial_connection = connection_health()
     
 
-    live_ethereum = LIVEthereum.LIVEthereum(network_id, client_version, connection_health)
+    live_ethereum = LIVEthereum.LIVEthereum(network_id, client_version, initial_connection)
 
 
 
@@ -106,7 +107,7 @@ def main():
             live_ethereum.update_block(block_data)
             # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
-        current_connection_status = connection_health()
+        current_connection_status = initial_connection
         live_ethereum.handle_health(current_connection_status)
 
             
