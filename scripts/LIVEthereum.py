@@ -186,8 +186,8 @@ class LIVEthereum:
             if message not in self.activity_list:
                 self.activity_list.append(message)
         else:
-            draw.rectangle((10, 1535, 905 , self.display.height),  outline = 0, width=5)
-            # self.display.frame_buf.paste(0xFF, box=(10, 1540, 909 , self.display.height))
+            # draw.rectangle((10, 1535, 905 , self.display.height),  outline = 0, width=5)
+            self.display.frame_buf.paste(0xFF, box=(10, 1535, 905 , self.display.height))
             self.activity_list.pop(0)
             if message not in self.activity_list:
                 self.activity_list.append(message)
