@@ -122,17 +122,6 @@ class LIVEthereum:
 
 
 
-                    block_data = {
-                'block_number': str(block.number), 
-                'block_hash': str(block_hash.hex()),
-                'current_gas_price': format(gas_price, ".3f"),
-                'num_tx': str(num_tx),
-                'date_time': date_time,
-                'transactions': block.transactions,
-                'eth_burned': format(eth_burned, ".5f"),
-                'num_pending': pending
-                }
-    
     def handle_pending(self, draw, pending_transactions):
         self.display.frame_buf.paste(0xFF, box=(912,1465,self.display.width,1800))
         # draw.rectangle((912,1465,self.display.width,1800),  outline = 0, width=5)
