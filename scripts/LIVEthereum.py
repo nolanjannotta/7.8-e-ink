@@ -140,7 +140,7 @@ class LIVEthereum:
 
 
 
-    def handle_health(self, connection_status):
+    def handle_health(self, current_connection_status):
         draw = ImageDraw.Draw(self.display.frame_buf)
         self.display.frame_buf.paste(0xFF, box=(912,1465,self.display.width,1800))
         # draw.rectangle((912,1465,self.display.width,1800),  outline = 0, width=5)
@@ -148,11 +148,11 @@ class LIVEthereum:
         x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
         draw.text((x_value, 1500),"connection health:", font=self.get_font("Zag_Bold.ttf", 60))
 
-        web3_connection = "connected to node" if connection_status['is_connected'] else "not connected to node"
+        web3_connection = "connected to node" if current_connection_status['is_connected'] else "not connected to node"
 
-        client_listening = "client listening for network connections" if connection_status['client_is_listening'] else "client is not listening for network connections"
+        client_listening = "client listening for network connections" if current_connection_status['client_is_listening'] else "client is not listening for network connections"
 
-        wifi_is_connected = "connected to internet" if connection_status['wifi_is_connected'] else "not connected to internet"
+        wifi_is_connected = "connected to internet" if current_connection_status['wifi_is_connected'] else "not connected to internet"
         pending_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(str())
         x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
 

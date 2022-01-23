@@ -63,6 +63,7 @@ def main():
     blocks_since_start = 0
     gas_since_start = 0
     pending = 0
+    last_connection_status = connection_health()
 
     
     while True:
@@ -104,6 +105,15 @@ def main():
             # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
         
+        current_connection_status = connection_health()
+        if current_connection_status != last_connection_status:
+            live_ethereum(current_connection_status)
+        pass
+
+            
+
+
+
         time.sleep(1)
 
         
