@@ -51,7 +51,7 @@ def main():
     client_version = web3.clientVersion
     
 
-    live_ethereum = LIVEthereum.LIVEthereum(network_id, client_version)
+    live_ethereum = LIVEthereum.LIVEthereum(network_id, client_version, connection_health)
 
 
 
@@ -63,8 +63,7 @@ def main():
     blocks_since_start = 0
     gas_since_start = 0
     pending = 0
-    last_connection_status = connection_health()
-    live_ethereum.handle_health(last_connection_status)
+    
 
     
     while True:
@@ -105,12 +104,8 @@ def main():
             live_ethereum.update_block(block_data)
             # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
-        
         current_connection_status = connection_health()
-        if current_connection_status != last_connection_status:
-            live_ethereum.handle_health(current_connection_status)
-            last_connection_status = current_connection_status
-        pass
+        live_ethereum.handle_health(current_connection_status)
 
             
 
