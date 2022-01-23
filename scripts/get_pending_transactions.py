@@ -24,6 +24,8 @@ def main():
     not_found = []
     pending_changes = 0
     new_pending = 0
+    network_id = web3.net.version
+    print(network_id)
 
     while True:
         new_block = latest_block_filter.get_new_entries()
