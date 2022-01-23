@@ -9,10 +9,10 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 class LIVEthereum:
-    def __init__(self, network_id, client_version, connection_health):
+    def __init__(self, network_id, client_version):
         self.display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
         # self.get_font("PlayfairDisplay-BlackItalic.ttf", 180) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
-        self.connection_health = connection_health
+        self.connection_health = {}
 
 
         # self.get_font("Zag_Bold.ttf", 130) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 130)
