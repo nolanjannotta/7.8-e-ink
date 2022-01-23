@@ -140,17 +140,25 @@ class LIVEthereum:
 
 
 
-    def handle_pending(self, draw, pending_transactions):
+    def handle_health(self, connection_status):
+        draw = ImageDraw.Draw(self.display.frame_buf)
         self.display.frame_buf.paste(0xFF, box=(912,1465,self.display.width,1800))
         # draw.rectangle((912,1465,self.display.width,1800),  outline = 0, width=5)
         pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("connection health:")
         x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
         draw.text((x_value, 1500),"connection health:", font=self.get_font("Zag_Bold.ttf", 60))
 
-        pending_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(str(pending_transactions))
-        x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
-        draw.text((x_value, 1600),str(pending_transactions), font=self.get_font("Zag_Bold.ttf", 130))
+        web3_connection = "connected to node" if connection_status['is_connected'] else "not connected to node"
 
+        client_listening = "client listening for network connections" if connection_status['client_is_listening'] else "client is not listening for network connections"
+
+        wifi_is_connected = "connected to internet" if connection_status['wifi_is_connected'] else "not connected to internet"
+        pending_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(str())
+        x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
+
+        draw.text((x_value, 1550),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
+        draw.text((x_value, 1600),client_listening, font=self.get_font("Zag_Bold.ttf", 50))
+        draw.text((x_value, 1650),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
         
 
     def handle_activity_monitor(self, draw):

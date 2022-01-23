@@ -2,6 +2,7 @@ import LIVEthereum
 from web3 import Web3
 import time
 from datetime import datetime
+import requests
 from hexbytes import HexBytes
 
 # web3 = Web3(Web3.HTTPProvider('https://arb-mainnet.g.alchemy.com/v2/nMhcsR5Fy0pEsnb9mvzEkcvQIH2iqD7V'))
@@ -25,11 +26,22 @@ def calculate_average_gas(current_price):
     return format(sum(last_gas_prices) / len(last_gas_prices), ".3f")
 
 
+def check_wifi():
+     
+ try:
+    requests.get('https://ethereum.org/en/').status_code
+    return True
+ except:
+    return False
+    exit()
+ 
 
 
 def connection_health():
     return {
         'is_connected': web3.isConnected(),
+        'client_is_listening': web3.net.listening,
+        'wifi_is_connected': check_wifi()
 
     }
 
@@ -91,6 +103,7 @@ def main():
             live_ethereum.update_block(block_data)
             # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
+        
         time.sleep(1)
 
         
