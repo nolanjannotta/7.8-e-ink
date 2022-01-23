@@ -6,7 +6,7 @@ import requests
 from hexbytes import HexBytes
 
 # web3 = Web3(Web3.HTTPProvider('https://arb-mainnet.g.alchemy.com/v2/nMhcsR5Fy0pEsnb9mvzEkcvQIH2iqD7V'))
-web3 = Web3(Web3.HTTPProvider('https://kovan.infura.io/v3/e899352513784c518b64c5d546094322'))
+web3 = Web3(Web3.HTTPProvider('https://rinkeby.infura.io/v3/e899352513784c518b64c5d546094322'))
 # web3 = Web3(Web3.WebsocketProvider('wss://eth-mainnet.alchemyapi.io/v2/tMUpxrBRib2XG1LhKdvGVql4LtGbdu58'))
 
 latest_block_filter = web3.eth.filter('latest')
