@@ -2,8 +2,8 @@ from web3 import Web3
 import time
 from hexbytes import HexBytes
 
-web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/AMq3rziNaAVTV6lQ1OUc5S5jAQXa-_Hl'))
-# web3 = Web3(Web3.HTTPProvider('https://eth-rinkeby.alchemyapi.io/v2/eriQZWQGeXNylGAMxvyOVIBe4JyU0Kxz'))
+# web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/AMq3rziNaAVTV6lQ1OUc5S5jAQXa-_Hl'))
+web3 = Web3(Web3.HTTPProvider('https://eth-rinkeby.alchemyapi.io/v2/eriQZWQGeXNylGAMxvyOVIBe4JyU0Kxz'))
 
 latest_block_filter = web3.eth.filter('latest')
 
@@ -24,12 +24,9 @@ def main():
     not_found = []
     pending_changes = 0
     new_pending = 0
-    network_id = web3.net.version
-    network  =web3.eth.chain_id
-    web3_version = web3.clientVersion
-    print(network)
-    print(network_id)
-    print(web3_version)
+
+    tracking_address = "0x7bf66Ee1717d64B4e7Ac2942600E4EbF6FdB3F53"
+
 
     while True:
         new_block = latest_block_filter.get_new_entries()
@@ -38,22 +35,31 @@ def main():
         # new_tx = dai_filter.get_new_entries()
         # for txs in new_tx:
         #     print(txs["transactionHash"].hex())
-        pending_tx_changes = web3.eth.get_filter_changes(pending_tx_filter.filter_id)
+        # pending_tx_changes = web3.eth.get_filter_changes(pending_tx_filter.filter_id)
         
 
 
-        pending_changes += len(pending_tx_changes)
-        print("get_filter_changes results", pending_changes)
+        # pending_changes += len(pending_tx_changes)
+        # print("get_filter_changes results", pending_changes)
 
-        new_pending += len(new_pending_tx)
-        print("get_new_entries results", new_pending)
+        # new_pending += len(new_pending_tx)
+        # print("get_new_entries results", new_pending)
+
+
+        for tx in new_pending_tx:
+            try:
+                transaction = web3.eth.get_transaction(tx.hex())
+                print(transaction.hash.hex())
+            except:
+                print("not found")
+                pass
         
-        for block_hash in new_block:
-            print("new block")
-            block = web3.eth.get_block(block_hash.hex())
-            num_tx = len(block.transactions)
-            # pending_changes -= num_tx
-            new_pending -= num_tx
+        # for block_hash in new_block:
+        #     print("new block")
+        #     block = web3.eth.get_block(block_hash.hex())
+        #     num_tx = len(block.transactions)
+        #     # pending_changes -= num_tx
+        #     new_pending -= num_tx
 
         time.sleep(2)
 
