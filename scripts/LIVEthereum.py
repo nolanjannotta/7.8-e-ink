@@ -105,7 +105,7 @@ class LIVEthereum:
         x_value = 125 + block_number_width + 20
         draw.text((x_value,315), gas,font=self.get_font("Zag_Bold.ttf", 60))
 
-        draw.text((x_value + 40,380), average_gas,font=self.get_font("Zag_Bold.ttf", 40))
+        draw.text((x_value + 40,365), average_gas,font=self.get_font("Zag_Bold.ttf", 35))
 
         draw.text((x_value,408), txs, font=self.get_font("Zag_Bold.ttf", 60))
         
