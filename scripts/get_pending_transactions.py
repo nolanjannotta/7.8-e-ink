@@ -3,7 +3,7 @@ import time
 from hexbytes import HexBytes
 
 # web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/AMq3rziNaAVTV6lQ1OUc5S5jAQXa-_Hl'))
-web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/0tGx2qXzMyIad2mTdWxjJRN3WHKE8bBb'))
+web3 = Web3(Web3.HTTPProvider('https://eth-rinkeby.alchemyapi.io/v2/eriQZWQGeXNylGAMxvyOVIBe4JyU0Kxz'))
 
 latest_block_filter = web3.eth.filter('latest')
 
@@ -14,7 +14,8 @@ pending_tx_filter = web3.eth.filter('pending')
 
 tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F', '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48']
 
-address_filter = web3.eth.filter({'address': '0x6B175474E89094C44Da98b954EedeAC495271d0F'})
+
+address_filter = web3.eth.filter({'address': '0x7bf66Ee1717d64B4e7Ac2942600E4EbF6FdB3F53'})
 
 
 
@@ -31,15 +32,13 @@ def main():
 
     while True:
 
-        new_block = latest_block_filter.get_new_entries()
-
-        new_pending_tx = pending_tx_filter.get_new_entries()
 
         new_tx = address_filter.get_new_entries()
 
         # new_tx = web3.eth.get_filter_changes(address_filter.filter_id)
-        # for txs in new_tx:
-        #     print(txs["transactionHash"].hex())
+
+        for txs in new_tx:
+            print(txs)
         
 
 
@@ -58,20 +57,20 @@ def main():
         #         print("not found")
         #         pass
         
-        for block_hash in new_block:
-            print("new block")
-            block = web3.eth.get_block(block_hash.hex())
-            for tx in block.transactions:
-                transaction = web3.eth.get_transaction(tx.hex())
-                # print(transaction)
-                for addr in tracking_address:
-                    if addr == transaction['from']:
-                        print("hello from", transaction.hash.hex())
-                    elif addr == transaction['to']:
-                        print("Hello to", transaction.hash.hex())
-            num_tx = len(block.transactions)
-            # pending_changes -= num_tx
-            new_pending -= num_tx
+        # for block_hash in new_block:
+        #     print("new block")
+        #     block = web3.eth.get_block(block_hash.hex())
+        #     for tx in block.transactions:
+        #         transaction = web3.eth.get_transaction(tx.hex())
+        #         # print(transaction)
+        #         for addr in tracking_address:
+        #             if addr == transaction['from']:
+        #                 print("hello from", transaction.hash.hex())
+        #             elif addr == transaction['to']:
+        #                 print("Hello to", transaction.hash.hex())
+        #     num_tx = len(block.transactions)
+        #     # pending_changes -= num_tx
+        #     new_pending -= num_tx
 
         time.sleep(1)
 

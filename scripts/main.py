@@ -86,6 +86,7 @@ def main():
             num_tx = len(block.transactions)
             pending -= num_tx
             gas_price = web3.eth.gas_price / 10**9
+            print(gas_price)
             
 
             # gas_since_start += gas_price
