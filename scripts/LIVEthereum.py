@@ -182,10 +182,10 @@ class LIVEthereum:
         draw = ImageDraw.Draw(self.display.frame_buf)
         message = f"activity from {address} in {hash} in block #{block_number}"
 
-        if len(self.activity_list) >= 5:
-            self.activity_list.pop(0)
+        if len(self.activity_list) < 5:
             self.activity_list.append(message)
         else:
+            self.activity_list.pop(0)
             self.activity_list.append(message)
 
 
@@ -193,7 +193,7 @@ class LIVEthereum:
         x_value = (910 - pending_width) // 2
         draw.text((x_value, 1500),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
 
-        for activity in enumerate(self.activity_list):
+        for activity in self.activity_list:
             y_value = 1600
             draw.text((20, y_value),activity, font=self.get_font("Zag_Bold.ttf", 43))
             y_value += 20
