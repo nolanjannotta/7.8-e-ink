@@ -159,6 +159,8 @@ class LIVEthereum:
         draw.text((x_value, 1550),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
         draw.text((x_value, 1600),client_listening, font=self.get_font("Zag_Bold.ttf", 50))
         draw.text((x_value, 1650),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
+        self.display.draw_partial(constants.DisplayModes.DU)
+
         
 
     def handle_activity_monitor(self, draw):
