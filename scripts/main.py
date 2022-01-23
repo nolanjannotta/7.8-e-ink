@@ -21,7 +21,8 @@ def calculate_average_gas(current_price):
     if len(last_gas_prices) >= num_last_blocks:
         last_gas_prices.pop(0)
     last_gas_prices.append(current_price)
-    return sum(last_gas_prices) / len(last_gas_prices)
+    
+    return format(sum(last_gas_prices) / len(last_gas_prices), ".3f")
 
     
 
@@ -47,6 +48,7 @@ def main():
     while True:
         new_blocks = latest_block_filter.get_new_entries()
         pending_tx = pending_tx_filter.get_new_entries()
+
         pending += len(pending_tx)
         for block_hash in new_blocks:
             blocks_since_start += 1
