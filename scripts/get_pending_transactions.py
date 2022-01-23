@@ -18,10 +18,10 @@ print(try_ens('0x7dA30048214E112Dbc41A645e37f9640ac62799E'))
 pending_tx_filter = web3.eth.filter('pending')
 
 
-tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F', '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48']
+tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F']
 
 
-address_filter = web3.eth.filter({'address': '0x7bf66Ee1717d64B4e7Ac2942600E4EbF6FdB3F53'})
+address_filter = web3.eth.filter({'address': tracking_address})
 
 
 
@@ -44,7 +44,9 @@ def main():
         # new_tx = web3.eth.get_filter_changes(address_filter.filter_id)
 
         for txs in new_tx:
-            print(txs)
+            print(txs.address)
+            
+            
         
 
 
