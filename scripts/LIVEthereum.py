@@ -89,7 +89,8 @@ class LIVEthereum:
         # block = f"{block_number}"
         price = "$3000.13"
         _hash = f"hash: {block_data['block_hash']}"
-        gas = f"gas price: {block_data['average']} gwei"
+        gas = f"gas price: {block_data['current_gas_price']} gwei"
+        average_gas = f"last 50 block average: {block_data['average']}"
         txs = f"{block_data['num_tx']} transactions"
 
         time = block_data['date_time'].strftime("%I:%M:%S %p")
@@ -102,9 +103,11 @@ class LIVEthereum:
         self.handle_activity_monitor(draw) 
 
         x_value = 125 + block_number_width + 20
-        draw.text((x_value,330), gas,font=self.get_font("Zag_Bold.ttf", 60))
-        draw.text((x_value + 20,350), gas,font=self.get_font("Zag_Bold.ttf", 40))
-        draw.text((x_value,410), txs, font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((x_value,315), gas,font=self.get_font("Zag_Bold.ttf", 60))
+
+        draw.text((x_value + 40,380), average_gas,font=self.get_font("Zag_Bold.ttf", 40))
+
+        draw.text((x_value,408), txs, font=self.get_font("Zag_Bold.ttf", 60))
         
         x_value = 20 + price_width + 20
         draw.text((x_value,470),time,font=self.get_font("Zag_Bold.ttf", 60))
