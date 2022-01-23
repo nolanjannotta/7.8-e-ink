@@ -182,10 +182,10 @@ class LIVEthereum:
         draw = ImageDraw.Draw(self.display.frame_buf)
         message = f"activity from {address} in {hash} in block #{block_number}"
 
-        if len(self.activity_list) < 8:
+        if len(self.activity_list) < 6:
             self.activity_list.append(message)
         else:
-            draw.rectangle((10, 1540, 909 , self.display.height),  outline = 0, width=5)
+            self.display.frame_buf.paste(0xFF, box=(10, 1540, 909 , self.display.height))
             self.activity_list.pop(0)
             self.activity_list.append(message)
 
@@ -197,7 +197,7 @@ class LIVEthereum:
 
         y_value = 1550
         for activity in self.activity_list:
-            draw.text((20, y_value),activity, font=self.get_font("Zag_Bold.ttf", 43))
+            draw.text((20, y_value),activity, font=self.get_font("Zag_Bold.ttf", 41))
             y_value += 40
 
         self.display.draw_partial(constants.DisplayModes.DU)
