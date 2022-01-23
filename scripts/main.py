@@ -57,8 +57,6 @@ def main():
                 'eth_burned': format(eth_burned, ".5f"),
                 'num_pending': pending
             }
-
-            # live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),date_time, block.transactions, format(eth_burned, ".5f"), pending)
             live_ethereum.update_block(block_data)
             # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
