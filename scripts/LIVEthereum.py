@@ -74,6 +74,7 @@ class LIVEthereum:
         self.display.clear()
         print("cleared")
         self.layout_init()
+        self.handle_health(self.connection_health)
         self.refresh_counter = 0
 
     # def connection_health(self, ):
