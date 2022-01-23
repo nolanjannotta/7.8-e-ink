@@ -74,7 +74,7 @@ class LIVEthereum:
         self.display.clear()
         print("cleared")
         self.layout_init()
-        self.handle_health(self.connection_health)
+        self.connection_health = {} # clear out the connection health object so that the function detects a difference and draw on the screen
         self.refresh_counter = 0
 
     # def connection_health(self, ):
