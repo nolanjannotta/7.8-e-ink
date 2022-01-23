@@ -54,7 +54,7 @@ def main():
     initial_connection = connection_health()
     
 
-    live_ethereum = LIVEthereum.LIVEthereum(network_id, client_version, initial_connection)
+    live_ethereum = LIVEthereum.LIVEthereum(network_id, client_version)
 
 
 
@@ -107,7 +107,7 @@ def main():
             live_ethereum.update_block(block_data)
             # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
-        current_connection_status = initial_connection
+        current_connection_status = connection_health()
         live_ethereum.handle_health(current_connection_status)
 
             
