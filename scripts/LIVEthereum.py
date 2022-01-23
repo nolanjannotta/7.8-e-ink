@@ -165,10 +165,10 @@ class LIVEthereum:
             draw.text((950, 1600),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
 
            
-            draw.text((950, 1650),client_listening, font=self.get_font("Zag_Bold.ttf", 50))
+            draw.text((950, 1680),client_listening, font=self.get_font("Zag_Bold.ttf", 50))
 
             
-            draw.text((950, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
+            draw.text((950, 1760),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
             self.display.draw_partial(constants.DisplayModes.DU)
         pass
 
