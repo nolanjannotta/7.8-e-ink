@@ -105,7 +105,7 @@ class LIVEthereum:
         draw.text((gas_price_x,330), gas,font=self.get_font("Zag_Bold.ttf", 60))
         draw.text((gas_price_x,390), txs, font=self.get_font("Zag_Bold.ttf", 60))
         
-        gas_price_x = 20 + price_width + 20
+        gas_price_x = 10 + price_width + 20
         draw.text((gas_price_x,470),time,font=self.get_font("Zag_Bold.ttf", 60))
         draw.text((gas_price_x,527),burned,font=self.get_font("Zag_Bold.ttf", 60))
 
