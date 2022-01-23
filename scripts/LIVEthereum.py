@@ -72,7 +72,7 @@ class LIVEthereum:
         self.refresh_counter = 0
 
        
-    def update_block(self, block_number, block_hash, gas_price, num_tx, time_stamp, transactions, eth_burned,pending_transactions):
+    def update_block(self, block_data):
         if self.refresh_counter == 15:
             self.clear_screen()
 
@@ -88,15 +88,16 @@ class LIVEthereum:
         
         # block = f"{block_number}"
         price = "$3000.13"
-        _hash = f"hash: {block_hash}"
-        gas = f"gas price: {gas_price} gwei"
-        txs = f"{num_tx} transactions"
-        time = time_stamp.strftime("%I:%M:%S %p")
-        burned = f"{eth_burned} eth burned"
-        block_number_width, _ = self.get_font("Zag_Bold.ttf", 180).getsize(str(block_number))
+        _hash = f"hash: {block_data['block_hash']}"
+        gas = f"gas price: {block_data['current_gas_price']} gwei"
+        txs = f"{block_data['num_tx']} transactions"
+
+        time = block_data['date_time'].strftime("%I:%M:%S %p")
+        burned = f"{block_data['eth_burned']} eth burned"
+        block_number_width, _ = self.get_font("Zag_Bold.ttf", 180).getsize(block_data['block_number'])
         
-        self.handle_transactions(draw,transactions, num_tx)
-        self.handle_pending(draw, pending_transactions)
+        self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
+        self.handle_pending(draw, block_data['num_pending'])
         self.handle_activity_monitor(draw) 
         gas_price_x = 125 + block_number_width + 20
 
@@ -107,17 +108,30 @@ class LIVEthereum:
         draw.text((gas_price_x,450),time,font=self.get_font("Zag_Bold.ttf", 60))
         draw.text((gas_price_x,510),burned,font=self.get_font("Zag_Bold.ttf", 60))
         draw.text((20,473),price,font=self.get_font("Zag_Bold.ttf", 130))
-        draw.text((30,270),_hash, font=self.get_font("Zag_Bold.ttf", 43))
+        draw.text((20 ,270),_hash, font=self.get_font("Zag_Bold.ttf", 43))
 
 
         draw.text((20,326), "block", font=self.get_font("Zag_Bold.ttf", 48))
-        draw.text((27,363), "#", font=self.get_font("Zag_Bold.ttf", 110))
+        draw.text((27,368), "#", font=self.get_font("Zag_Bold.ttf", 110))
 
-        draw.text((125,320), str(block_number), font=self.get_font("Zag_Bold.ttf", 180))
+        draw.text((125,320), str(block_data['block_number']), font=self.get_font("Zag_Bold.ttf", 180))
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
         self.refresh_counter += 1
+
+
+
+                    block_data = {
+                'block_number': str(block.number), 
+                'block_hash': str(block_hash.hex()),
+                'current_gas_price': format(gas_price, ".3f"),
+                'num_tx': str(num_tx),
+                'date_time': date_time,
+                'transactions': block.transactions,
+                'eth_burned': format(eth_burned, ".5f"),
+                'num_pending': pending
+                }
     
     def handle_pending(self, draw, pending_transactions):
         self.display.frame_buf.paste(0xFF, box=(912,1465,self.display.width,1800))
