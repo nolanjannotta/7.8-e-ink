@@ -181,13 +181,13 @@ class LIVEthereum:
     def handle_activity_monitor(self, address, hash, block_number):
         draw = ImageDraw.Draw(self.display.frame_buf)
         message = f"activity from {address} in {hash} in block #{block_number}"
+        self.display.frame_buf.paste(0xFF, box=(10, 1535, 905 , self.display.height))
 
         if len(self.activity_list) <= 7:
             if message not in self.activity_list:
                 self.activity_list.insert(0,message)
         else:
             # draw.rectangle((10, 1535, 905 , self.display.height),  outline = 0, width=5)
-            self.display.frame_buf.paste(0xFF, box=(10, 1535, 905 , self.display.height))
             self.activity_list.pop(0)
             if message not in self.activity_list:
                 self.activity_list.insert(0,message)
