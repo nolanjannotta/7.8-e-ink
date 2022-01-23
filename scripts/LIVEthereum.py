@@ -156,21 +156,19 @@ class LIVEthereum:
 
             web3_connection = "connected to node" if current_connection_status['is_connected'] else "not connected to node"
 
-            client_listening = "listening for network connections" if current_connection_status['client_is_listening'] else "not listening for network connections"
+            client_listening = "client is actively listening for network connections." if current_connection_status['client_is_listening'] else "client is not actively listening for network connections."
+
 
             wifi_is_connected = "connected to internet" if current_connection_status['wifi_is_connected'] else "not connected to internet"
 
-            pending_width, _ = self.get_font("Zag_Bold.ttf", 50).getsize(web3_connection)
-            x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
-            draw.text((x_value, 1600),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
+            
+            draw.text((950, 1600),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
 
-            pending_width, _ = self.get_font("Zag_Bold.ttf", 50).getsize(client_listening)
-            x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
-            draw.text((x_value, 1650),client_listening, font=self.get_font("Zag_Bold.ttf", 50))
+           
+            draw.text((950, 1650),client_listening, font=self.get_font("Zag_Bold.ttf", 50))
 
-            pending_width, _ = self.get_font("Zag_Bold.ttf", 50).getsize(wifi_is_connected)
-            x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
-            draw.text((x_value, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
+            
+            draw.text((950, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
             self.display.draw_partial(constants.DisplayModes.DU)
         pass
 
@@ -231,7 +229,7 @@ class LIVEthereum:
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 1410), f"showing {tx_counter} of {num_tx}", font=self.get_font("Zag_Bold.ttf", 54))
+        draw.text((draw_x, 1410), f"showing {tx_counter} of {num_tx}", font=self.get_font("Zag_Bold.ttf", 52))
         # self.display.draw_partial(constants.DisplayModes.DU)
         
 

@@ -61,7 +61,14 @@ def main():
         for block_hash in new_block:
             print("new block")
             block = web3.eth.get_block(block_hash.hex())
-
+            for tx in block.transactions:
+                transaction = web3.eth.get_transaction(tx.hex())
+                # print(transaction)
+                for addr in tracking_address:
+                    if addr == transaction['from']:
+                        print("hello from", transaction.hash.hex())
+                    elif addr == transaction['to']:
+                        print("Hello to", transaction.hash.hex())
             num_tx = len(block.transactions)
             # pending_changes -= num_tx
             new_pending -= num_tx
