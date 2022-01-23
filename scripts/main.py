@@ -86,8 +86,9 @@ def main():
 
         # pending_tx = pending_tx_filter.get_new_entries()
 
-        for tx in new_tx:
-            live_ethereum.handle_activity_monitor(tx.address, tx.transactionHash, tx.blockNumber)
+        for tx in new_tx: 
+            tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
+            live_ethereum.handle_activity_monitor(try_ens(tx.address),tx_hash , tx.blockNumber)
 
         # pending += len(pending_tx)
         for block_hash in new_blocks:
