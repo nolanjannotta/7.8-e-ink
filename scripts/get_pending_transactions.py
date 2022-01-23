@@ -1,13 +1,15 @@
 from web3 import Web3
 import time
 from hexbytes import HexBytes
+from ens import ENS
 
 # web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/AMq3rziNaAVTV6lQ1OUc5S5jAQXa-_Hl'))
-web3 = Web3(Web3.HTTPProvider('https://eth-rinkeby.alchemyapi.io/v2/eriQZWQGeXNylGAMxvyOVIBe4JyU0Kxz'))
-
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/ZiONpsBMj0B0RIXVomeMGU4xXkEBjkyq'))
+ens = ENS.fromWeb3(web3)
 latest_block_filter = web3.eth.filter('latest')
 
-
+domain = ens.name('0x53C6d68A0826C587B57A50C6C42932eb2B6E8086')
+print(domain)
 
 pending_tx_filter = web3.eth.filter('pending')
 

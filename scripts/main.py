@@ -4,9 +4,11 @@ import time
 from datetime import datetime
 import requests
 from hexbytes import HexBytes
+from ens import ENS
 
 # web3 = Web3(Web3.HTTPProvider('https://arb-mainnet.g.alchemy.com/v2/nMhcsR5Fy0pEsnb9mvzEkcvQIH2iqD7V'))
 web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/ZiONpsBMj0B0RIXVomeMGU4xXkEBjkyq'))
+ens = ENS.fromWeb3(web3)
 # web3 = Web3(Web3.WebsocketProvider('wss://eth-mainnet.alchemyapi.io/v2/tMUpxrBRib2XG1LhKdvGVql4LtGbdu58'))
 tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F', '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48']
 latest_block_filter = web3.eth.filter('latest')
@@ -18,6 +20,11 @@ address_filter = web3.eth.filter({'address': tracking_address})
 num_last_blocks = 10
 
 last_gas_prices  = []
+
+def try_ens(address):
+    domain = ens.name(address)
+    return domain if domain != None else f"{address[:5]}...{address[len(address)-3:]}"
+
 
 
 def calculate_average_gas(current_price):
@@ -74,11 +81,14 @@ def main():
         new_blocks = latest_block_filter.get_new_entries()
         # pending_tx = pending_tx_filter.get_new_entries()
 
-        gas_price = web3.eth.gas_price / 10**9
-        print(gas_price)
+
         # pending += len(pending_tx)
         for block_hash in new_blocks:
             blocks_since_start += 1
+
+            
+            gas_price = web3.eth.gas_price / 10**9
+            print(gas_price)
             
             
             print("new block", block_hash.hex())
@@ -105,7 +115,8 @@ def main():
                 'num_pending': pending,
                 'average' : calculate_average_gas(gas_price),
                 'is_listening': web3.net.listening,
-                'num_last_blocks': num_last_blocks
+                'num_last_blocks': num_last_blocks,
+                'miner': try_ens(block.miner)
             }
             live_ethereum.update_block(block_data)
             # live_ethereum(pending_transactions)
