@@ -11,7 +11,7 @@ web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/ZiONpsBMj0B0
 ens = ENS.fromWeb3(web3)
 # web3 = Web3(Web3.WebsocketProvider('wss://eth-mainnet.alchemyapi.io/v2/tMUpxrBRib2XG1LhKdvGVql4LtGbdu58'))
 
-tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F','0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48']
+tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F']
 
 latest_block_filter = web3.eth.filter('latest')
 
