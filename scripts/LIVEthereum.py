@@ -153,11 +153,17 @@ class LIVEthereum:
         client_listening = "client listening for network connections" if current_connection_status['client_is_listening'] else "client is not listening for network connections"
 
         wifi_is_connected = "connected to internet" if current_connection_status['wifi_is_connected'] else "not connected to internet"
-        pending_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(str())
-        x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
 
+        pending_width, _ = self.get_font("Zag_Bold.ttf", 50).getsize(web3_connection)
+        x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
         draw.text((x_value, 1550),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
+
+        pending_width, _ = self.get_font("Zag_Bold.ttf", 50).getsize(client_listening)
+        x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
         draw.text((x_value, 1600),client_listening, font=self.get_font("Zag_Bold.ttf", 50))
+
+        pending_width, _ = self.get_font("Zag_Bold.ttf", 50).getsize(wifi_is_connected)
+        x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
         draw.text((x_value, 1650),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
         self.display.draw_partial(constants.DisplayModes.DU)
 
