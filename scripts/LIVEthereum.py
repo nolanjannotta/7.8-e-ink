@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 class LIVEthereum:
-    def __init__(self):
+    def __init__(self, network_id, client_version):
         self.display = AutoEPDDisplay(vcom=-2.06, rotate="CCW", spi_hz=24000000)
         # self.get_font("PlayfairDisplay-BlackItalic.ttf", 180) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
 
@@ -18,6 +18,9 @@ class LIVEthereum:
         # self.get_font("Zag_Bold.ttf", 130) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/Zag_Bold.ttf", 130)
         self.refresh_counter = 0
         self.title = "LIVEthereum"
+        self.client_version = client_version
+        self.network_id = network_id
+
         
         self.last_text_width = 0
 
@@ -26,7 +29,7 @@ class LIVEthereum:
         print("cleared")
         self.layout_init()
 
-        self.get_font("Zag_Bold.ttf", 180)
+
 
     def get_font(self, font_name, size):
         return ImageFont.truetype(f"/home/pi/code/7.8-e-ink/fonts/{font_name}", size)
@@ -60,6 +63,8 @@ class LIVEthereum:
         # title
         
         draw.text((draw_x, -20), self.title, font=self.get_font("Unique.ttf", 215))
+        draw.text((200, 200), f'network id: {self.network_id} -- mainnet', font=self.get_font("Zag_Bold.ttf", 45))
+        draw.text((500, 200), self.client_version, font=self.get_font("Zag_Bold.ttf", 45))
         # draw.text((0,500), "$", font=self.get_font("Zag_Bold.ttf", 130))
         self.display.draw_full(constants.DisplayModes.GC16)
 

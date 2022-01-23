@@ -12,7 +12,7 @@ latest_block_filter = web3.eth.filter('latest')
 
 pending_tx_filter = web3.eth.filter('pending')
 
-num_last_blocks = 50
+num_last_blocks = 10
 
 last_gas_prices  = []
 
@@ -30,8 +30,11 @@ def calculate_average_gas(current_price):
 
 
 def main():
+    network_id = web3.net.version
+    client_version = web3.clientVersion
+    
 
-    live_ethereum = LIVEthereum.LIVEthereum()
+    live_ethereum = LIVEthereum.LIVEthereum(network_id,client_version)
 
 
 
@@ -76,7 +79,8 @@ def main():
                 'transactions': block.transactions,
                 'eth_burned': format(eth_burned, ".5f"),
                 'num_pending': pending,
-                'average' : calculate_average_gas(gas_price)
+                'average' : calculate_average_gas(gas_price),
+                'is_listening': web3.net.listening
             }
             live_ethereum.update_block(block_data)
             # live_ethereum(pending_transactions)
