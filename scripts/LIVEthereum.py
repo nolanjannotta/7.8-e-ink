@@ -55,10 +55,14 @@ class LIVEthereum:
         draw.line((1,1460,self.display.width,1460 ), width=4)
 
 
-        pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
-        x_value = (910 - pending_width) // 2
+        activity_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
+        x_value = (910 - activity_width) // 2
         draw.text((x_value, 1470),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
 
+
+        health_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("connection health:")
+        x_value = ((self.display.width + 910) // 2) - (health_width // 2)
+        draw.text((x_value, 1500),"connection health:", font=self.get_font("Zag_Bold.ttf", 60))
 
         
 
@@ -161,10 +165,6 @@ class LIVEthereum:
             draw = ImageDraw.Draw(self.display.frame_buf)
             self.display.frame_buf.paste(0xFF, box=(912,1465,self.display.width,1800))
 
-            pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("connection health:")
-
-            x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
-            draw.text((x_value, 1500),"connection health:", font=self.get_font("Zag_Bold.ttf", 60))
 
             web3_connection = "-connected to node" if current_connection_status['is_connected'] else "-not connected to node"
 
