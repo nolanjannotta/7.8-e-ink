@@ -2,6 +2,7 @@ from IT8951.display import AutoEPDDisplay
 from time import sleep
 from IT8951 import constants
 from PIL import Image, ImageDraw, ImageFont
+from collections import deque
 
 
 
@@ -14,7 +15,7 @@ class LIVEthereum:
         # self.get_font("PlayfairDisplay-BlackItalic.ttf", 180) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
         
         self.connection_health = {}
-        self.activity_list = []
+        self.activity_list = deque([])
         
 
 
@@ -183,14 +184,14 @@ class LIVEthereum:
         message = f"activity from {address} in {hash} in block #{block_number}"
         self.display.frame_buf.paste(0xFF, box=(10, 1535, 905 , self.display.height))
 
-        if len(self.activity_list) <= 7:
+        if len(self.activity_list) < 7:
             if message not in self.activity_list:
-                self.activity_list.insert(0,message)
+                self.activity_list.appendleft(message)
         else:
             # draw.rectangle((10, 1535, 905 , self.display.height),  outline = 0, width=5)
-            self.activity_list.pop(0)
+            self.activity_list.pop()
             if message not in self.activity_list:
-                self.activity_list.insert(0,message)
+                self.activity_list.appendleft(message)
 
 
         pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
