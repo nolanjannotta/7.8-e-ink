@@ -109,6 +109,7 @@ def main():
         current_connection_status = connection_health()
         if current_connection_status != last_connection_status:
             live_ethereum.handle_health(current_connection_status)
+            last_connection_status = current_connection_status
         pass
 
             
