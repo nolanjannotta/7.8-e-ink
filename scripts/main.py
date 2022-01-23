@@ -85,7 +85,8 @@ def main():
                 'eth_burned': format(eth_burned, ".5f"),
                 'num_pending': pending,
                 'average' : calculate_average_gas(gas_price),
-                'is_listening': web3.net.listening
+                'is_listening': web3.net.listening,
+                'num_last_blocks': num_last_blocks
             }
             live_ethereum.update_block(block_data)
             # live_ethereum(pending_transactions)
