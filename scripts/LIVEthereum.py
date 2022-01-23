@@ -54,6 +54,12 @@ class LIVEthereum:
 
         draw.line((1,1460,self.display.width,1460 ), width=4)
 
+
+        pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
+        x_value = (910 - pending_width) // 2
+        draw.text((x_value, 1470),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
+
+
         
 
         draw.line((910,1460, 910, self.display.height), width=4)
@@ -80,6 +86,7 @@ class LIVEthereum:
         self.display.clear()
         print("cleared")
         self.layout_init()
+        self.print_activity()
         self.connection_health = {} # clear out the connection health object so that the function detects a difference and draw on the screen
         self.refresh_counter = 0
 
@@ -177,10 +184,17 @@ class LIVEthereum:
             self.display.draw_partial(constants.DisplayModes.DU)
         pass
 
-        
+    def print_activity(self):
+        draw = ImageDraw.Draw(self.display.frame_buf)
+        y_value = 1550
+        for activity in self.activity_list:
+            draw.text((20, y_value),activity, font=self.get_font("Zag_Bold.ttf", 41))
+            y_value += 45
+
+        self.display.draw_partial(constants.DisplayModes.DU)
+
 
     def handle_activity_monitor(self, address, hash, block_number):
-        draw = ImageDraw.Draw(self.display.frame_buf)
         message = f"activity from {address} in {hash} in block #{block_number}"
         self.display.frame_buf.paste(0xFF, box=(10, 1535, 905 , self.display.height))
 
@@ -193,18 +207,10 @@ class LIVEthereum:
             if message not in self.activity_list:
                 self.activity_list.appendleft(message)
 
-
-        pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
-        x_value = (910 - pending_width) // 2
-        draw.text((x_value, 1470),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
+        self.print_activity()
 
 
-        y_value = 1550
-        for activity in self.activity_list:
-            draw.text((20, y_value),activity, font=self.get_font("Zag_Bold.ttf", 41))
-            y_value += 45
 
-        self.display.draw_partial(constants.DisplayModes.DU)
 
  
     def handle_transactions(self,draw, transactions, num_tx):
