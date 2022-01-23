@@ -46,6 +46,7 @@ def main():
             gas_since_start += gas_price
             print("average gas: ", gas_since_start / blocks_since_start)
             eth_burned = (block.baseFeePerGas * block.gasUsed) / 10**18
+
             block_data = {
                 'block_number': str(block.number), 
                 'block_hash': str(block_hash.hex()),
@@ -55,7 +56,7 @@ def main():
                 'transactions': block.transactions,
                 'eth_burned': format(eth_burned, ".5f"),
                 'num_pending': pending
-                }
+            }
 
             # live_ethereum.update_block(str(block.number),str(block_hash.hex()),format(gas_price, ".3f"), str(num_tx),date_time, block.transactions, format(eth_burned, ".5f"), pending)
             live_ethereum.update_block(block_data)
