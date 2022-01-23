@@ -14,6 +14,7 @@ class LIVEthereum:
         # self.get_font("PlayfairDisplay-BlackItalic.ttf", 180) = ImageFont.truetype("/home/pi/7.8-e-ink/fonts/PlayfairDisplay-BlackItalic.ttf", 180)
         
         self.connection_health = {}
+        self.activity_list = []
         
 
 
@@ -180,11 +181,23 @@ class LIVEthereum:
     def handle_activity_monitor(self, address, hash, block_number):
         draw = ImageDraw.Draw(self.display.frame_buf)
         message = f"activity from {address} in {hash} in block #{block_number}"
+
+        if len(self.activity_list) >= 5:
+            self.activity_list.pop(0)
+            self.activity_list.append(message)
+        else:
+            self.activity_list.append(message)
+
+
         pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
         x_value = (910 - pending_width) // 2
         draw.text((x_value, 1500),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
 
-        draw.text((20, 1600),message, font=self.get_font("Zag_Bold.ttf", 40))
+        for activity in enumerate(self.activity_list):
+            y_value = 1600
+            draw.text((20, y_value),activity, font=self.get_font("Zag_Bold.ttf", 43))
+            y_value += 20
+
         self.display.draw_partial(constants.DisplayModes.DU)
 
  
