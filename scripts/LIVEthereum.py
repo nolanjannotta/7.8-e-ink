@@ -179,7 +179,7 @@ class LIVEthereum:
 
     def handle_activity_monitor(self, address, hash, block_number):
         draw = ImageDraw.Draw(self.display.frame_buf)
-        message = f"activity detected from {address} in {hash} in block #{block_number}"
+        message = f"activity from {address} in {hash} in block #{block_number}"
         pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
         x_value = (910 - pending_width) // 2
         draw.text((x_value, 1500),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
