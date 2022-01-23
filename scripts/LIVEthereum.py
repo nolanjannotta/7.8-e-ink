@@ -110,7 +110,7 @@ class LIVEthereum:
         price_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(price)
         
         self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
-        self.handle_pending(draw, block_data['num_pending'])
+        # self.handle_pending(draw, block_data['num_pending'])
         self.handle_activity_monitor(draw) 
 
         x_value = 125 + block_number_width + 20
