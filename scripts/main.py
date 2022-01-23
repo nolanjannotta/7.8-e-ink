@@ -10,7 +10,9 @@ from ens import ENS
 web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/ZiONpsBMj0B0RIXVomeMGU4xXkEBjkyq'))
 ens = ENS.fromWeb3(web3)
 # web3 = Web3(Web3.WebsocketProvider('wss://eth-mainnet.alchemyapi.io/v2/tMUpxrBRib2XG1LhKdvGVql4LtGbdu58'))
-tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F', '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48']
+
+tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F']
+
 latest_block_filter = web3.eth.filter('latest')
 
 # pending_tx_filter = web3.eth.filter('pending')
@@ -79,14 +81,21 @@ def main():
     
     while True:
         new_blocks = latest_block_filter.get_new_entries()
+        new_tx = address_filter.get_new_entries()
+
+
         # pending_tx = pending_tx_filter.get_new_entries()
 
+        for tx in new_tx:
+            print(tx.hex())
 
         # pending += len(pending_tx)
         for block_hash in new_blocks:
             blocks_since_start += 1
 
             
+
+
             gas_price = web3.eth.gas_price / 10**9
             print(gas_price)
             

@@ -8,8 +8,12 @@ web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/ZiONpsBMj0B0
 ens = ENS.fromWeb3(web3)
 latest_block_filter = web3.eth.filter('latest')
 
-domain = ens.name('0x53C6d68A0826C587B57A50C6C42932eb2B6E8086')
-print(domain)
+def try_ens(address):
+    domain = ens.name(address)
+    return domain if domain != None else f"{address[:5]}...{address[len(address)-3:]}"
+
+print(try_ens('0x7dA30048214E112Dbc41A645e37f9640ac62799E'))
+
 
 pending_tx_filter = web3.eth.filter('pending')
 
