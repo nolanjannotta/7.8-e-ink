@@ -163,9 +163,9 @@ class LIVEthereum:
             self.connection_health = current_connection_status
         
             draw = ImageDraw.Draw(self.display.frame_buf)
-            # self.display.frame_buf.paste(0xFF, box=(912,1465,self.display.width,1800))
+            self.display.frame_buf.paste(0xFF, box=(915,1535,self.display.width,self.display.height))
 
-            draw.rectangle((912,1535,self.display.width,self.display.height),  outline = 0, width=5)
+            # draw.rectangle((915,1535,self.display.width,self.display.height),  outline = 0, width=5)
 
             web3_connection = "-connected to node" if current_connection_status['is_connected'] else "-not connected to node"
 
