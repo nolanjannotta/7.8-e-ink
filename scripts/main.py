@@ -24,17 +24,22 @@ def calculate_average_gas(current_price):
     
     return format(sum(last_gas_prices) / len(last_gas_prices), ".3f")
 
-    
 
 
+
+def connection_health():
+    return {
+        'is_connected': web3.isConnected(),
+
+    }
 
 
 def main():
-    network_id = web3.net.version
+    network_id = web3.eth.chain_id
     client_version = web3.clientVersion
     
 
-    live_ethereum = LIVEthereum.LIVEthereum(network_id,client_version)
+    live_ethereum = LIVEthereum.LIVEthereum(network_id, client_version)
 
 
 

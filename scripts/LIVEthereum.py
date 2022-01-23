@@ -63,7 +63,7 @@ class LIVEthereum:
         # title
         
         draw.text((draw_x, -20), self.title, font=self.get_font("Unique.ttf", 215))
-        draw.text((70, 200), f'network id: {self.network_id} || client version: {self.client_version}', font=self.get_font("Zag_Bold.ttf", 45))
+        draw.text((70, 200), f'chain id: {self.network_id} || client version: {self.client_version}', font=self.get_font("Zag_Bold.ttf", 45))
         # draw.text((500, 200), self.client_version, font=self.get_font("Zag_Bold.ttf", 45))
         # draw.text((0,500), "$", font=self.get_font("Zag_Bold.ttf", 130))
         self.display.draw_full(constants.DisplayModes.GC16)
@@ -76,8 +76,12 @@ class LIVEthereum:
         self.layout_init()
         self.refresh_counter = 0
 
+    # def connection_health(self, ):
+
        
     def update_block(self, block_data):
+        
+
         self.refresh_counter += 1
         
         if self.refresh_counter == 10:
@@ -139,9 +143,9 @@ class LIVEthereum:
     def handle_pending(self, draw, pending_transactions):
         self.display.frame_buf.paste(0xFF, box=(912,1465,self.display.width,1800))
         # draw.rectangle((912,1465,self.display.width,1800),  outline = 0, width=5)
-        pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("pending transactions")
+        pending_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("connection health:")
         x_value = ((self.display.width + 910) // 2) - (pending_width // 2)
-        draw.text((x_value, 1500),"pending transactions", font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((x_value, 1500),"connection health:", font=self.get_font("Zag_Bold.ttf", 60))
 
         pending_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(str(pending_transactions))
         x_value = ((self.display.width + 910) // 2) - (pending_width // 2)

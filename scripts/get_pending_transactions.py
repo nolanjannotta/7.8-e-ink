@@ -24,9 +24,11 @@ def main():
     not_found = []
     pending_changes = 0
     new_pending = 0
-    # network_id = web3.geth.admin.node_info()
+    network_id = web3.net.version
+    network  =web3.eth.chain_id
     web3_version = web3.clientVersion
-    # print(network_id)
+    print(network)
+    print(network_id)
     print(web3_version)
 
     while True:
