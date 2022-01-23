@@ -6,7 +6,7 @@ import requests
 from hexbytes import HexBytes
 
 # web3 = Web3(Web3.HTTPProvider('https://arb-mainnet.g.alchemy.com/v2/nMhcsR5Fy0pEsnb9mvzEkcvQIH2iqD7V'))
-web3 = Web3(Web3.HTTPProvider('https://mainnet.infura.io/v3/e899352513784c518b64c5d546094322'))
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/D3Ae0SYhYKE3ws0xHQEJR_9642ZikpTU'))
 # web3 = Web3(Web3.WebsocketProvider('wss://eth-mainnet.alchemyapi.io/v2/tMUpxrBRib2XG1LhKdvGVql4LtGbdu58'))
 tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F', '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48']
 latest_block_filter = web3.eth.filter('latest')
@@ -107,6 +107,7 @@ def main():
             live_ethereum.update_block(block_data)
             # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
+
         current_connection_status = connection_health()
         live_ethereum.handle_health(current_connection_status)
 
