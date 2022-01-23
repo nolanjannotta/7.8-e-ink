@@ -89,7 +89,7 @@ class LIVEthereum:
         # block = f"{block_number}"
         price = "$3000.13"
         _hash = f"hash: {block_data['block_hash']}"
-        gas = f"gas price: {block_data['current_gas_price']} gwei"
+        gas = f"gas price: {block_data['average']} gwei"
         txs = f"{block_data['num_tx']} transactions"
 
         time = block_data['date_time'].strftime("%I:%M:%S %p")
