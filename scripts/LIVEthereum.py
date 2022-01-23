@@ -184,7 +184,7 @@ class LIVEthereum:
         x_value = (910 - pending_width) // 2
         draw.text((x_value, 1500),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
 
-        draw.text((20, 1600),message, font=self.get_font("Zag_Bold.ttf", 50))
+        draw.text((20, 1600),message, font=self.get_font("Zag_Bold.ttf", 40))
         self.display.draw_partial(constants.DisplayModes.DU)
 
  
