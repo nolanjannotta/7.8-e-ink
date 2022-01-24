@@ -132,7 +132,7 @@ def main():
                 'num_tx': str(num_tx),
                 'date_time': date_time,
                 'transactions': block.transactions,
-                'eth_burned': format(eth_burned, ".5f"),
+                'eth_burned': format(eth_burned, ".4f"),
                 # 'num_pending': pending,
                 'average' : calculate_average_gas(gas_price),
                 # 'is_listening': web3.net.listening,

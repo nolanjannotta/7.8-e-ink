@@ -159,10 +159,11 @@ class LIVEthereum:
         # draw.text((x_value,375), average_gas,font=self.get_font("Zag_Bold.ttf", 35))
 
         x_value = 125 + block_number_width + 20
-        draw.text((x_value,338), miner, font=self.get_font("Zag_Bold.ttf", 60))
-        
+        draw.text((x_value,330), miner, font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((x_value,390),gas,font=self.get_font("Zag_Bold.ttf", 60))
+
         x_value = 20 + price_width + 20
-        draw.text((x_value,470),gas,font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((x_value,470),average_gas,font=self.get_font("Zag_Bold.ttf", 60))
         draw.text((x_value,527),burned_time,font=self.get_font("Zag_Bold.ttf", 60))
 
 
