@@ -130,7 +130,7 @@ def main():
                 'current_gas_price': format(gas_price, ".3f"),
                 # 'num_tx': str(num_tx),
                 'date_time': date_time,
-                # 'transactions': block.transactions,
+                'transactions': block.transactions,
                 'eth_burned': format(eth_burned, ".5f"),
                 # 'num_pending': pending,
                 'average' : calculate_average_gas(gas_price),
