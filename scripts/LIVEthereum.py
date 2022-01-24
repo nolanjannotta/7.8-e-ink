@@ -57,7 +57,7 @@ class LIVEthereum:
 
         draw.line((1,1460,self.display.width,1460 ), width=4)
 
-        
+
         activity_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
         x_value = (910 - activity_width) // 2
         draw.text((x_value, 1470),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
@@ -255,7 +255,7 @@ class LIVEthereum:
 
  
     async def handle_transactions(self, draw, transactions, num_tx):
-        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
+        self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
 
         # collumns = num_tx //  25 if num_tx % 25 != 0 else num_tx //  25 + 1
 
