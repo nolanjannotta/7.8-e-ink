@@ -102,7 +102,7 @@ class LIVEthereum:
 
         # clearing image to white
         qr = qrcode.QRCode(
-            box_size=6,
+            box_size=7,
             border=0
         )
         qr.add_data(f'https://etherscan.io/block/{block_number}')
@@ -113,7 +113,7 @@ class LIVEthereum:
 
         # img.thumbnail(dims)
         # paste_coords = [dims[i] - img.size[i] for i in (0,1)] 
-        self.display.frame_buf.paste(img, (self.display.width - img.size[0], 600 - img.size[1] ))
+        self.display.frame_buf.paste(img, (self.display.width - img.size[0] - 20, 600 - img.size[1] ))
 
 
 
@@ -148,7 +148,7 @@ class LIVEthereum:
         price_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(price)
         time_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize(time)
 
-        gas = f'{gas} || {average_gas}'
+      
 
         burned_time = f'{burned} || {time}'
         
