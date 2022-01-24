@@ -85,8 +85,11 @@ def main():
 
     
     while True:
-        new_blocks = latest_block_filter.get_new_entries()
-        new_tx = address_filter.get_new_entries()
+        try:
+            new_blocks = latest_block_filter.get_new_entries()
+            new_tx = address_filter.get_new_entries()
+        except Exception as e:
+            live_ethereum.handle_exception(e)
 
 
         # pending_tx = pending_tx_filter.get_new_entries()
@@ -121,6 +124,8 @@ def main():
             block = web3.eth.get_block(block_hash.hex())
             date_time = datetime.fromtimestamp(block.timestamp)
             num_tx = len(block.transactions)
+
+
             pending -= num_tx
             
             

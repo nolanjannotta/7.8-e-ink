@@ -112,11 +112,17 @@ class LIVEthereum:
         img = qr.make_image()
         self.display.frame_buf.paste(img, (self.display.width - img.size[0] - 10, 600 - img.size[1] - 10))
 
+    def handle_exception(self, exception):
+        draw = ImageDraw.Draw(self.display.frame_buf)
+        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
+        draw.text((20, 700),str(exception), font=self.get_font("Zag_Bold.ttf", 60))
 
+
+        
+        pass
 
     async def update_block(self, block_data):
-        draw = ImageDraw.Draw(self.display.frame_buf)
-        task = asyncio.create_task(self.handle_transactions(draw,block_data['transactions'], block_data['num_tx']))
+        
 
         self.refresh_counter += 1
         
@@ -124,7 +130,8 @@ class LIVEthereum:
             self.clear_screen()
 
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
-
+        draw = ImageDraw.Draw(self.display.frame_buf)
+        task = asyncio.create_task(self.handle_transactions(draw,block_data['transactions'], block_data['num_tx']))
 
         # clears a portion of the screen where the number is with padding each side
         self.display.frame_buf.paste(0xFF, box=(0,254,self.display.width,596))
