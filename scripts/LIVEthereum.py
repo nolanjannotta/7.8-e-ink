@@ -113,7 +113,7 @@ class LIVEthereum:
 
         # img.thumbnail(dims)
         # paste_coords = [dims[i] - img.size[i] for i in (0,1)] 
-        self.display.frame_buf.paste(img, (self.display.width - img.size[0] - 20, 600 - img.size[1] - 10))
+        self.display.frame_buf.paste(img, (self.display.width - img.size[0] - 10, 600 - img.size[1] - 10))
 
 
 
