@@ -256,7 +256,7 @@ class LIVEthereum:
 
  
     async def handle_transactions(self, draw, transactions, num_tx):
-        self.print_message("loading...", draw)
+        await self.print_message("loading...", draw)
         
         
 
