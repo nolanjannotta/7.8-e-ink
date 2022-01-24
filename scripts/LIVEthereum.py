@@ -117,6 +117,11 @@ class LIVEthereum:
         img = qr.make_image()
         self.display.frame_buf.paste(img, (self.display.width - img.size[0] - 10, 600 - img.size[1] - 10))
 
+
+    async def handle_exception(self, message):
+        draw = ImageDraw.Draw(self.display.frame_buf)
+        await self.print_message(message, draw)
+
     async def print_message(self, message, draw):
         self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
         draw.text((20, 700),str(message), font=self.get_font("Zag_Bold.ttf", 60))
@@ -226,6 +231,8 @@ class LIVEthereum:
             draw.text((970, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
             self.display.draw_partial(constants.DisplayModes.DU)
         pass
+
+    
 
     def print_activity(self):
         draw = ImageDraw.Draw(self.display.frame_buf)
