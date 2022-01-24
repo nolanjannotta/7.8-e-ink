@@ -127,7 +127,6 @@ class LIVEthereum:
         block_number_width, _ = self.get_font("Zag_Bold.ttf", 180).getsize(block_data['block_number'])
         price_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(price)
         
-        # self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
         # self.handle_pending(draw, block_data['num_pending'])
 
         x_value = 125 + block_number_width + 20
@@ -152,6 +151,9 @@ class LIVEthereum:
         draw.text((125,320), str(block_data['block_number']), font=self.get_font("Zag_Bold.ttf", 180))
 
         self.display.draw_partial(constants.DisplayModes.DU)
+        
+        self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
+
 
         
 
