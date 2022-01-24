@@ -38,7 +38,7 @@ def calculate_average_gas(current_price):
         last_gas_prices.pop(0)
     last_gas_prices.append(current_price)
     
-    return format(sum(last_gas_prices) / len(last_gas_prices), ".3f")
+    return format(sum(last_gas_prices) / len(last_gas_prices), ".2f")
 
 
 def check_wifi():
@@ -128,7 +128,7 @@ def main():
             block_data = {
                 'block_number': str(block.number), 
                 'block_hash': str(block_hash.hex()),
-                'current_gas_price': format(gas_price, ".3f"),
+                'current_gas_price': format(gas_price, ".2f"),
                 'num_tx': str(num_tx),
                 'date_time': date_time,
                 'transactions': block.transactions,

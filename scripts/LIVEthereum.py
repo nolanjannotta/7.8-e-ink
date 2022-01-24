@@ -148,15 +148,15 @@ class LIVEthereum:
         price_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(price)
         time_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize(time)
 
-        gas = f'{gas}  ||  {average_gas}'
+        gas = f'{gas} || {average_gas}'
 
-        burned_time = f'{burned}  ||  {time}'
+        burned_time = f'{burned} || {time}'
         
         # self.handle_pending(draw, block_data['num_pending'])
 
         x_value = 20 + price_width + 20 + time_width + 20
         # draw.text((x_value,470), gas,font=self.get_font("Zag_Bold.ttf", 60))
-        draw.text((x_value,375), average_gas,font=self.get_font("Zag_Bold.ttf", 35))
+        # draw.text((x_value,375), average_gas,font=self.get_font("Zag_Bold.ttf", 35))
 
         x_value = 125 + block_number_width + 20
         draw.text((x_value,338), miner, font=self.get_font("Zag_Bold.ttf", 60))
