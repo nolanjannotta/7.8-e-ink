@@ -150,6 +150,7 @@ class LIVEthereum:
 
         draw.text((125,320), str(block_data['block_number']), font=self.get_font("Zag_Bold.ttf", 180))
 
+
         self.display.draw_partial(constants.DisplayModes.DU)
 
         self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
@@ -217,6 +218,8 @@ class LIVEthereum:
 
  
     def handle_transactions(self, draw, transactions, num_tx):
+        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
+
 
         # draw = ImageDraw.Draw(self.display.frame_buf)
         img_width = self.display.frame_buf.width
@@ -229,7 +232,6 @@ class LIVEthereum:
         starting_y = 660
 
         # clears a portion of the screen where the number is with padding each side
-        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
 
         text_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("transactions hashes:")
 
