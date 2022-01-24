@@ -151,7 +151,7 @@ class LIVEthereum:
         draw.text((125,320), str(block_data['block_number']), font=self.get_font("Zag_Bold.ttf", 180))
 
         self.display.draw_partial(constants.DisplayModes.DU)
-        
+
         self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
 
 
@@ -216,9 +216,9 @@ class LIVEthereum:
 
 
  
-    def handle_transactions(self, transactions, num_tx):
+    def handle_transactions(self, draw, transactions, num_tx):
 
-        draw = ImageDraw.Draw(self.display.frame_buf)
+        # draw = ImageDraw.Draw(self.display.frame_buf)
         img_width = self.display.frame_buf.width
 
 
