@@ -299,7 +299,7 @@ class LIVEthereum:
                 if tx == tx_hex:
                     text_width, _ = self.get_font("Zag_Bold.ttf", 35).getsize(f"{tx_draw}")
                     
-                    draw.rectangle((starting_x, starting_y, starting_x + text_width , starting_y + 35),  outline = 0, width=2)
+                    draw.rectangle((starting_x, starting_y, starting_x + text_width , starting_y + 30), radius=2,  outline = 0, width=4)
 
                     
 
