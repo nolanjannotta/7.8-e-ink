@@ -96,6 +96,20 @@ class LIVEthereum:
 
     # def connection_health(self, ):
 
+    def print_qr(self, block_number):
+       
+
+        # clearing image to white
+
+        img = qrcode.make(f'https://etherscan.io/block/{block_number}')
+        # TODO: this should be built-in
+        dims = (self.display.width, self.display.height)
+
+        img.thumbnail(dims)
+        paste_coords = [dims[i] - img.size[i] for i in (0,1)]  # align image with bottom of display
+        self.display.frame_buf.paste(img, paste_coords)
+
+
 
     def update_block(self, block_data):
         
@@ -107,6 +121,7 @@ class LIVEthereum:
 
 
         draw = ImageDraw.Draw(self.display.frame_buf)
+        self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
         
 
         # clears a portion of the screen where the number is with padding each side
@@ -150,10 +165,11 @@ class LIVEthereum:
 
         draw.text((125,320), str(block_data['block_number']), font=self.get_font("Zag_Bold.ttf", 180))
 
+        self.print_qr(block_data['block_number'])
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
-        self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
+        
 
 
         
