@@ -99,15 +99,15 @@ def main():
 
 
 
-        # for tx in new_tx: 
-        #     address = tx.address
-        #     index = tracking_address.index(address)
-        #     # tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
-        #     try: 
-        #         tracking_address_names[index]
-        #         live_ethereum.handle_activity_monitor(tracking_address_names[index],tx.transactionHash.hex() , tx.blockNumber)
-        #     except:
-        #          live_ethereum.handle_activity_monitor(try_ens(tx.address),tx.transactionHash.hex() , tx.blockNumber)
+        for tx in new_tx: 
+            address = tx.address
+            index = tracking_address.index(address)
+            # tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
+            try: 
+                tracking_address_names[index]
+                live_ethereum.handle_activity_monitor(tracking_address_names[index],tx.transactionHash.hex() , tx.blockNumber)
+            except:
+                 live_ethereum.handle_activity_monitor(try_ens(tx.address),tx.transactionHash.hex() , tx.blockNumber)
             
                
                 
@@ -157,15 +157,15 @@ def main():
             # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
 
-        for tx in new_tx: 
-            address = tx.address
-            index = tracking_address.index(address)
-            # tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
-            try: 
-                tracking_address_names[index]
-                live_ethereum.handle_activity_monitor(tracking_address_names[index],tx.transactionHash.hex() , tx.blockNumber)
-            except:
-                 live_ethereum.handle_activity_monitor(try_ens(tx.address),tx.transactionHash.hex() , tx.blockNumber)
+        # for tx in new_tx: 
+        #     address = tx.address
+        #     index = tracking_address.index(address)
+        #     # tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
+        #     try: 
+        #         tracking_address_names[index]
+        #         live_ethereum.handle_activity_monitor(tracking_address_names[index],tx.transactionHash.hex() , tx.blockNumber)
+        #     except:
+        #          live_ethereum.handle_activity_monitor(try_ens(tx.address),tx.transactionHash.hex() , tx.blockNumber)
             
       
 
