@@ -13,7 +13,7 @@ ens = ENS.fromWeb3(web3)
 
 tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F']
 
-tracking_address_names = ['dai']
+tracking_address_names = ['dai contract']
 
 
 latest_block_filter = web3.eth.filter('latest')
