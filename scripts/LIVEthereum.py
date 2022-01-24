@@ -163,7 +163,7 @@ class LIVEthereum:
             self.connection_health = current_connection_status
         
             draw = ImageDraw.Draw(self.display.frame_buf)
-            self.display.frame_buf.paste(0xFF, box=(925,1535,self.display.width,self.display.height))
+            self.display.frame_buf.paste(0xFF, box=(935,1535,self.display.width,self.display.height))
 
             # draw.rectangle((915,1535,self.display.width,self.display.height),  outline = 0, width=5)
 
