@@ -116,10 +116,9 @@ class LIVEthereum:
         img = qr.make_image()
         self.display.frame_buf.paste(img, (self.display.width - img.size[0] - 10, 600 - img.size[1] - 10))
 
-    def handle_exception(self, exception):
-        draw = ImageDraw.Draw(self.display.frame_buf)
-        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
-        draw.text((20, 700),str(exception), font=self.get_font("Zag_Bold.ttf", 60))
+    def print_message(self, message, draw):
+        self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
+        draw.text((20, 700),str(message), font=self.get_font("Zag_Bold.ttf", 60))
 
 
     async def update_block(self, block_data):
@@ -255,8 +254,9 @@ class LIVEthereum:
 
  
     async def handle_transactions(self, draw, transactions, num_tx):
-        self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
-        self.display.draw_partial(constants.DisplayModes.DU)
+        self.print_message("loading...", draw)
+        
+        
 
 
         # draw = ImageDraw.Draw(self.display.frame_buf)
@@ -291,7 +291,7 @@ class LIVEthereum:
 
             draw.text((starting_x, starting_y),tx_draw, font=self.get_font("Zag_Bold.ttf", 35))
             starting_y +=30
-        
+        self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
         text_width, _ = self.get_font("Zag_Bold.ttf", 43).getsize(f"showing {tx_counter} of {num_tx}")
 
         draw_x = (img_width - text_width)//2
