@@ -90,7 +90,7 @@ def main():
         # pending_tx = pending_tx_filter.get_new_entries()
         current_connection_status = connection_health()
         live_ethereum.handle_health(current_connection_status)
-        
+
         for tx in new_tx: 
             address = tx.address
             index = tracking_address.index(address)
@@ -107,8 +107,6 @@ def main():
             blocks_since_start += 1
 
             
-
-
             gas_price = web3.eth.gas_price / 10**9
             print(gas_price)
             
@@ -132,7 +130,7 @@ def main():
                 'current_gas_price': format(gas_price, ".3f"),
                 'num_tx': str(num_tx),
                 'date_time': date_time,
-                'transactions': block.transactions,
+                # 'transactions': block.transactions,
                 'eth_burned': format(eth_burned, ".5f"),
                 'num_pending': pending,
                 'average' : calculate_average_gas(gas_price),
@@ -141,6 +139,7 @@ def main():
                 'miner': try_ens(block.miner)
             }
             live_ethereum.update_block(block_data)
+            live_ethereum.handle_transactions(block.transactions, num_tx)
             # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
 
