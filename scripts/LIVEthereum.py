@@ -3,6 +3,7 @@ from time import sleep
 from IT8951 import constants
 from PIL import Image, ImageDraw, ImageFont
 from collections import deque
+import qrcode
 
 
 
@@ -121,7 +122,6 @@ class LIVEthereum:
 
 
         draw = ImageDraw.Draw(self.display.frame_buf)
-        self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
         
 
         # clears a portion of the screen where the number is with padding each side
@@ -168,6 +168,8 @@ class LIVEthereum:
         self.print_qr(block_data['block_number'])
 
         self.display.draw_partial(constants.DisplayModes.DU)
+        self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
+
 
         
 
