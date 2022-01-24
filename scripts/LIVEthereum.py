@@ -163,7 +163,7 @@ class LIVEthereum:
             self.connection_health = current_connection_status
         
             draw = ImageDraw.Draw(self.display.frame_buf)
-            self.display.frame_buf.paste(0xFF, box=(915,1535,self.display.width,self.display.height))
+            self.display.frame_buf.paste(0xFF, box=(925,1535,self.display.width,self.display.height))
 
             # draw.rectangle((915,1535,self.display.width,self.display.height),  outline = 0, width=5)
 
@@ -175,13 +175,13 @@ class LIVEthereum:
             wifi_is_connected = "-connected to internet" if current_connection_status['wifi_is_connected'] else "-not connected to internet"
 
             
-            draw.text((980, 1600),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
+            draw.text((970, 1600),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
 
            
             # draw.text((950, 1680),client_listening, font=self.get_font("Zag_Bold.ttf", 50))
             # draw.text((950, 1630),'listening for network connections.', font=self.get_font("Zag_Bold.ttf", 50))
             
-            draw.text((980, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
+            draw.text((970, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
             self.display.draw_partial(constants.DisplayModes.DU)
         pass
 
