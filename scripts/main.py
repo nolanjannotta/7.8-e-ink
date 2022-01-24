@@ -12,9 +12,9 @@ web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/ZiONpsBMj0B0
 ens = ENS.fromWeb3(web3)
 # web3 = Web3(Web3.WebsocketProvider('wss://eth-mainnet.alchemyapi.io/v2/tMUpxrBRib2XG1LhKdvGVql4LtGbdu58'))
 
-tracking_address = ['0x7eCb204feD7e386386CAb46a1fcB823ec5067aD5']
+tracking_address = ['0x7eCb204feD7e386386CAb46a1fcB823ec5067aD5', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D']
 
-tracking_address_names = ["meta card"]
+tracking_address_names = ["meta card", "BAYC"]
 
 
 latest_block_filter = web3.eth.filter('latest')
