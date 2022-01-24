@@ -13,6 +13,9 @@ ens = ENS.fromWeb3(web3)
 
 tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F']
 
+tracking_address_names = ['dai']
+
+
 latest_block_filter = web3.eth.filter('latest')
 
 # pending_tx_filter = web3.eth.filter('pending')
@@ -87,10 +90,18 @@ def main():
         # pending_tx = pending_tx_filter.get_new_entries()
 
         for tx in new_tx: 
+            address = tx.address
+            index = tracking_address.index(address)
             tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
-            live_ethereum.handle_activity_monitor(try_ens(tx.address),tx_hash , tx.blockNumber)
+            if tracking_address_names[index] != '':
+                live_ethereum.handle_activity_monitor(tracking_address_names[index],tx_hash , tx.blockNumber)
+            else:
+                live_ethereum.handle_activity_monitor(try_ens(tx.address),tx_hash , tx.blockNumber)
+                
 
-        # pending += len(pending_tx)
+        current_connection_status = connection_health()
+        live_ethereum.handle_health(current_connection_status)
+
         for block_hash in new_blocks:
             blocks_since_start += 1
 
@@ -132,8 +143,7 @@ def main():
             # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
 
-        current_connection_status = connection_health()
-        live_ethereum.handle_health(current_connection_status)
+
 
             
 
