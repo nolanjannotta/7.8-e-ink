@@ -122,7 +122,7 @@ class LIVEthereum:
         if self.refresh_counter == 10:
             self.clear_screen()
 
-        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
+        # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
         draw = ImageDraw.Draw(self.display.frame_buf)
         task = asyncio.create_task(self.handle_transactions(draw,block_data['transactions'], block_data['num_tx']))
 
@@ -247,7 +247,7 @@ class LIVEthereum:
 
  
     async def handle_transactions(self, draw, transactions, num_tx):
-        # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
+        self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
 
 
         # draw = ImageDraw.Draw(self.display.frame_buf)
