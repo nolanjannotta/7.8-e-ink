@@ -96,15 +96,17 @@ def main():
         current_connection_status = connection_health()
         live_ethereum.handle_health(current_connection_status)
 
+
+
         for tx in new_tx: 
             address = tx.address
             index = tracking_address.index(address)
-            tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
+            # tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
             try: 
                 tracking_address_names[index]
-                live_ethereum.handle_activity_monitor(tracking_address_names[index],tx_hash , tx.blockNumber)
+                live_ethereum.handle_activity_monitor(tracking_address_names[index],tx.transactionHash.hex() , tx.blockNumber)
             except:
-                 live_ethereum.handle_activity_monitor(try_ens(tx.address),tx_hash , tx.blockNumber)
+                 live_ethereum.handle_activity_monitor(try_ens(tx.address),tx.transactionHash.hex() , tx.blockNumber)
             
                
                 

@@ -19,6 +19,7 @@ class LIVEthereum:
         
         self.connection_health = {}
         self.activity_list = deque([])
+        self.current_tracked_tx = []
         
 
 
@@ -237,12 +238,15 @@ class LIVEthereum:
 
 
     def handle_activity_monitor(self, address, hash, block_number):
-        message = f"-activity from {address} in {hash} in block #{block_number}"
+        short_hash = f"{hash[:5]}...{hash[len(hash)-3:]}"
+        message = f"-activity from {address} in {short_hash} in block #{block_number}"
         self.display.frame_buf.paste(0xFF, box=(10, 1535, 925 , self.display.height))
+        self.current_tracked_tx.append(hash)
 
         if len(self.activity_list) < 7:
             if message not in self.activity_list:
                 self.activity_list.appendleft(message)
+                
         else:
             # draw.rectangle((10, 1535, 905 , self.display.height),  outline = 0, width=5)
             self.activity_list.pop()
@@ -290,6 +294,7 @@ class LIVEthereum:
             
 
             tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
+            # check for tracking addrress
 
             draw.text((starting_x, starting_y),tx_draw, font=self.get_font("Zag_Bold.ttf", 35))
             starting_y +=30
