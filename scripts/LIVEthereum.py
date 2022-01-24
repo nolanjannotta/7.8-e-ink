@@ -6,10 +6,10 @@ from collections import deque
 import qrcode
 
 
-qr = qrcode.QRCode(
-    box_size=2,
-    border=0
-)
+# qr = qrcode.QRCode(
+#     box_size=2,
+#     border=0
+# )
 
 
 
@@ -105,7 +105,7 @@ class LIVEthereum:
 
         # clearing image to white
 
-        img = qr.make(f'https://etherscan.io/block/{block_number}')
+        img = qrcode.make(f'https://etherscan.io/block/{block_number}')
         # TODO: this should be built-in
         # dims = (self.display.width, self.display.height)
 
