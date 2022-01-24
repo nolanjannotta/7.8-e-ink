@@ -61,12 +61,12 @@ class LIVEthereum:
 
 
         health_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("connection health:")
-        x_value = ((self.display.width + 910) // 2) - (health_width // 2)
+        x_value = ((self.display.width + 930) // 2) - (health_width // 2)
         draw.text((x_value, 1470),"connection health:", font=self.get_font("Zag_Bold.ttf", 60))
 
         
 
-        draw.line((910,1460, 910, self.display.height), width=4)
+        draw.line((930,1460, 930, self.display.height), width=4)
 
         img_width = self.display.frame_buf.width
         text_width, _ = self.get_font("Unique.ttf", 215).getsize(self.title)
@@ -175,13 +175,13 @@ class LIVEthereum:
             wifi_is_connected = "-connected to internet" if current_connection_status['wifi_is_connected'] else "-not connected to internet"
 
             
-            draw.text((950, 1600),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
+            draw.text((980, 1600),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
 
            
             # draw.text((950, 1680),client_listening, font=self.get_font("Zag_Bold.ttf", 50))
             # draw.text((950, 1630),'listening for network connections.', font=self.get_font("Zag_Bold.ttf", 50))
             
-            draw.text((950, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
+            draw.text((980, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
             self.display.draw_partial(constants.DisplayModes.DU)
         pass
 
