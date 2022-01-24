@@ -6,7 +6,10 @@ from collections import deque
 import qrcode
 
 
-
+qr = qrcode.QRCode(
+    box_size=2,
+    border=0
+)
 
 
 
@@ -102,12 +105,12 @@ class LIVEthereum:
 
         # clearing image to white
 
-        img = qrcode.make(f'https://etherscan.io/block/{block_number}')
+        img = qr.make(f'https://etherscan.io/block/{block_number}')
         # TODO: this should be built-in
         dims = (self.display.width, self.display.height)
 
         img.thumbnail(dims)
-        paste_coords = [dims[i] - img.size[i] for i in (0,1)]  # align image with bottom of display
+        paste_coords = [dims[i] - img.size[i] for i in (0,1)] 
         self.display.frame_buf.paste(img, (self.display.width - img.size[0], 600 - img.size[1] ))
 
 
