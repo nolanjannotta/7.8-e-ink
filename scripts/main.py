@@ -128,17 +128,18 @@ def main():
                 'block_number': str(block.number), 
                 'block_hash': str(block_hash.hex()),
                 'current_gas_price': format(gas_price, ".3f"),
-                'num_tx': str(num_tx),
+                # 'num_tx': str(num_tx),
                 'date_time': date_time,
                 # 'transactions': block.transactions,
                 'eth_burned': format(eth_burned, ".5f"),
-                'num_pending': pending,
+                # 'num_pending': pending,
                 'average' : calculate_average_gas(gas_price),
-                'is_listening': web3.net.listening,
+                # 'is_listening': web3.net.listening,
                 'num_last_blocks': num_last_blocks,
                 'miner': try_ens(block.miner)
             }
             live_ethereum.update_block(block_data)
+
             live_ethereum.handle_transactions(block.transactions, num_tx)
             # live_ethereum(pending_transactions)
             # live_ethereum.handle_transactions()
