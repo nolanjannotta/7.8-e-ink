@@ -146,11 +146,12 @@ class LIVEthereum:
         burned = f"{block_data['eth_burned']} eth burned"
         block_number_width, _ = self.get_font("Zag_Bold.ttf", 180).getsize(block_data['block_number'])
         price_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(price)
-        time_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(time)
+        time_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize(time)
         
         # self.handle_pending(draw, block_data['num_pending'])
 
         x_value = 20 + price_width + time_width + 20
+
         draw.text((x_value,470), gas,font=self.get_font("Zag_Bold.ttf", 60))
 
         draw.text((x_value,375), average_gas,font=self.get_font("Zag_Bold.ttf", 35))
