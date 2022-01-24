@@ -108,7 +108,7 @@ class LIVEthereum:
 
         img.thumbnail(dims)
         paste_coords = [dims[i] - img.size[i] for i in (0,1)]  # align image with bottom of display
-        self.display.frame_buf.paste(img, paste_coords)
+        self.display.frame_buf.paste(img, (self.display.width - img.size[0], 600 - img.size[1] ))
 
 
 
