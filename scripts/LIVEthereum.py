@@ -255,7 +255,8 @@ class LIVEthereum:
 
  
     async def handle_transactions(self, draw, transactions, num_tx):
-        self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
+        # self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
+        draw.rectangle((0,655,self.display.width,1458),  outline = 0, width=5)
 
         # collumns = num_tx //  25 if num_tx % 25 != 0 else num_tx //  25 + 1
 
@@ -265,13 +266,6 @@ class LIVEthereum:
         starting_x = 20
         starting_y = 660
 
-
-        # text_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("transactions hashes:")
-
-        # draw_x = (img_width - text_width)//2
-
-        # draw.text((draw_x, 605),"transaction hashes:", font=self.get_font("Zag_Bold.ttf", 60))
-        
         y_counter = 0
         x_counter = 0
         tx_counter = 0
