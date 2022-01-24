@@ -107,10 +107,10 @@ class LIVEthereum:
 
         img = qr.make(f'https://etherscan.io/block/{block_number}')
         # TODO: this should be built-in
-        dims = (self.display.width, self.display.height)
+        # dims = (self.display.width, self.display.height)
 
-        img.thumbnail(dims)
-        paste_coords = [dims[i] - img.size[i] for i in (0,1)] 
+        # img.thumbnail(dims)
+        # paste_coords = [dims[i] - img.size[i] for i in (0,1)] 
         self.display.frame_buf.paste(img, (self.display.width - img.size[0], 600 - img.size[1] ))
 
 
