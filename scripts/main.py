@@ -13,9 +13,9 @@ web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/ZiONpsBMj0B0
 ens = ENS.fromWeb3(web3)
 # web3 = Web3(Web3.WebsocketProvider('wss://eth-mainnet.alchemyapi.io/v2/tMUpxrBRib2XG1LhKdvGVql4LtGbdu58'))
 
-tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F', '0x7eCb204feD7e386386CAb46a1fcB823ec5067aD5', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', '0x5B93FF82faaF241c15997ea3975419DDDd8362c5']
+tracking_address = ['0x7eCb204feD7e386386CAb46a1fcB823ec5067aD5', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', '0x5B93FF82faaF241c15997ea3975419DDDd8362c5']
 
-tracking_address_names = ['dai',"meta card", "BAYC"]
+tracking_address_names = ["meta card", "BAYC"]
 # maybe blank names should be represented as empty strings??
 
 
