@@ -115,7 +115,8 @@ class LIVEthereum:
 
 
     async def update_block(self, block_data):
-        
+        draw = ImageDraw.Draw(self.display.frame_buf)
+        task = asyncio.create_task(self.handle_transactions(draw,block_data['transactions'], block_data['num_tx']))
 
         self.refresh_counter += 1
         
@@ -123,8 +124,7 @@ class LIVEthereum:
             self.clear_screen()
 
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
-        draw = ImageDraw.Draw(self.display.frame_buf)
-        task = asyncio.create_task(self.handle_transactions(draw,block_data['transactions'], block_data['num_tx']))
+
 
         # clears a portion of the screen where the number is with padding each side
         self.display.frame_buf.paste(0xFF, box=(0,254,self.display.width,596))
