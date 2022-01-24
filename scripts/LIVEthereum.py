@@ -255,10 +255,8 @@ class LIVEthereum:
 
  
     async def handle_transactions(self, draw, transactions, num_tx):
-        # self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
-        draw.rectangle((0,655,self.display.width,1458),  outline = 0, width=5)
-
-        # collumns = num_tx //  25 if num_tx % 25 != 0 else num_tx //  25 + 1
+        self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
+        self.display.draw_partial(constants.DisplayModes.DU)
 
 
         # draw = ImageDraw.Draw(self.display.frame_buf)
