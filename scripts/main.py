@@ -88,7 +88,9 @@ def main():
 
 
         # pending_tx = pending_tx_filter.get_new_entries()
-
+        current_connection_status = connection_health()
+        live_ethereum.handle_health(current_connection_status)
+        
         for tx in new_tx: 
             address = tx.address
             index = tracking_address.index(address)
@@ -99,8 +101,7 @@ def main():
                 live_ethereum.handle_activity_monitor(try_ens(tx.address),tx_hash , tx.blockNumber)
                 
 
-        current_connection_status = connection_health()
-        live_ethereum.handle_health(current_connection_status)
+
 
         for block_hash in new_blocks:
             blocks_since_start += 1
