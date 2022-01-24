@@ -4,6 +4,8 @@ from IT8951 import constants
 from PIL import Image, ImageDraw, ImageFont
 from collections import deque
 import qrcode
+import asyncio
+
 
 
 
@@ -112,7 +114,7 @@ class LIVEthereum:
 
 
 
-    def update_block(self, block_data):
+    async def update_block(self, block_data):
         
 
         self.refresh_counter += 1
@@ -122,7 +124,8 @@ class LIVEthereum:
 
 
         draw = ImageDraw.Draw(self.display.frame_buf)
-        
+
+        await self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
 
         # clears a portion of the screen where the number is with padding each side
         self.display.frame_buf.paste(0xFF, box=(0,254,self.display.width,596))
@@ -174,7 +177,7 @@ class LIVEthereum:
         self.print_qr(block_data['block_number'])
 
         self.display.draw_partial(constants.DisplayModes.DU)
-        self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
+        
 
 
         
@@ -241,7 +244,7 @@ class LIVEthereum:
 
 
  
-    def handle_transactions(self, draw, transactions, num_tx):
+    async def handle_transactions(self, draw, transactions, num_tx):
         self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
 
 

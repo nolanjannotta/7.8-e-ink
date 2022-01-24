@@ -5,6 +5,7 @@ from datetime import datetime
 import requests
 from hexbytes import HexBytes
 from ens import ENS
+import asyncio
 
 
 # web3 = Web3(Web3.HTTPProvider('https://arb-mainnet.g.alchemy.com/v2/nMhcsR5Fy0pEsnb9mvzEkcvQIH2iqD7V'))
@@ -142,7 +143,7 @@ def main():
                 'num_last_blocks': num_last_blocks,
                 'miner': try_ens(block.miner)
             }
-            live_ethereum.update_block(block_data)
+            asyncio.run(live_ethereum.update_block(block_data))
 
             # live_ethereum.handle_transactions(block.transactions, num_tx)
             # live_ethereum(pending_transactions)
