@@ -18,8 +18,9 @@ print(try_ens('0x7dA30048214E112Dbc41A645e37f9640ac62799E'))
 pending_tx_filter = web3.eth.filter('pending')
 
 
-tracking_address = ['0x6B175474E89094C44Da98b954EedeAC495271d0F']
+tracking_address = ['0x7eCb204feD7e386386CAb46a1fcB823ec5067aD5', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D','0x5B93FF82faaF241c15997ea3975419DDDd8362c5']
 
+tracking_address_names = ["meta card", "BAYC"]
 
 address_filter = web3.eth.filter({'address': tracking_address})
 
@@ -43,9 +44,15 @@ def main():
 
         # new_tx = web3.eth.get_filter_changes(address_filter.filter_id)
 
-        for txs in new_tx:
-            print(txs.address)
-            
+        for tx in new_tx: 
+            address = tx.address
+            index = tracking_address.index(address)
+            tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
+            try: 
+                tracking_address_names[index]
+                live_ethereum.handle_activity_monitor(tracking_address_names[index],tx_hash , tx.blockNumber)
+            except:
+                 live_ethereum.handle_activity_monitor(try_ens(tx.address),tx_hash , tx.blockNumber)
             
         
 
