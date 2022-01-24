@@ -139,7 +139,7 @@ class LIVEthereum:
         price = "$3000.13"
         _hash = f"hash: {block_data['block_hash']}"
         gas = f"gas: {block_data['current_gas_price']} gwei"
-        average_gas = f"last {block_data['num_last_blocks']} block average: {block_data['average']} gwei"
+        average_gas = f"average: {block_data['average']} gwei"
         miner = f"miner: {block_data['miner']}"
 
         time = block_data['date_time'].strftime("%I:%M:%S %p" )
@@ -148,7 +148,9 @@ class LIVEthereum:
         price_width, _ = self.get_font("Zag_Bold.ttf", 130).getsize(price)
         time_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize(time)
 
-        gas_time = f'{time}  ||  {gas}'
+        gas = f'{gas}  ||  {average_gas}'
+
+        burned_time = f'{burned}  ||  {time}'
         
         # self.handle_pending(draw, block_data['num_pending'])
 
@@ -160,8 +162,8 @@ class LIVEthereum:
         draw.text((x_value,338), miner, font=self.get_font("Zag_Bold.ttf", 60))
         
         x_value = 20 + price_width + 20
-        draw.text((x_value,470),gas_time,font=self.get_font("Zag_Bold.ttf", 60))
-        draw.text((x_value,527),burned,font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((x_value,470),gas,font=self.get_font("Zag_Bold.ttf", 60))
+        draw.text((x_value,527),burned_time,font=self.get_font("Zag_Bold.ttf", 60))
 
 
         draw.text((20,473),price,font=self.get_font("Zag_Bold.ttf", 130))
