@@ -118,9 +118,6 @@ class LIVEthereum:
         draw.text((20, 700),str(exception), font=self.get_font("Zag_Bold.ttf", 60))
 
 
-        
-        pass
-
     async def update_block(self, block_data):
         
 
@@ -256,14 +253,11 @@ class LIVEthereum:
     async def handle_transactions(self, draw, transactions, num_tx):
         self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
 
+        # collumns = num_tx //  25 if num_tx % 25 != 0 else num_tx //  25 + 1
+
 
         # draw = ImageDraw.Draw(self.display.frame_buf)
         img_width = self.display.frame_buf.width
-
-
-
-        
-
         starting_x = 20
         starting_y = 660
 
@@ -295,7 +289,6 @@ class LIVEthereum:
 
                 break
             
-            # self.display.draw_partial(constants.DisplayModes.DU)
 
             
 
