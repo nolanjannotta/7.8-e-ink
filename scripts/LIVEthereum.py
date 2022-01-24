@@ -295,6 +295,13 @@ class LIVEthereum:
 
             tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
             # check for tracking addrress
+            for tx in self.current_tracked_tx:
+                if tx == tx_hex:
+                    text_width, _ = self.get_font("Zag_Bold.ttf", 35).getsize(f"{tx_draw}")
+                    
+                    draw.rectangle((starting_x, starting_y, starting_x + text_width , starting_y + 35),  outline = 0, width=5)
+
+                    
 
             draw.text((starting_x, starting_y),tx_draw, font=self.get_font("Zag_Bold.ttf", 35))
             starting_y +=30
