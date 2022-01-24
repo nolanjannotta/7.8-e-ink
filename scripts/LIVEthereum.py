@@ -102,8 +102,8 @@ class LIVEthereum:
 
         # clearing image to white
         qr = qrcode.QRCode(
-            box_size=10,
-            border=3
+            box_size=50,
+            border=0
         )
         qr.add_data(f'https://etherscan.io/block/{block_number}')
         qr.make()
