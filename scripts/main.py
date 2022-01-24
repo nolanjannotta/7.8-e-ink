@@ -128,7 +128,7 @@ def main():
                 'block_number': str(block.number), 
                 'block_hash': str(block_hash.hex()),
                 'current_gas_price': format(gas_price, ".3f"),
-                # 'num_tx': str(num_tx),
+                'num_tx': str(num_tx),
                 'date_time': date_time,
                 'transactions': block.transactions,
                 'eth_burned': format(eth_burned, ".5f"),
