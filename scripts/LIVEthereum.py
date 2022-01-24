@@ -256,7 +256,7 @@ class LIVEthereum:
 
  
     async def handle_transactions(self, draw, transactions, num_tx):
-        await self.print_message("loading...", draw)
+        self.print_message("loading...", draw)
         
         
 
@@ -285,7 +285,7 @@ class LIVEthereum:
             if x_counter == 9:
 
                 break
-            
+             
 
             
 
