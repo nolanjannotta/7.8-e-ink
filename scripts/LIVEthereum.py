@@ -108,11 +108,6 @@ class LIVEthereum:
         qr.add_data(f'https://etherscan.io/block/{block_number}')
         qr.make()
         img = qr.make_image()
-        # TODO: this should be built-in
-        # dims = (self.display.width, self.display.height)
-
-        # img.thumbnail(dims)
-        # paste_coords = [dims[i] - img.size[i] for i in (0,1)] 
         self.display.frame_buf.paste(img, (self.display.width - img.size[0] - 10, 600 - img.size[1] - 10))
 
 
@@ -139,7 +134,7 @@ class LIVEthereum:
         price = "$3000.13"
         _hash = f"hash: {block_data['block_hash']}"
         gas = f"gas: {block_data['current_gas_price']} gwei"
-        average_gas = f"average: {block_data['average']} gwei"
+        average_gas = f"{block_data['num_last_blocks']} block average: {block_data['average']} gwei"
         miner = f"miner: {block_data['miner']}"
 
         time = block_data['date_time'].strftime("%I:%M:%S %p" )
