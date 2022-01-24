@@ -57,7 +57,7 @@ class LIVEthereum:
 
         draw.line((1,1460,self.display.width,1460 ), width=4)
 
-
+        
         activity_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
         x_value = (910 - activity_width) // 2
         draw.text((x_value, 1470),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
@@ -67,7 +67,11 @@ class LIVEthereum:
         x_value = ((self.display.width + 930) // 2) - (health_width // 2)
         draw.text((x_value, 1470),"connection health:", font=self.get_font("Zag_Bold.ttf", 60))
 
-        
+        hashes_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("transactions hashes:")
+        draw_x = (self.display.width - hashes_width)//2
+        draw.text((draw_x, 605),"transaction hashes:", font=self.get_font("Zag_Bold.ttf", 60))
+
+
 
         draw.line((930,1460, 930, self.display.height), width=4)
 
@@ -261,13 +265,12 @@ class LIVEthereum:
         starting_x = 20
         starting_y = 660
 
-        # clears a portion of the screen where the number is with padding each side
 
-        text_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("transactions hashes:")
+        # text_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("transactions hashes:")
 
-        draw_x = (img_width - text_width)//2
+        # draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 605),"transaction hashes:", font=self.get_font("Zag_Bold.ttf", 60))
+        # draw.text((draw_x, 605),"transaction hashes:", font=self.get_font("Zag_Bold.ttf", 60))
         
         y_counter = 0
         x_counter = 0
