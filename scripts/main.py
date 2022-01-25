@@ -63,7 +63,7 @@ def connection_health():
     }
 
 
-def main():
+async def main():
 
     network_id = web3.eth.chain_id
     client_version = web3.clientVersion
@@ -147,7 +147,7 @@ def main():
                 'num_last_blocks': num_last_blocks,
                 'miner': try_ens(block.miner)
             }
-            live_ethereum.update_block(block_data)
+            await live_ethereum.update_block(block_data)
 
             # live_ethereum.handle_transactions(block.transactions, num_tx)
             # live_ethereum(pending_transactions)
