@@ -130,6 +130,7 @@ class LIVEthereum:
     def loading_message(self):
         draw = ImageDraw.Draw(self.display.frame_buf)
         self.print_message("loading tx...", draw)
+        self.display.draw_partial(constants.DisplayModes.DU)
 
 
     def update_block(self, block_data):
