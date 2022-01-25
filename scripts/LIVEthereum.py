@@ -270,6 +270,10 @@ class LIVEthereum:
         self.print_activity()
 
 
+    # def arrange_transactions():
+
+    #     pass
+
 
 
  
