@@ -152,7 +152,6 @@ def main():
             }
 
             live_ethereum.update_block(block_data)
-            live_ethereum.handle_transactions(block.transactions)
 
             # live_ethereum.handle_transactions(block.transactions, num_tx)
             # live_ethereum(pending_transactions)
