@@ -199,9 +199,9 @@ class LIVEthereum:
         self.print_qr(block_data['block_number'])
         
 
-        self.handle_transactions(block_data['transactions'])
+
         self.display.draw_partial(constants.DisplayModes.DU)
-        
+        self.handle_transactions(block_data['transactions'])
         
 
 
