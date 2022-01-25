@@ -270,8 +270,13 @@ class LIVEthereum:
         self.print_activity()
 
 
-    def arrange_txs(self,transactions, draw):
-        
+
+
+ 
+    def handle_transactions(self, transactions):
+        draw = ImageDraw.Draw(self.display.frame_buf)
+
+
         img_width = self.display.frame_buf.width
         starting_x = 20
         starting_y = 660
@@ -279,7 +284,9 @@ class LIVEthereum:
         y_counter = 0
         x_counter = 0
         tx_counter = 0
-
+    
+        num_pages =  len(transactions) // 25
+        self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
         for i in transactions:
             tx_hex = i.hex()
             tx_counter +=1
@@ -297,14 +304,11 @@ class LIVEthereum:
                 break
              
 
-            tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
-
             
 
-            self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
+            tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
             # check for tracking addrress
             for tx in self.current_tracked_tx:
-
                 if tx == tx_hex:
                     text_width, _ = self.get_font("Zag_Bold.ttf", 35).getsize(f"{tx_draw}")
                     
@@ -322,35 +326,6 @@ class LIVEthereum:
         draw.text((draw_x, 1410), f"showing {tx_counter} of {len(transactions)}", font=self.get_font("Zag_Bold.ttf", 52))
         
         self.display.draw_partial(constants.DisplayModes.DU)
-
-
- 
-    def handle_transactions(self, transactions):
-        draw = ImageDraw.Draw(self.display.frame_buf)
-        self.arrange_txs(transactions, draw)
-        # stopping_tx_index = 0
-        # num_tx = len(transactions)
-        # num_pages = num_tx // 25 + 1 if num_tx % 25 > 0 else num_tx // 25
-
-        # if num_pages == 1:
-
-        #     self.arrange_txs(transactions, draw)
-        # else:
-        #     for page in range(num_pages):
-
-        #         if page < num_pages:
-        #             stopping_tx_index += 225
-        #             tx_per_page = transactions[:stopping_tx_index]
-        #             self.arrange_txs(tx_per_page, draw)
-
-        #         if page == num_pages:
-        #             tx_per_page = transactions[num_tx - 225:]
-        #             self.arrange_txs(tx_per_page, draw)
-               
-        #         sleep(2)
-
-        
-        
         
 
 
