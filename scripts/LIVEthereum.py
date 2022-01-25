@@ -270,9 +270,9 @@ class LIVEthereum:
         self.print_activity()
 
 
-    def handle_transactions(self, transaction_pages):
+    async def handle_transactions(self, transaction_pages):
         
-        self.print_transactions(transaction_pages[0])
+        await self.print_transactions(transaction_pages[0])
 
         
 
