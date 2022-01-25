@@ -327,26 +327,27 @@ class LIVEthereum:
  
     def handle_transactions(self, transactions):
         draw = ImageDraw.Draw(self.display.frame_buf)
-        stopping_tx_index = 0
-        num_tx = len(transactions)
-        num_pages = num_tx // 25 + 1 if num_tx % 25 > 0 else num_tx // 25
+        self.arrange_txs(transactions, draw)
+        # stopping_tx_index = 0
+        # num_tx = len(transactions)
+        # num_pages = num_tx // 25 + 1 if num_tx % 25 > 0 else num_tx // 25
 
-        if num_pages == 1:
+        # if num_pages == 1:
 
-            self.arrange_txs(transactions, draw)
-        else:
-            for page in range(num_pages):
+        #     self.arrange_txs(transactions, draw)
+        # else:
+        #     for page in range(num_pages):
 
-                if page < num_pages:
-                    stopping_tx_index += 225
-                    tx_per_page = transactions[:stopping_tx_index]
-                    self.arrange_txs(tx_per_page, draw)
+        #         if page < num_pages:
+        #             stopping_tx_index += 225
+        #             tx_per_page = transactions[:stopping_tx_index]
+        #             self.arrange_txs(tx_per_page, draw)
 
-                if page == num_pages:
-                    tx_per_page = transactions[num_tx - 225:]
-                    self.arrange_txs(tx_per_page, draw)
+        #         if page == num_pages:
+        #             tx_per_page = transactions[num_tx - 225:]
+        #             self.arrange_txs(tx_per_page, draw)
                
-                sleep(2)
+        #         sleep(2)
 
         
         
