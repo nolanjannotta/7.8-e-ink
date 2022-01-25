@@ -337,13 +337,15 @@ class LIVEthereum:
         else:
             for page in range(num_pages):
 
-                if page == num_pages:
-                    tx_per_page = transactions[num_tx - 225:]
-                    self.arrange_txs(tx_per_page, draw)
-                else:
+                if page < num_pages:
                     stopping_tx_index += 225
                     tx_per_page = transactions[:stopping_tx_index]
                     self.arrange_txs(tx_per_page, draw)
+
+                if page == num_pages:
+                    tx_per_page = transactions[num_tx - 225:]
+                    self.arrange_txs(tx_per_page, draw)
+               
                 sleep(2)
 
         
