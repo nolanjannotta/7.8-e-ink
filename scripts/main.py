@@ -82,9 +82,9 @@ def format_tx(transactions):
     for page in range(num_pages):
         if page < num_pages:
             stopping_point += 225
-            tx_per_page.append(transactions[:stopping_point])
+            tx_per_page.append([transactions[:stopping_point]])
         else:
-            tx_per_page.append(transactions[stopping_point:])
+            tx_per_page.append([transactions[stopping_point:]])
 
     return tx_per_page
 
