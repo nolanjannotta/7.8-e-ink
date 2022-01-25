@@ -133,7 +133,8 @@ class LIVEthereum:
         loading_width, _ = self.get_font("Zag_Bold.ttf", 70).getsize(message)
         x_value = (910 - loading_width) // 2
 
-        draw.text((20, 700), message, font=self.get_font("Zag_Bold.ttf", 70))
+        draw.text((x_value, 800), message, font=self.get_font("Zag_Bold.ttf", 70))
+        self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
         self.display.draw_partial(constants.DisplayModes.DU)
 
 
