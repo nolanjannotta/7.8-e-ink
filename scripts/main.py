@@ -5,6 +5,7 @@ from datetime import datetime
 import requests
 from hexbytes import HexBytes
 from ens import ENS
+import multiprocessing
 import asyncio
 
 
@@ -151,8 +152,14 @@ def main():
                 'miner': try_ens(block.miner)
             }
 
-            live_ethereum.update_block(block_data)
-            live_ethereum.handle_transactions(block.transactions)
+            p1 = multiprocessing.Process(live_ethereum.update_block, args = [block_data])
+            p2 = multiprocessing.Process(live_ethereum.handle_transactions, args = [block.transactions])
+
+            p1.start()
+            p2.start()
+
+            p1.join()
+            p1.join()
 
             # live_ethereum.handle_transactions(block.transactions, num_tx)
             # live_ethereum(pending_transactions)
