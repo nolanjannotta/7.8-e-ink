@@ -145,6 +145,10 @@ def main():
 
         except Exception as e:
             live_ethereum.handle_exception(e)
+            time.sleep(3)
+            current_connection_status = connection_health()
+            live_ethereum.handle_health(current_connection_status)
+
             break
 
         time.sleep(1)

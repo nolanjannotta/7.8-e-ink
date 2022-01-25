@@ -97,6 +97,7 @@ class LIVEthereum:
         print('Clearing display...')
         self.display.clear()
         print("cleared")
+
         self.layout_init()
         self.print_activity()
         self.connection_health = {} # clear out the connection health object so that the function detects a difference and draw on the screen
@@ -220,31 +221,20 @@ class LIVEthereum:
 
     def handle_health(self, current_connection_status):
 
-        if current_connection_status != self.connection_health:
-            self.connection_health = current_connection_status
-        
-            draw = ImageDraw.Draw(self.display.frame_buf)
-            self.display.frame_buf.paste(0xFF, box=(935,1535,self.display.width,self.display.height))
+       
+        draw = ImageDraw.Draw(self.display.frame_buf)
+        self.display.frame_buf.paste(0xFF, box=(935,1535,self.display.width,self.display.height))
 
-            # draw.rectangle((915,1535,self.display.width,self.display.height),  outline = 0, width=5)
+        web3_connection = "-connected to node" if current_connection_status['is_connected'] else "-not connected to node"
 
-            web3_connection = "-connected to node" if current_connection_status['is_connected'] else "-not connected to node"
-
-            client_listening = "-client is actively" if current_connection_status['client_is_listening'] else "-client is not actively listening for network connections."
-
-
-            wifi_is_connected = "-connected to internet" if current_connection_status['wifi_is_connected'] else "-not connected to internet"
+        wifi_is_connected = "-connected to internet" if current_connection_status['wifi_is_connected'] else "-not connected to internet"
 
             
-            draw.text((970, 1600),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
+        draw.text((970, 1600),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
 
-           
-            # draw.text((950, 1680),client_listening, font=self.get_font("Zag_Bold.ttf", 50))
-            # draw.text((950, 1630),'listening for network connections.', font=self.get_font("Zag_Bold.ttf", 50))
-            
-            draw.text((970, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
-            self.display.draw_partial(constants.DisplayModes.DU)
-        pass
+
+        draw.text((970, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
+        self.display.draw_partial(constants.DisplayModes.DU)
 
     
 
@@ -280,13 +270,8 @@ class LIVEthereum:
         self.print_activity()
 
 
-
-
- 
-    def handle_transactions(self, transactions):
-        draw = ImageDraw.Draw(self.display.frame_buf)
-
-
+    def arrange_txs(self,transactions, draw):
+        
         img_width = self.display.frame_buf.width
         starting_x = 20
         starting_y = 660
@@ -294,7 +279,7 @@ class LIVEthereum:
         y_counter = 0
         x_counter = 0
         tx_counter = 0
-        self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
+
         for i in transactions:
             tx_hex = i.hex()
             tx_counter +=1
@@ -312,11 +297,14 @@ class LIVEthereum:
                 break
              
 
+            tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
+
             
 
-            tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
+            self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
             # check for tracking addrress
             for tx in self.current_tracked_tx:
+
                 if tx == tx_hex:
                     text_width, _ = self.get_font("Zag_Bold.ttf", 35).getsize(f"{tx_draw}")
                     
@@ -334,6 +322,32 @@ class LIVEthereum:
         draw.text((draw_x, 1410), f"showing {tx_counter} of {len(transactions)}", font=self.get_font("Zag_Bold.ttf", 52))
         
         self.display.draw_partial(constants.DisplayModes.DU)
+
+
+ 
+    def handle_transactions(self, transactions):
+        draw = ImageDraw.Draw(self.display.frame_buf)
+        stopping_tx_index = 0
+        num_tx = len(transactions)
+        num_pages = num_tx // 25 + 1 if num_tx % 25 > 0 else num_tx // 25
+
+        if num_pages == 1:
+
+            self.arrange_txs(transactions, draw)
+        else:
+            for page in range(num_pages):
+
+                if page == num_pages:
+                    tx_per_page = transactions[num_tx - 225:]
+                    self.arrange_txs(tx_per_page, draw)
+                else:
+                    stopping_tx_index += 225
+                    tx_per_page = transactions[:stopping_tx_index]
+                    self.arrange_txs(tx_per_page, draw)
+                sleep(2)
+
+        
+        
         
 
 

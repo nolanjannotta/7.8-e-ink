@@ -29,30 +29,28 @@ address_filter = web3.eth.filter({'address': tracking_address})
 
 
 
-def main():
+def main(num_tx):
 
-    not_found = []
-    pending_changes = 0
-    new_pending = 0
-
+    num_pages = (num_tx // 226) + 1 if num_tx % 226 > 0 else num_tx // 226
+    print(num_pages)
 
 
-    while True:
+    # while True:
 
 
-        new_tx = address_filter.get_new_entries()
+    #     new_tx = address_filter.get_new_entries()
 
         # new_tx = web3.eth.get_filter_changes(address_filter.filter_id)
 
-        for tx in new_tx: 
-            address = tx.address
-            index = tracking_address.index(address)
-            tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
-            try: 
-                tracking_address_names[index]
-                live_ethereum.handle_activity_monitor(tracking_address_names[index],tx_hash , tx.blockNumber)
-            except:
-                 live_ethereum.handle_activity_monitor(try_ens(tx.address),tx_hash , tx.blockNumber)
+        # for tx in new_tx: 
+        #     address = tx.address
+        #     index = tracking_address.index(address)
+        #     tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
+        #     try: 
+        #         tracking_address_names[index]
+        #         live_ethereum.handle_activity_monitor(tracking_address_names[index],tx_hash , tx.blockNumber)
+        #     except:
+        #          live_ethereum.handle_activity_monitor(try_ens(tx.address),tx_hash , tx.blockNumber)
             
         
 
@@ -87,11 +85,11 @@ def main():
         #     # pending_changes -= num_tx
         #     new_pending -= num_tx
 
-        time.sleep(1)
+        # time.sleep(1)
 
 
 
         
 
 if __name__ == "__main__":
-    main()
+    main(13)
