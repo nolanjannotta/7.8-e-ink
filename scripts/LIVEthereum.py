@@ -127,6 +127,9 @@ class LIVEthereum:
         draw.text((20, 700),str(message), font=self.get_font("Zag_Bold.ttf", 60))
         self.display.draw_partial(constants.DisplayModes.DU)
 
+    def loading_message(self):
+        draw = ImageDraw.Draw(self.display.frame_buf)
+        self.print_message("loading tx...", draw)
 
 
     def update_block(self, block_data):
@@ -136,6 +139,8 @@ class LIVEthereum:
         
         if self.refresh_counter == 10:
             self.clear_screen()
+
+        
 
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
         draw = ImageDraw.Draw(self.display.frame_buf)
@@ -195,6 +200,7 @@ class LIVEthereum:
 
 
         self.display.draw_partial(constants.DisplayModes.DU)
+        self.loading_message
         
 
 
@@ -272,8 +278,8 @@ class LIVEthereum:
  
     def handle_transactions(self, transactions):
         
-        draw = ImageDraw.Draw(self.display.frame_buf)
-        self.print_message("loading tx...", draw)
+
+
         img_width = self.display.frame_buf.width
         starting_x = 20
         starting_y = 660
