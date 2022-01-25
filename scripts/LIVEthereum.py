@@ -130,10 +130,10 @@ class LIVEthereum:
     def loading_message(self, block_number):
         draw = ImageDraw.Draw(self.display.frame_buf)
         message = f"loading transactions for #{block_number}..."
-        loading_width, _ = self.get_font("Zag_Bold.ttf", 70).getsize(message)
-        x_value = (910 - loading_width) // 2
+        loading_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize(message)
+        x_value = (self.display.width - loading_width) // 2
         self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
-        draw.text((x_value, 800), message, font=self.get_font("Zag_Bold.ttf", 70))
+        draw.text((x_value, 800), message, font=self.get_font("Zag_Bold.ttf", 60))
         
         # self.display.draw_partial(constants.DisplayModes.DU)
 
