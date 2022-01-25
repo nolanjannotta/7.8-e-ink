@@ -277,7 +277,7 @@ class LIVEthereum:
 
  
     def handle_transactions(self, transactions):
-        
+        draw = ImageDraw.Draw(self.display.frame_buf)
 
 
         img_width = self.display.frame_buf.width
