@@ -208,7 +208,7 @@ class LIVEthereum:
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
-        self.handle_transactions(block_data['transactions'])
+        await self.handle_transactions(block_data['transactions'])
         
 
 
