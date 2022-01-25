@@ -139,7 +139,7 @@ class LIVEthereum:
         
         if self.refresh_counter == 10:
             self.clear_screen()
-
+        self.loading_message        
         
 
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
@@ -200,7 +200,7 @@ class LIVEthereum:
 
 
         self.display.draw_partial(constants.DisplayModes.DU)
-        self.loading_message
+        
         
 
 
