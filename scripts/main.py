@@ -149,6 +149,7 @@ def main():
             current_connection_status = connection_health()
             live_ethereum.handle_health(current_connection_status)
 
+
             break
 
         time.sleep(1)
@@ -160,5 +161,8 @@ if __name__ == "__main__":
 
         main()
     except Exception as e:
+
         print(e)
+        time.sleep(2)
+        main()
 
