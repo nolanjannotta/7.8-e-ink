@@ -73,6 +73,21 @@ def activity_monitor(live_ethereum, new_tx):
             live_ethereum.handle_activity_monitor(try_ens(tx.address),tx.transactionHash.hex() , tx.blockNumber)
         
 
+def format_tx(transactions):
+    num_tx = len(transactions)
+
+    stopping_point = 0
+    tx_per_page = []
+    num_pages = (num_tx // 226) + 1 if num_tx % 226 > 0 else num_tx // 226
+
+    for page in range(num_pages):
+        if page < num_pages:
+            stopping_point += 225
+            tx_per_page.append(transactions[:stopping_point])
+        else:
+            tx_per_page.append(transactions[stopping_point:])
+
+    return tx_per_page
 
 
 def main():
