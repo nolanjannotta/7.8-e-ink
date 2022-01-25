@@ -115,7 +115,6 @@ def main():
 
 
         for block_hash in new_blocks:
-            blocks_since_start += 1
 
             
             gas_price = web3.eth.gas_price / 10**9
@@ -132,9 +131,6 @@ def main():
             pending -= num_tx
             
             
-
-            # gas_since_start += gas_price
-            print("average gas: ", gas_since_start / blocks_since_start)
             eth_burned = (block.baseFeePerGas * block.gasUsed) / 10**18
 
             block_data = {
@@ -151,7 +147,7 @@ def main():
                 'num_last_blocks': num_last_blocks,
                 'miner': try_ens(block.miner)
             }
-            asyncio.run(live_ethereum.update_block(block_data))
+            live_ethereum.update_block(block_data)
 
             # live_ethereum.handle_transactions(block.transactions, num_tx)
             # live_ethereum(pending_transactions)
