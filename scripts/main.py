@@ -114,7 +114,7 @@ def main():
                 
                 
                 print("new block", block_hash.hex())
-                print("3", {block.number})
+                print("#", {block.number})
             
                 
 
