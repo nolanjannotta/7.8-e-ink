@@ -270,14 +270,14 @@ class LIVEthereum:
         self.print_activity()
 
 
-    async def handle_transactions(self, transaction_pages):
-        num_pages = len(transaction_pages)
-        if num_pages == 1:
-            await self.print_transactions(transaction_pages[0])
-        else:
-            for page in num_pages:
-                await self.print_transactions(transaction_pages[page - 1])
-                sleep(1)
+    # async def handle_transactions(self, transaction_pages):
+    #     num_pages = len(transaction_pages)
+    #     if num_pages == 1:
+    #         await self.print_transactions(transaction_pages[0])
+    #     else:
+    #         for page in num_pages:
+    #             await self.print_transactions(transaction_pages[page - 1])
+    #             sleep(1)
 
         
 
@@ -285,7 +285,7 @@ class LIVEthereum:
 
 
  
-    async def print_transactions(self, transactions):
+    async def handle_transactions(self, transactions):
         draw = ImageDraw.Draw(self.display.frame_buf)
 
 
