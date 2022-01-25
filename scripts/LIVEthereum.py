@@ -139,7 +139,7 @@ class LIVEthereum:
         # self.display.draw_partial(constants.DisplayModes.DU)
 
 
-    def update_block(self, block_data):
+    async def update_block(self, block_data):
         
 
         self.refresh_counter += 1
@@ -270,15 +270,17 @@ class LIVEthereum:
         self.print_activity()
 
 
-    # def arrange_transactions():
+    def handle_transactions(self, transaction_pages):
+        
+        self.print_transactions(transaction_pages[0])
 
-    #     pass
+        
 
 
 
 
  
-    def handle_transactions(self, transactions):
+    async def print_transactions(self, transactions):
         draw = ImageDraw.Draw(self.display.frame_buf)
 
 
@@ -290,7 +292,6 @@ class LIVEthereum:
         x_counter = 0
         tx_counter = 0
     
-        num_pages =  len(transactions) // 25
         self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
         for i in transactions:
             tx_hex = i.hex()

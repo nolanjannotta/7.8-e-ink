@@ -156,7 +156,7 @@ def main():
                     'miner': try_ens(block.miner)
                 }
 
-                live_ethereum.update_block(block_data)
+                asyncio.run(live_ethereum.update_block(block_data))
 
         except Exception as e:
             live_ethereum.handle_exception(e)
