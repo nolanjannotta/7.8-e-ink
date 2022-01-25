@@ -118,18 +118,18 @@ class LIVEthereum:
         self.display.frame_buf.paste(img, (self.display.width - img.size[0] - 10, 600 - img.size[1] - 10))
 
 
-    async def handle_exception(self, message):
+    def handle_exception(self, message):
         draw = ImageDraw.Draw(self.display.frame_buf)
-        await self.print_message(message, draw)
+        self.print_message(message, draw)
 
-    async def print_message(self, message, draw):
+    def print_message(self, message, draw):
         self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
         draw.text((20, 700),str(message), font=self.get_font("Zag_Bold.ttf", 60))
         self.display.draw_partial(constants.DisplayModes.DU)
 
 
 
-    async def update_block(self, block_data):
+    def update_block(self, block_data):
         
 
         self.refresh_counter += 1
@@ -269,8 +269,8 @@ class LIVEthereum:
 
 
  
-    async def handle_transactions(self, draw, transactions, num_tx):
-        await self.print_message("loading...", draw)
+    def handle_transactions(self, draw, transactions, num_tx):
+        self.print_message("loading...", draw)
         
         
 
