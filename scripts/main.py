@@ -55,6 +55,7 @@ def check_wifi():
 
 
 def connection_health():
+
     return {
         'is_connected': web3.isConnected(),
         'client_is_listening': web3.net.listening,
@@ -84,15 +85,6 @@ def main():
     live_ethereum = LIVEthereum.LIVEthereum(network_id, client_version,initial_connection)
 
 
-
-    # block_count = 0
-    # seconds_since_start = 0
-    # block = web3.eth.getBlock("latest")
-    # start_timestamp = block.timestamp
-
-    blocks_since_start = 0
-    gas_since_start = 0
-    pending = 0
     
 
     
@@ -101,81 +93,67 @@ def main():
         try:
             new_blocks = latest_block_filter.get_new_entries()
             new_tx = address_filter.get_new_entries()
-        except Exception as e:
-            live_ethereum.handle_exception(e)
+        
 
-        current_connection_status = connection_health()
-        live_ethereum.handle_health(current_connection_status)
-
+            current_connection_status = connection_health()
+            live_ethereum.handle_health(current_connection_status)
 
 
-        activity_monitor(live_ethereum, new_tx)
-               
+
+            activity_monitor(live_ethereum, new_tx)
+                
+                    
+
+
+
+            for block_hash in new_blocks:
+
+                block = web3.eth.get_block(block_hash.hex())
+                gas_price = web3.eth.gas_price / 10**9
+                print(gas_price)
+                
+                
+                print("new block", block_hash.hex())
+            
                 
 
+                date_time = datetime.fromtimestamp(block.timestamp)
+                num_tx = len(block.transactions)
+                
 
+                
+                
+                eth_burned = (block.baseFeePerGas * block.gasUsed) / 10**18
 
-        for block_hash in new_blocks:
+                block_data = {
+                    'block_number': str(block.number), 
+                    'block_hash': str(block_hash.hex()),
+                    'current_gas_price': format(gas_price, ".2f"),
+                    'num_tx': str(num_tx),
+                    'date_time': date_time,
+                    'transactions': block.transactions,
+                    'eth_burned': format(eth_burned, ".4f"),
+                    # 'num_pending': pending,
+                    'average' : calculate_average_gas(gas_price),
+                    # 'is_listening': web3.net.listening,
+                    'num_last_blocks': num_last_blocks,
+                    'miner': try_ens(block.miner)
+                }
 
-            
-            gas_price = web3.eth.gas_price / 10**9
-            print(gas_price)
-            
-            
-            print("new block", block_hash.hex())
-        
-            block = web3.eth.get_block(block_hash.hex())
+                live_ethereum.update_block(block_data)
 
-            date_time = datetime.fromtimestamp(block.timestamp)
-            num_tx = len(block.transactions)
-            
-
-
-            pending -= num_tx
-            
-            
-            eth_burned = (block.baseFeePerGas * block.gasUsed) / 10**18
-
-            block_data = {
-                'block_number': str(block.number), 
-                'block_hash': str(block_hash.hex()),
-                'current_gas_price': format(gas_price, ".2f"),
-                'num_tx': str(num_tx),
-                'date_time': date_time,
-                'transactions': block.transactions,
-                'eth_burned': format(eth_burned, ".4f"),
-                # 'num_pending': pending,
-                'average' : calculate_average_gas(gas_price),
-                # 'is_listening': web3.net.listening,
-                'num_last_blocks': num_last_blocks,
-                'miner': try_ens(block.miner)
-            }
-
-            live_ethereum.update_block(block_data)
-
-            # live_ethereum.handle_transactions(block.transactions, num_tx)
-            # live_ethereum(pending_transactions)
-            # live_ethereum.handle_transactions()
-
-        # for tx in new_tx: 
-        #     address = tx.address
-        #     index = tracking_address.index(address)
-        #     # tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
-        #     try: 
-        #         tracking_address_names[index]
-        #         live_ethereum.handle_activity_monitor(tracking_address_names[index],tx.transactionHash.hex() , tx.blockNumber)
-        #     except:
-        #          live_ethereum.handle_activity_monitor(try_ens(tx.address),tx.transactionHash.hex() , tx.blockNumber)
-            
-      
-
-            
-
-
+        except Exception as e:
+            live_ethereum.handle_exception(e)
+            break
 
         time.sleep(1)
 
         
 
 if __name__ == "__main__":
-    main()
+    try:
+
+        main()
+    except Exception as e:
+        print(e)
+
