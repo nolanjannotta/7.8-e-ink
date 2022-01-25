@@ -151,8 +151,8 @@ def main():
                 'miner': try_ens(block.miner)
             }
 
-            live_ethereum.update_block, args = [block_data]
-            live_ethereum.handle_transactions, args = [block.transactions]
+            live_ethereum.update_block(block_data)
+            live_ethereum.handle_transactions(block.transactions)
 
             # live_ethereum.handle_transactions(block.transactions, num_tx)
             # live_ethereum(pending_transactions)
