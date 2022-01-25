@@ -128,7 +128,7 @@ def main():
 
             date_time = datetime.fromtimestamp(block.timestamp)
             num_tx = len(block.transactions)
-            live_ethereum.handle_transactions(block.transactions)
+            
 
 
             pending -= num_tx
@@ -152,6 +152,7 @@ def main():
             }
 
             live_ethereum.update_block(block_data)
+            live_ethereum.handle_transactions(block.transactions)
 
             # live_ethereum.handle_transactions(block.transactions, num_tx)
             # live_ethereum(pending_transactions)
