@@ -271,8 +271,13 @@ class LIVEthereum:
 
 
     async def handle_transactions(self, transaction_pages):
-        
-        await self.print_transactions(transaction_pages[0])
+        num_pages = len(transaction_pages)
+        if num_pages == 1:
+            await self.print_transactions(transaction_pages[0])
+        else:
+            for page in num_pages:
+                await self.print_transactions(transaction_pages[page - 1])
+                sleep(1)
 
         
 
