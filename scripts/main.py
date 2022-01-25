@@ -62,6 +62,17 @@ def connection_health():
 
     }
 
+def activity_monitor(live_ethereum, new_tx):
+    for tx in new_tx: 
+        index = tracking_address.index(tx.address)
+        # tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
+        if tracking_address_names[index] != "":
+            live_ethereum.handle_activity_monitor(tracking_address_names[index],tx.transactionHash.hex() , tx.blockNumber)
+        else:
+            live_ethereum.handle_activity_monitor(try_ens(tx.address),tx.transactionHash.hex() , tx.blockNumber)
+        
+
+
 
 def main():
 
@@ -86,29 +97,19 @@ def main():
 
     
     while True:
+
         try:
             new_blocks = latest_block_filter.get_new_entries()
             new_tx = address_filter.get_new_entries()
         except Exception as e:
             live_ethereum.handle_exception(e)
 
-
-        # pending_tx = pending_tx_filter.get_new_entries()
         current_connection_status = connection_health()
         live_ethereum.handle_health(current_connection_status)
 
 
 
-        for tx in new_tx: 
-            address = tx.address
-            index = tracking_address.index(address)
-            # tx_hash = f'{tx.transactionHash.hex()[:5]}...{tx.transactionHash.hex()[len(tx.transactionHash.hex())-3:]}'
-            try: 
-                tracking_address_names[index]
-                live_ethereum.handle_activity_monitor(tracking_address_names[index],tx.transactionHash.hex() , tx.blockNumber)
-            except:
-                 live_ethereum.handle_activity_monitor(try_ens(tx.address),tx.transactionHash.hex() , tx.blockNumber)
-            
+        activity_monitor(live_ethereum, new_tx)
                
                 
 
@@ -124,8 +125,10 @@ def main():
             print("new block", block_hash.hex())
         
             block = web3.eth.get_block(block_hash.hex())
+
             date_time = datetime.fromtimestamp(block.timestamp)
             num_tx = len(block.transactions)
+            live_ethereum.handle_transactions(block.transactions)
 
 
             pending -= num_tx
@@ -147,6 +150,7 @@ def main():
                 'num_last_blocks': num_last_blocks,
                 'miner': try_ens(block.miner)
             }
+
             live_ethereum.update_block(block_data)
 
             # live_ethereum.handle_transactions(block.transactions, num_tx)

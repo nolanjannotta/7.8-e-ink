@@ -139,7 +139,8 @@ class LIVEthereum:
 
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
         draw = ImageDraw.Draw(self.display.frame_buf)
-        self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
+
+        # self.handle_transactions(draw,block_data['transactions'], block_data['num_tx'])
 
         # clears a portion of the screen where the number is with padding each side
         self.display.frame_buf.paste(0xFF, box=(0,254,self.display.width,596))
@@ -269,13 +270,10 @@ class LIVEthereum:
 
 
  
-    def handle_transactions(self, draw, transactions, num_tx):
-        self.print_message("loading...", draw)
+    def handle_transactions(self, transactions):
         
-        
-
-
-        # draw = ImageDraw.Draw(self.display.frame_buf)
+        draw = ImageDraw.Draw(self.display.frame_buf)
+        self.print_message("loading tx...", draw)
         img_width = self.display.frame_buf.width
         starting_x = 20
         starting_y = 660
@@ -316,11 +314,11 @@ class LIVEthereum:
             draw.text((starting_x, starting_y),tx_draw, font=self.get_font("Zag_Bold.ttf", 35))
             starting_y +=30
         
-        text_width, _ = self.get_font("Zag_Bold.ttf", 43).getsize(f"showing {tx_counter} of {num_tx}")
+        text_width, _ = self.get_font("Zag_Bold.ttf", 43).getsize(f"showing {tx_counter} of {len(transactions)}")
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 1410), f"showing {tx_counter} of {num_tx}", font=self.get_font("Zag_Bold.ttf", 52))
+        draw.text((draw_x, 1410), f"showing {tx_counter} of {len(transactions)}", font=self.get_font("Zag_Bold.ttf", 52))
         
         self.display.draw_partial(constants.DisplayModes.DU)
         
