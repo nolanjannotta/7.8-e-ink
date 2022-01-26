@@ -147,7 +147,7 @@ class LIVEthereum:
         if self.refresh_counter == 10:
             self.clear_screen()
            
-        self.loading_message(block_data['block_number']) 
+        
         p = multiprocessing.Process(target = self.handle_transactions, args = (block_data['transactions'],))
         p.start()
 
@@ -208,7 +208,7 @@ class LIVEthereum:
         self.print_qr(block_data['block_number'])
 
 
-        
+        self.loading_message(block_data['block_number']) 
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
@@ -337,7 +337,7 @@ class LIVEthereum:
 
         self.draw.text((draw_x, 1410), f"showing {tx_counter} of {len(transactions)}", font=self.get_font("Zag_Bold.ttf", 52))
         
-        self.display.draw_partial(constants.DisplayModes.DU)
+        # self.display.draw_partial(constants.DisplayModes.DU)
         
 
 
