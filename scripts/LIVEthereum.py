@@ -147,11 +147,11 @@ class LIVEthereum:
         if self.refresh_counter == 10:
             self.clear_screen()
            
-        
+        self.loading_message(block_data['block_number']) 
         p = multiprocessing.Process(target = self.handle_transactions, args = (block_data['transactions'],))
         p.start()
 
-        self.loading_message(block_data['block_number']) 
+        
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
         # draw = ImageDraw.Draw(self.display.frame_buf)
 
