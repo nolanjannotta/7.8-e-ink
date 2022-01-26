@@ -136,7 +136,7 @@ class LIVEthereum:
         self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
         self.draw.text((x_value, 800), message, font=self.get_font("Zag_Bold.ttf", 60))
         
-        self.display.draw_partial(constants.DisplayModes.DU)
+        # self.display.draw_partial(constants.DisplayModes.DU)
 
 
     def update_block(self, block_data):
@@ -147,10 +147,9 @@ class LIVEthereum:
         if self.refresh_counter == 10:
             self.clear_screen()
 
-        self.loading_message(block_data['block_number']) 
         
-        p = multiprocessing.Process(target = self.handle_transactions, args = (block_data['transactions'],))
-        p.start()
+        # p = multiprocessing.Process(target = self.handle_transactions, args = (block_data['transactions'],))
+        # p.start()
 
         
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
@@ -209,10 +208,11 @@ class LIVEthereum:
 
         self.print_qr(block_data['block_number'])
 
+        self.loading_message(block_data['block_number']) 
 
            
         self.display.draw_partial(constants.DisplayModes.DU)
-
+        self.handle_transactions(block_data['transactions'])
         
         
 
