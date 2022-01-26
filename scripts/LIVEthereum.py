@@ -337,7 +337,7 @@ class LIVEthereum:
 
         self.draw.text((draw_x, 1410), f"showing {tx_counter} of {len(transactions)}", font=self.get_font("Zag_Bold.ttf", 52))
         
-        # self.display.draw_partial(constants.DisplayModes.DU)
+        self.display.draw_partial(constants.DisplayModes.DU)
         
 
 
