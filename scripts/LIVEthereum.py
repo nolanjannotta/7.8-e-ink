@@ -149,7 +149,7 @@ class LIVEthereum:
            
         
         p = multiprocessing.Process(target = self.handle_transactions, args = (block_data['transactions'],))
-        p.start()
+        
 
         
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
@@ -209,7 +209,7 @@ class LIVEthereum:
 
 
         self.loading_message(block_data['block_number']) 
-
+        p.start()   
         self.display.draw_partial(constants.DisplayModes.DU)
 
         
