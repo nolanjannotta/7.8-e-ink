@@ -43,7 +43,8 @@ class LIVEthereum:
 
 
     def get_font(self, font_name, size):
-        return ImageFont.truetype(f"/home/pi/code/7.8-e-ink/fonts/{font_name}", size)
+        # CHANGE THIS IF YOU CHANGE PI'S!!!!!!!!!!!!!!!!!
+        return ImageFont.truetype(f"/home/pi/7.8-e-ink/fonts/{font_name}", size)
 
 
     def layout_init(self):
