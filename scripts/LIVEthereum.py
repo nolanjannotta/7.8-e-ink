@@ -48,33 +48,33 @@ class LIVEthereum:
     def layout_init(self):
 
 
-        draw = ImageDraw.Draw(self.display.frame_buf)
+        self.draw = ImageDraw.Draw(self.display.frame_buf)
         # title box
         # draw.rectangle((0,320,self.display.width,580),  outline = 0, width=5)
         # draw.rectangle((0, 0, display.width, 300),  outline = 0, width=5)
-        draw.line((0,250,self.display.width,250), width=4)
+        self.draw.line((0,250,self.display.width,250), width=4)
         # draw.rectangle((0,303),display.width //2, 400, outline = 0, width=5)
-        draw.line((0,600,self.display.width,600), width=4)
+        self.draw.line((0,600,self.display.width,600), width=4)
 
-        draw.line((1,1460,self.display.width,1460 ), width=4)
+        self.draw.line((1,1460,self.display.width,1460 ), width=4)
 
 
         activity_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("activity monitor")
         x_value = (910 - activity_width) // 2
-        draw.text((x_value, 1470),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
+        self.draw.text((x_value, 1470),"activity monitor", font=self.get_font("Zag_Bold.ttf", 60))
 
 
         health_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("connection health:")
         x_value = ((self.display.width + 930) // 2) - (health_width // 2)
-        draw.text((x_value, 1470),"connection health:", font=self.get_font("Zag_Bold.ttf", 60))
+        self.draw.text((x_value, 1470),"connection health:", font=self.get_font("Zag_Bold.ttf", 60))
 
         hashes_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize("transactions hashes:")
         draw_x = (self.display.width - hashes_width)//2
-        draw.text((draw_x, 605),"transaction hashes:", font=self.get_font("Zag_Bold.ttf", 60))
+        self.draw.text((draw_x, 605),"transaction hashes:", font=self.get_font("Zag_Bold.ttf", 60))
 
 
 
-        draw.line((930,1460, 930, self.display.height), width=4)
+        self.draw.line((930,1460, 930, self.display.height), width=4)
 
         img_width = self.display.frame_buf.width
         text_width, _ = self.get_font("Unique.ttf", 215).getsize(self.title)
@@ -86,8 +86,8 @@ class LIVEthereum:
 
         # title
         
-        draw.text((draw_x, -20), self.title, font=self.get_font("Unique.ttf", 215))
-        draw.text((50, 200), f'chain id: {self.network_id}   ||   client version: {self.client_version}', font=self.get_font("Zag_Bold.ttf", 45))
+        self.draw.text((draw_x, -20), self.title, font=self.get_font("Unique.ttf", 215))
+        self.draw.text((50, 200), f'chain id: {self.network_id}   ||   client version: {self.client_version}', font=self.get_font("Zag_Bold.ttf", 45))
         # draw.text((500, 200), self.client_version, font=self.get_font("Zag_Bold.ttf", 45))
         # draw.text((0,500), "$", font=self.get_font("Zag_Bold.ttf", 130))
         self.display.draw_full(constants.DisplayModes.GC16)
@@ -120,21 +120,20 @@ class LIVEthereum:
 
 
     def handle_exception(self, message):
-        draw = ImageDraw.Draw(self.display.frame_buf)
-        self.print_message(message, draw)
+        
+        self.print_message(message)
 
-    def print_message(self, message, draw):
+    def print_message(self, message):
         self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
-        draw.text((20, 700),str(message), font=self.get_font("Zag_Bold.ttf", 60))
+        self.draw.text((20, 700),str(message), font=self.get_font("Zag_Bold.ttf", 60))
         self.display.draw_partial(constants.DisplayModes.DU)
 
     def loading_message(self, block_number):
-        draw = ImageDraw.Draw(self.display.frame_buf)
         message = f"loading transactions for #{block_number}..."
         loading_width, _ = self.get_font("Zag_Bold.ttf", 60).getsize(message)
         x_value = (self.display.width - loading_width) // 2
         self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
-        draw.text((x_value, 800), message, font=self.get_font("Zag_Bold.ttf", 60))
+        self.draw.text((x_value, 800), message, font=self.get_font("Zag_Bold.ttf", 60))
         
         # self.display.draw_partial(constants.DisplayModes.DU)
 
@@ -150,7 +149,7 @@ class LIVEthereum:
         
 
         # self.display.frame_buf.paste(0xFF, box=(0,605,self.display.width,1458))
-        draw = ImageDraw.Draw(self.display.frame_buf)
+        # draw = ImageDraw.Draw(self.display.frame_buf)
 
         
 
@@ -185,22 +184,22 @@ class LIVEthereum:
         # draw.text((x_value,375), average_gas,font=self.get_font("Zag_Bold.ttf", 35))
 
         x_value = 125 + block_number_width + 20
-        draw.text((x_value,330), miner, font=self.get_font("Zag_Bold.ttf", 60))
-        draw.text((x_value,390),gas,font=self.get_font("Zag_Bold.ttf", 60))
+        self.draw.text((x_value,330), miner, font=self.get_font("Zag_Bold.ttf", 60))
+        self.draw.text((x_value,390),gas,font=self.get_font("Zag_Bold.ttf", 60))
 
         x_value = 20 + price_width + 20
-        draw.text((x_value,470),average_gas,font=self.get_font("Zag_Bold.ttf", 60))
-        draw.text((x_value,527),burned_time,font=self.get_font("Zag_Bold.ttf", 60))
+        self.draw.text((x_value,470),average_gas,font=self.get_font("Zag_Bold.ttf", 60))
+        self.draw.text((x_value,527),burned_time,font=self.get_font("Zag_Bold.ttf", 60))
 
 
-        draw.text((20,473),price,font=self.get_font("Zag_Bold.ttf", 130))
-        draw.text((20 ,270),_hash, font=self.get_font("Zag_Bold.ttf", 43))
+        self.draw.text((20,473),price,font=self.get_font("Zag_Bold.ttf", 130))
+        self.draw.text((20 ,270),_hash, font=self.get_font("Zag_Bold.ttf", 43))
 
 
-        draw.text((20,326), "block", font=self.get_font("Zag_Bold.ttf", 48))
-        draw.text((30,368), "#", font=self.get_font("Zag_Bold.ttf", 110))
+        self.draw.text((20,326), "block", font=self.get_font("Zag_Bold.ttf", 48))
+        self.draw.text((30,368), "#", font=self.get_font("Zag_Bold.ttf", 110))
 
-        draw.text((125,320), str(block_data['block_number']), font=self.get_font("Zag_Bold.ttf", 180))
+        self.draw.text((125,320), str(block_data['block_number']), font=self.get_font("Zag_Bold.ttf", 180))
 
         self.print_qr(block_data['block_number'])
         
@@ -222,7 +221,7 @@ class LIVEthereum:
     def handle_health(self, current_connection_status):
 
        
-        draw = ImageDraw.Draw(self.display.frame_buf)
+        # draw = ImageDraw.Draw(self.display.frame_buf)
         self.display.frame_buf.paste(0xFF, box=(935,1535,self.display.width,self.display.height))
 
         web3_connection = "-connected to node" if current_connection_status['is_connected'] else "-not connected to node"
@@ -230,19 +229,19 @@ class LIVEthereum:
         wifi_is_connected = "-connected to internet" if current_connection_status['wifi_is_connected'] else "-not connected to internet"
 
             
-        draw.text((970, 1600),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
+        self.draw.text((970, 1600),web3_connection, font=self.get_font("Zag_Bold.ttf", 50))
 
 
-        draw.text((970, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
+        self.draw.text((970, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
         self.display.draw_partial(constants.DisplayModes.DU)
 
     
 
     def print_activity(self):
-        draw = ImageDraw.Draw(self.display.frame_buf)
+        # draw = ImageDraw.Draw(self.display.frame_buf)
         y_value = 1550
         for activity in self.activity_list:
-            draw.text((20, y_value),activity, font=self.get_font("Zag_Bold.ttf", 41))
+            self.draw.text((20, y_value),activity, font=self.get_font("Zag_Bold.ttf", 41))
             y_value += 45
 
         self.display.draw_partial(constants.DisplayModes.DU)
@@ -286,7 +285,7 @@ class LIVEthereum:
 
  
     async def handle_transactions(self, transactions):
-        draw = ImageDraw.Draw(self.display.frame_buf)
+        # draw = ImageDraw.Draw(self.display.frame_buf)
 
 
         img_width = self.display.frame_buf.width
@@ -323,18 +322,18 @@ class LIVEthereum:
                 if tx == tx_hex:
                     text_width, _ = self.get_font("Zag_Bold.ttf", 35).getsize(f"{tx_draw}")
                     
-                    draw.rounded_rectangle((starting_x - 5, starting_y - 3, starting_x + text_width + 2, starting_y + 31), radius=6,  outline = 0, width=3)
+                    self.draw.rounded_rectangle((starting_x - 5, starting_y - 3, starting_x + text_width + 2, starting_y + 31), radius=6,  outline = 0, width=3)
 
                     
 
-            draw.text((starting_x, starting_y),tx_draw, font=self.get_font("Zag_Bold.ttf", 35))
+            self.draw.text((starting_x, starting_y),tx_draw, font=self.get_font("Zag_Bold.ttf", 35))
             starting_y +=30
         
         text_width, _ = self.get_font("Zag_Bold.ttf", 43).getsize(f"showing {tx_counter} of {len(transactions)}")
 
         draw_x = (img_width - text_width)//2
 
-        draw.text((draw_x, 1410), f"showing {tx_counter} of {len(transactions)}", font=self.get_font("Zag_Bold.ttf", 52))
+        self.draw.text((draw_x, 1410), f"showing {tx_counter} of {len(transactions)}", font=self.get_font("Zag_Bold.ttf", 52))
         
         self.display.draw_partial(constants.DisplayModes.DU)
         
