@@ -5,6 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 from collections import deque
 import qrcode
 import asyncio
+import multiprocessing
 
 
 
@@ -202,12 +203,16 @@ class LIVEthereum:
         self.draw.text((125,320), str(block_data['block_number']), font=self.get_font("Zag_Bold.ttf", 180))
 
         self.print_qr(block_data['block_number'])
-        
+
+
+        p = multiprocessing.Process(target = self.handle_transactions, args = (block_data['transactions'],))
+        p.start()
+
         self.loading_message(block_data['block_number']) 
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
-        self.handle_transactions(block_data['transactions'])
+        
         
 
 
