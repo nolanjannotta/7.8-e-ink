@@ -136,7 +136,7 @@ class LIVEthereum:
         self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
         self.draw.text((x_value, 800), message, font=self.get_font("Zag_Bold.ttf", 60))
         
-        # self.display.draw_partial(constants.DisplayModes.DU)
+        self.display.draw_partial(constants.DisplayModes.DU)
 
 
     def update_block(self, block_data):
@@ -162,6 +162,7 @@ class LIVEthereum:
         
         # draw.rectangle((0,350,self.display.width,550),  outline = 0, width=5)
         
+        self.loading_message(block_data['block_number']) 
 
         
         # block = f"{block_number}"
@@ -208,7 +209,6 @@ class LIVEthereum:
         self.print_qr(block_data['block_number'])
 
 
-        self.loading_message(block_data['block_number']) 
         p.start()   
         self.display.draw_partial(constants.DisplayModes.DU)
 
