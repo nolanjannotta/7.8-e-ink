@@ -138,7 +138,7 @@ class LIVEthereum:
         # self.display.draw_partial(constants.DisplayModes.DU)
 
 
-    async def update_block(self, block_data):
+    def update_block(self, block_data):
         
 
         self.refresh_counter += 1
@@ -207,7 +207,7 @@ class LIVEthereum:
 
         self.display.draw_partial(constants.DisplayModes.DU)
 
-        await self.handle_transactions(block_data['transactions'])
+        self.handle_transactions(block_data['transactions'])
         
 
 
@@ -221,7 +221,6 @@ class LIVEthereum:
     def handle_health(self, current_connection_status):
 
        
-        # draw = ImageDraw.Draw(self.display.frame_buf)
         self.display.frame_buf.paste(0xFF, box=(935,1535,self.display.width,self.display.height))
 
         web3_connection = "-connected to node" if current_connection_status['is_connected'] else "-not connected to node"
@@ -238,7 +237,6 @@ class LIVEthereum:
     
 
     def print_activity(self):
-        # draw = ImageDraw.Draw(self.display.frame_buf)
         y_value = 1550
         for activity in self.activity_list:
             self.draw.text((20, y_value),activity, font=self.get_font("Zag_Bold.ttf", 41))
@@ -284,8 +282,7 @@ class LIVEthereum:
 
 
  
-    async def handle_transactions(self, transactions):
-        # draw = ImageDraw.Draw(self.display.frame_buf)
+    def handle_transactions(self, transactions):
 
 
         img_width = self.display.frame_buf.width
