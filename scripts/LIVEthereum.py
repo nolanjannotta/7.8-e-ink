@@ -282,7 +282,7 @@ class LIVEthereum:
         self.print_activity()
 
 
-    async def handle_transactions(self, transactions):
+    def handle_transactions(self, transactions):
         tx_per_page = self.format_tx(transactions)
         num_pages = len(tx_per_page)
         if num_pages == 1:
