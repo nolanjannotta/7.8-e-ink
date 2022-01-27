@@ -3,10 +3,11 @@ import time
 from hexbytes import HexBytes
 from ens import ENS
 import multiprocessing
+import asyncio
 
 # web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/AMq3rziNaAVTV6lQ1OUc5S5jAQXa-_Hl'))
 web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/ZiONpsBMj0B0RIXVomeMGU4xXkEBjkyq'))
- 
+
 
 ens = ENS.fromWeb3(web3)
 
@@ -32,37 +33,40 @@ address_filter = web3.eth.filter({'address': ['0x86449BFCa17bbAe097db76Ff5873F45
 #     num_tx = len(transactions)
 #     starting_point = 0
 #     tx_per_page = []
-#     num_pages = (num_tx // 226) + 1 if num_tx % 226 > 0 else num_tx // 226
+#     num_pages = (num_tx // 225) + 1 if num_tx % 226 > 0 else num_tx // 225
 
 #     for page in range(num_pages):
 #         if page < num_pages:
             
-#             tx_per_page.append(list(transactions[starting_point:starting_point + 226]))
-#             starting_point += 226
+#             tx_per_page.append(list(transactions[starting_point:starting_point + 225]))
+#             starting_point += 225
 #         else:
 #             tx_per_page.append(list(transactions[starting_point:]))
 
 #     return tx_per_page
 
-def track_balance():
+# def track_balance():
     
 
-def search_tx(transactions):
-    print("start searching")
-    for tx_hash in transactions:
-        tx = web3.eth.get_transaction(tx_hash)
-        for addr in tracking_address:
-            if addr == tx['to']:
-                print("to")
-            elif addr == tx['from']:
-                print('from')
+# def search_tx(transactions):
+#     print("start searching")
+#     for tx_hash in transactions:
+#         tx = web3.eth.get_transaction(tx_hash)
+#         for addr in tracking_address:
+#             if addr == tx['to']:
+#                 print("to")
+#             elif addr == tx['from']:
+#                 print('from')
 
-    print("done searching searching")
+#     print("done searching searching")
 
+
+    
 def main():
+    loop = asyncio.get_event_loop()
     new_block = latest_block_filter.get_new_entries()
     # new_tx = address_filter.get_new_entries()
-    new_tx = web3.eth.get_filter_changes(address_filter.filter_id)
+    # new_tx = web3.eth.get_filter_changes(address_filter.filter_id)
 
     # num_pages = (num_tx // 226) + 1 if num_tx % 226 > 0 else num_tx // 226
     # print(num_pages)
@@ -70,8 +74,9 @@ def main():
 
     while True:
         new_block = latest_block_filter.get_new_entries()
+        
         # new_tx = web3.eth.get_filter_changes(address_filter.filter_id)
-        new_tx = address_filter.get_new_entries()
+        # new_tx = address_filter.get_new_entries()
 
     #     new_tx = address_filter.get_new_entries()
 
@@ -106,15 +111,33 @@ def main():
         #     except:
         #         print("not found")
         #         pass
+
+        async def coroutine():
+            for i in range(10):
+                print(i, "hello")
+                time.sleep(2)
+        
+        async def function_to_call_coroutine():
+            task = loop.create_task(coroutine())
+            await asyncio.wait(task)
+            
+
         
 
         
         for block_hash in new_block:
+            try:
+                
+                loop.run_until_complete(function_to_call_coroutine())
+            except Exception as e:
+                print(e)
+
+
             print("new block")
             block = web3.eth.get_block(block_hash.hex())
             # print( block.transactions)
             print(block.number)
-            search_tx(block.transactions)
+            # search_tx(block.transactions)
 
 
 
