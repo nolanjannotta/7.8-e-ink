@@ -298,10 +298,12 @@ class LIVEthereum:
 
         y_counter = 0
         x_counter = 0
-        tx_counter = 1
+        tx_counter = 0
     
         self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
         for i in transactions:
+            tx_counter +=1
+
             tx_hex = i.hex()
             
             if y_counter == 25:
@@ -321,7 +323,7 @@ class LIVEthereum:
             
 
             tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
-            tx_counter +=1
+            
             # check for tracking addrress
             for tx in self.current_tracked_tx:
                 if tx == tx_hex:
