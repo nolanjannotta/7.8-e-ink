@@ -298,11 +298,11 @@ class LIVEthereum:
 
         y_counter = 0
         x_counter = 0
-        tx_counter = 0
+        tx_counter = 1
     
         self.display.frame_buf.paste(0xFF, box=(0,655,self.display.width,1458))
         for i in transactions:
-            tx_counter +=1
+            
 
             tx_hex = i.hex()
             
@@ -319,11 +319,11 @@ class LIVEthereum:
 
                 break
              
-
+            
             
 
             tx_draw = f"{tx_hex[:5]}...{tx_hex[len(tx_hex)-3:]}"
-            
+
             # check for tracking addrress
             for tx in self.current_tracked_tx:
                 if tx == tx_hex:
@@ -334,6 +334,7 @@ class LIVEthereum:
                     
 
             self.draw.text((starting_x, starting_y),tx_draw, font=self.get_font("Zag_Bold.ttf", 35))
+            tx_counter +=1
             starting_y +=30
         
         text_width, _ = self.get_font("Zag_Bold.ttf", 43).getsize(f"showing {tx_counter} of {len(transactions)}")
