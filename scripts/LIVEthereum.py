@@ -220,7 +220,7 @@ class LIVEthereum:
             print(e)
         finally:
 
-            self.loop.closed()
+            self.loop.close()
         
         
 
