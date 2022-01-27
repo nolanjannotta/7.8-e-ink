@@ -213,7 +213,14 @@ class LIVEthereum:
 
            
         self.display.draw_partial(constants.DisplayModes.DU)
-        self.handle_transactions(block_data['transactions'])
+        try:
+            self.loop = asyncio.get_event_loop()
+            self.loop.run_until_complete(self.handle_transactions(block_data['transactions']))
+        except Exception as e:
+            print(e)
+        finally:
+
+            self.loop.closed()
         
         
 
@@ -240,6 +247,7 @@ class LIVEthereum:
 
         self.draw.text((970, 1700),wifi_is_connected, font=self.get_font("Zag_Bold.ttf", 50))
         self.display.draw_partial(constants.DisplayModes.DU)
+
 
     
 
@@ -274,22 +282,37 @@ class LIVEthereum:
         self.print_activity()
 
 
-    # async def handle_transactions(self, transaction_pages):
-    #     num_pages = len(transaction_pages)
-    #     if num_pages == 1:
-    #         await self.print_transactions(transaction_pages[0])
-    #     else:
-    #         for page in num_pages:
-    #             await self.print_transactions(transaction_pages[page - 1])
-    #             sleep(1)
+    async def handle_transactions(self, transactions):
+        tx_per_page = self.format_tx(transactions)
+        num_pages = len(tx_per_page)
+        if num_pages == 1:
+            self.loop.create_task(self.print_transactions(tx_per_page[0]))
+        else:
+            for page in num_pages:
+                self.loop.create_task(self.print_transactions(tx_per_page[page - 1]))
+                sleep(1)
 
         
+    def format_tx(self,transactions):
+        num_tx = len(transactions)
+        starting_point = 0
+        tx_per_page = []
+        num_pages = (num_tx // 225) + 1 if num_tx % 226 > 0 else num_tx // 225
 
+        for page in range(num_pages):
+            if page < num_pages:
+                
+                tx_per_page.append(list(transactions[starting_point:starting_point + 225]))
+                starting_point += 225
+            else:
+                tx_per_page.append(list(transactions[starting_point:]))
+
+        return tx_per_page
 
 
 
  
-    def handle_transactions(self, transactions):
+    async def print_transactions(self, transactions):
 
 
         img_width = self.display.frame_buf.width
