@@ -1,5 +1,5 @@
 RPi.GPIO
 pillow
 web3
-deque
+
 qrcode
