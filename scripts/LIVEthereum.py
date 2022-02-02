@@ -102,7 +102,7 @@ class LIVEthereum:
 
         self.layout_init()
         self.print_activity()
-        # self.connection_health = {} # clear out the connection health object so that the function detects a difference and draw on the screen
+        self.connection_health = {} # clear out the connection health object so that the function detects a difference and draw on the screen
         
         self.refresh_counter = 0
 
